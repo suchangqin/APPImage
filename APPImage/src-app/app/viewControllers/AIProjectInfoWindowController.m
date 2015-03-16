@@ -81,6 +81,8 @@
     _viewIgnoreButtons.layer.borderColor = [NSColor lightGrayColor].CGColor;
     
     
+    
+    
     _arrayAndroidInitIgnore = @[@"build",@"gradle",@"libs",@"libraries"];
     _arrayIOSInitIgnore = @[@"libs",@"libraries"];
 
@@ -90,6 +92,8 @@
     CGRect f = ((NSView *)self.window.contentView).frame;
     self.viewParsingDisable.frame = f;
     [self.window.contentView addSubview:self.viewParsingDisable];
+    
+    [self.viewParsingDisable setBackgroundColor:RGBACOLOR(0, 0, 0, 0.1)];
     
     
 }
