@@ -367,8 +367,13 @@
 				var newLine = " &#10;";
 				var re = {};
 				var newPngs = [];
+                png_files = png_files.sort();
 				for (var i=0; i < png_files.length; i++) {
-				  newPngs.push((i+1) + " : " + png_files[i]);
+                    var prefix = "";
+                    if(i<9){
+                        prefix = "  ";
+                    }
+				  newPngs.push(prefix+ (i+1) + " : " + png_files[i]);
 				}
 				var count = png_files.length;
 				var title = newLine;

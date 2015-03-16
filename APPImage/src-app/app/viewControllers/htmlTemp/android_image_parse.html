@@ -329,8 +329,13 @@
 								var warning = 1;
 								if (png1_files) {
 									var newPngs = [];
+                                    png1_files = png1_files.sort();
 									for (var j=0; j < png1_files.length; j++) {
-									  newPngs.push((j+1) + " : " + png1_files[j]);
+                                        var prefix = "";
+                                        if(j<9){
+                                            prefix = "  ";
+                                        }
+									  newPngs.push(prefix + (j+1) + " : " + png1_files[j]);
 									}
 									
 									var count = png1_files.length;

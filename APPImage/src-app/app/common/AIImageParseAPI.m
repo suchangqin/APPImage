@@ -97,14 +97,14 @@
             int index = 0;
             for (NSString *fileName in dictFileCodes.allKeys) {
                 for (NSString *codePath in [dictFileCodes objectForKey:fileName]) {
-                    if (!self.delegate) {
-                        goto EndBlock;
-                    }
-                    index ++;
-                    NSString *log = [NSString stringWithFormat:@"正在分析：%@",codePath];
-                    [self ___log:log index:(1+(index*1.0/allSouceCount * 90)) all:100];
-
                     @autoreleasepool {
+                        if (!self.delegate) {
+                            goto EndBlock;
+                        }
+                        index ++;
+                        NSString *log = [NSString stringWithFormat:@"正在分析：%@",codePath];
+                        [self ___log:log index:(1+(index*1.0/allSouceCount * 90)) all:100];
+
                         NSString *lines = nil;
                         @autoreleasepool{
                             // step 4 read a file source
@@ -129,30 +129,32 @@
             for (NSString *codeFilePath in dictFileCodes.allKeys) {
                 NSArray *codePaths = dictFileCodes[codeFilePath];
                 for (NSString *p in codePaths) {
-                    if (!self.delegate) {
-                        goto EndBlock;
-                    }
-                    index ++;
-                    DYYLog(@"%d",index);
-                    NSString *log = [NSString stringWithFormat:@"正在分析：%@",p];
-                    [self ___log:log index:(1+(index*1.0/allSouceCount * 90)) all:100];
-                    NSString *lines = nil;
                     @autoreleasepool{
-                        // step 4 read a file source
-                        NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:p];
-                        NSData *data = [fh readDataToEndOfFile];
-                        lines = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                    }
-                    for (NSString *imageName in imageNames) {
-                        NSString *imageNameFormat = [[imageName stringByReplacingOccurrencesOfString:@".9.png" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
-                        NSString *imageName1 = [NSString stringWithFormat:@"drawable/%@",imageNameFormat];
-                        NSString *imageName2 = [NSString stringWithFormat:@"R.drawable.%@",imageNameFormat];
-                        if ([lines containsString:imageName1] || [lines containsString:imageName2]) {
-                            NSMutableDictionary *imageDict = dictPNG[imageName];
-                            if (![imageDict.allKeys containsObject:_kAPP_IndexFiles]) {
-                                imageDict[_kAPP_IndexFiles] = [NSMutableArray array];
+                        if (!self.delegate) {
+                            goto EndBlock;
+                        }
+                        index ++;
+                        DYYLog(@"%d",index);
+                        NSString *log = [NSString stringWithFormat:@"正在分析：%@",p];
+                        [self ___log:log index:(1+(index*1.0/allSouceCount * 90)) all:100];
+                        NSString *lines = nil;
+                        @autoreleasepool{
+                            // step 4 read a file source
+                            NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:p];
+                            NSData *data = [fh readDataToEndOfFile];
+                            lines = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                        }
+                        for (NSString *imageName in imageNames) {
+                            NSString *imageNameFormat = [[imageName stringByReplacingOccurrencesOfString:@".9.png" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
+                            NSString *imageName1 = [NSString stringWithFormat:@"drawable/%@",imageNameFormat];
+                            NSString *imageName2 = [NSString stringWithFormat:@"R.drawable.%@",imageNameFormat];
+                            if ([lines containsString:imageName1] || [lines containsString:imageName2]) {
+                                NSMutableDictionary *imageDict = dictPNG[imageName];
+                                if (![imageDict.allKeys containsObject:_kAPP_IndexFiles]) {
+                                    imageDict[_kAPP_IndexFiles] = [NSMutableArray array];
+                                }
+                                [imageDict[_kAPP_IndexFiles] addObject:codeFilePath];
                             }
-                            [imageDict[_kAPP_IndexFiles] addObject:codeFilePath];
                         }
                     }
                 }
