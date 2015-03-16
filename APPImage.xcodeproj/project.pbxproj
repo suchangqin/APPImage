@@ -38,6 +38,7 @@
 		A9C301A21AA0550400B544C6 /* AIProjectInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */; };
 		A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */; };
 		A9FD96C11AA3F8D20063CBD3 /* AIImageParseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FD96C01AA3F8D20063CBD3 /* AIImageParseAPI.m */; };
+		A9FD96CA1AA42D540063CBD3 /* GRProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FD96C81AA42D540063CBD3 /* GRProgressIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,9 @@
 		A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectInfoWindowController.xib; sourceTree = "<group>"; };
 		A9FD96BF1AA3F8D20063CBD3 /* AIImageParseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIImageParseAPI.h; sourceTree = "<group>"; };
 		A9FD96C01AA3F8D20063CBD3 /* AIImageParseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIImageParseAPI.m; sourceTree = "<group>"; };
+		A9FD96C71AA42D540063CBD3 /* GRProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRProgressIndicator.h; sourceTree = "<group>"; };
+		A9FD96C81AA42D540063CBD3 /* GRProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRProgressIndicator.m; sourceTree = "<group>"; };
+		A9FD96C91AA42D540063CBD3 /* GRProgressIndicatorThemes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRProgressIndicatorThemes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +257,7 @@
 		A900E39F1A9EAF3F001E49AC /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				A9FD96C61AA42D540063CBD3 /* GRProgressIndicator */,
 			);
 			path = libs;
 			sourceTree = "<group>";
@@ -393,6 +398,16 @@
 			name = "项目信息";
 			sourceTree = "<group>";
 		};
+		A9FD96C61AA42D540063CBD3 /* GRProgressIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				A9FD96C71AA42D540063CBD3 /* GRProgressIndicator.h */,
+				A9FD96C81AA42D540063CBD3 /* GRProgressIndicator.m */,
+				A9FD96C91AA42D540063CBD3 /* GRProgressIndicatorThemes.h */,
+			);
+			path = GRProgressIndicator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -511,6 +526,7 @@
 				A9C301A21AA0550400B544C6 /* AIProjectInfoWindowController.m in Sources */,
 				A900E3F71A9EE901001E49AC /* YYDB.m in Sources */,
 				A900E37E1A9EADDE001E49AC /* AppDelegate.m in Sources */,
+				A9FD96CA1AA42D540063CBD3 /* GRProgressIndicator.m in Sources */,
 				A900E3FC1A9EE92E001E49AC /* AITableProjects.m in Sources */,
 				A900E4061A9EFEB1001E49AC /* NSDictionary+YYAdditions.m in Sources */,
 				A900E3EA1A9EE2C1001E49AC /* AIAPI.m in Sources */,

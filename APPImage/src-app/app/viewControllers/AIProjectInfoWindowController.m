@@ -12,6 +12,7 @@
 #import "AIImageParseResultWindowController.h"
 #import "AIFileParse.h"
 #import "AIImageParseAPI.h"
+#import "GRProgressIndicator.h"
 
 @interface AIProjectInfoWindowController ()<NSTableViewDelegate,NSTableViewDataSource,AIImageParseAPIDelegate>
 
@@ -24,11 +25,11 @@
 
 @property (strong) NSMutableArray *arrayIgnoreDir;
 @property (weak) IBOutlet NSView *viewProjectinfo;
-@property (weak) IBOutlet NSView *viewLoading;
-@property (weak) IBOutlet NSProgressIndicator *progressParse;
 @property (weak) IBOutlet NSTextField *textFieldLoadingTip;
 @property (weak) IBOutlet NSPopUpButton *popupButtonLevel1;
 @property (weak) IBOutlet NSPopUpButton *popupButtonLevel2;
+@property (weak) IBOutlet GRProgressIndicator *progressIndicator;
+@property (weak) IBOutlet NSButton *buttonParse;
 
 @property (strong) AIImageParseAPI *imageParseAPI;
 
@@ -54,8 +55,6 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [self.viewIgnoreButtons setBackgroundColor:RGBACOLOR(250, 250, 250, 1)];
-    
-    [self.viewLoading setBackgroundColor:RGBACOLOR(0, 0, 0, 0.2)];
     
     
     {
@@ -98,46 +97,6 @@
     return _arrayIOSInitIgnore;
 }
 
-
--(void) ___checkIOSImageNameContainsWithImageDict:(NSMutableDictionary *) imageDict imageName:(NSString *) imageName lines:(NSString *) lines codeFilePath:(NSString *) codeFilePath dictPng:(NSDictionary *) dictPNG fileName:(NSString *) fileName kIndexPaths:(NSString *) kIndexPaths{
-    //#图片索引
-    NSString *define_prefix = @"kImage_";
-    NSString *imageNameFormat = [NSString stringWithFormat:@"%@%@",
-                                 define_prefix,
-                                 [[imageName stringByReplacingOccurrencesOfString:@"-" withString:@"_"] stringByReplacingOccurrencesOfString:@".png" withString:@""]
-                                 ];
-    NSString *imageNameFormat2 = [NSString stringWithFormat:@"\"%@\"",[imageName stringByReplacingOccurrencesOfString:@".png" withString:@""]];
-//    NSArray *fileNames = @[@"OFPJCarOrderCheckViewController.xib",
-//    @"OFPayAllSelectedOrdersViewController.xib",
-//    @"OFPJCartOrderResultViewController.xib",
-//    @"OFWDOrderPayResultViewController.xib",
-//    @"OFOrderPayResultViewController.xib",
-//    @"OFMyJiFenViewController.xib",
-//                           ];
-//    if ([imageName containsString:@"address_top_banner_bg"] && [fileNames containsObject:fileName]) {
-//        
-//    }
-    //#图片文件名包含
-    if	([lines containWithString:imageName] || [lines containWithString:imageNameFormat] || [lines containWithString:imageNameFormat2]){
-        if (![[imageDict allKeys] containsObject:kIndexPaths]) {
-            NSMutableArray *array = [[NSMutableArray alloc] init];
-            [imageDict setObject:array forKey:kIndexPaths];
-        }
-        NSMutableArray *arrayIndexFiles =  imageDict[kIndexPaths];
-        [arrayIndexFiles addObject:fileName];
-    }
-    
-    //#如果是2x和3x的还得读取1x的索引数
-    if ([imageName hasSuffix:@"@2x.png"] || [imageName hasSuffix:@"@3x.png"]) {
-        NSString *imageName1x = [[imageName stringByReplacingOccurrencesOfString:@"@2x" withString:@""] stringByReplacingOccurrencesOfString:@"@3x" withString:@""];
-        imageDict = dictPNG[imageName];
-        [self ___checkIOSImageNameContainsWithImageDict:imageDict imageName:imageName1x lines:lines codeFilePath:codeFilePath dictPng:dictPNG fileName:fileName kIndexPaths:_kAPP_IndexFiles1x];
-    }
-
-}
--(void) ___parseThread{
-
-}
 - (IBAction)___doImageParse:(id)sender {
 
     NSString *path = [self.dictInProject stringForKey:kTable_project_path];
@@ -154,13 +113,12 @@
         }];
         return;
     }
-    
-    
+    [self __cancelParse];
     // start loading
-    self.viewLoading.hidden = NO;
-    [self.progressParse startAnimation:nil];
+    self.progressIndicator.doubleValue = 0.0;
+    [self.progressIndicator startAnimation:nil];
+    self.buttonParse.enabled = NO;
     
-
     // start parse
     AIImageParseAPI *api = [[AIImageParseAPI alloc] init];
     api.delegate = self;
@@ -275,12 +233,12 @@
 }
 #pragma mark - ImageParseAPI
 -(void)imageParseDoParseEndWithImageParseResult:(NSDictionary *)imageParseResult{
-    
+    self.buttonParse.enabled = YES;
+    [self.progressIndicator stopAnimation:nil];
 }
 -(void)imageParseDoParseWithLogInfo:(NSString *)logInfo currentIndex:(float)currentIndex allCount:(float)allCount{
-    DYYLog(@"(%f,%f)%@",currentIndex,allCount,logInfo);
     self.textFieldLoadingTip.stringValue = logInfo;
-    self.progressParse.maxValue = allCount;
-    [self.progressParse setDoubleValue:currentIndex];
+    self.progressIndicator.maxValue = allCount;
+    self.progressIndicator.doubleValue = currentIndex;
 }
 @end

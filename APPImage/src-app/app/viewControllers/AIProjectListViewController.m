@@ -19,8 +19,11 @@
 
 @property (strong) AIProjectInfoWindowController *projectInfoWindowController;
 
+@property (weak) IBOutlet NSMenuItem *menuItemTerminal;
 
 @property (strong) NSArray *arrayProject;
+
+@property (strong) NSString *stringTerminalPath;
 
 @end
 
@@ -42,7 +45,20 @@
     
     [self ___reloadProjects];
     
-    
+    //查找Terminal项目
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *terminalPath = @"/Applications/Utilities/Terminal.app";
+    if(![fm fileExistsAtPath:terminalPath]){
+        //不存在，到另一个里去找
+        terminalPath = @"/Applications/Terminal.app";
+        if (![fm fileExistsAtPath:terminalPath]) {
+            terminalPath = nil;
+        }
+    }
+    self.stringTerminalPath = terminalPath;
+    if (!self.stringTerminalPath) {
+        self.menuItemTerminal.hidden = YES;
+    }
 }
 
 -(void) ___reloadProjects{
@@ -108,7 +124,8 @@
 - (IBAction)___doMenuShowInTerminal:(id)sender {
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
     NSString *path = [dict stringForKey:kTable_project_path];
-    [[NSWorkspace sharedWorkspace] openFile:path withApplication:@"/Applications/Utilities/Terminal.app"];
+    [[NSWorkspace sharedWorkspace] openFile:path withApplication:self.stringTerminalPath];
+ 
 }
 
 - (IBAction)___doMenuCopyPath:(id)sender {
@@ -243,7 +260,9 @@
     NSUInteger clickRow = self.tableView.clickedRow;
     NSUInteger allRows = [self.arrayProject count];
     for (NSMenuItem *item in menu.itemArray) {
-//        item.action = nil;
+        if (item == _menuItemTerminal) {
+            continue;
+        }
         if (clickRow > allRows) {
             item.hidden = YES;
         }else{

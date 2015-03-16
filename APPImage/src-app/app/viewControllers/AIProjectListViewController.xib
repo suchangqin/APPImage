@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AIProjectListViewController">
             <connections>
+                <outlet property="menuItemTerminal" destination="aFc-uf-PuX" id="z1W-ni-dkO"/>
                 <outlet property="tableView" destination="dMx-Uq-ydz" id="jkm-6q-sZc"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="viewListTop" destination="ieZ-AO-JTX" id="dDu-RR-bIC"/>

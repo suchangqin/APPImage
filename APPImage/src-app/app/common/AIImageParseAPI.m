@@ -86,7 +86,7 @@
         if (type == AIProjectTypeIOSAPP) {
             // step 3 load source file
             [self ___log:@"正在加载源代码信息" index:1 all:100];
-            NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xib",@".m",@".mm",@".plist"] stringSpecial:nil stringIgnore:@"APPImagesDefine.h" arrayIgnoreDir:self.arrayIgnoreDir];
+            NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xib",@".m",@".mm",@".plist"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIgnoreDir];
             NSArray *imageNames = dictPNG.allKeys;
             NSInteger allSouceCount = [dictFileCodes.allKeys count];
             int index = 0;

@@ -28,6 +28,7 @@
     AIProjectListViewController *vc = [[AIProjectListViewController alloc] init];
     self.viewControllerRoot = vc;
     self.window.contentView = vc.view;
+
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

@@ -18,12 +18,14 @@
 @implementation YYDB
 
 NSString *databasePath(){
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:DATABASE_NAME];
+    return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:DATABASE_NAME];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    return [documentsDirectory stringByAppendingPathComponent:DATABASE_NAME];
 }
 
 -(BOOL) connectDatabase{
+    DYYLog(@"%@",databasePath());
     if (sqlite3_open([databasePath() UTF8String], &_database) != SQLITE_OK) {
         sqlite3_close(_database);
         DYYLog(@"Error:  Failed to open database");

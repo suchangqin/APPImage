@@ -6,14 +6,14 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AIProjectInfoWindowController">
             <connections>
+                <outlet property="buttonParse" destination="h46-gD-fQr" id="T4h-Y0-EKp"/>
                 <outlet property="buttonRemoveIgnore" destination="EZe-VM-a8k" id="SaP-lg-c17"/>
                 <outlet property="popupButtonLevel1" destination="W7u-la-S5A" id="mMA-ks-Nqe"/>
                 <outlet property="popupButtonLevel2" destination="Hf1-yq-Dg7" id="mHU-f4-WdA"/>
-                <outlet property="progressParse" destination="lEm-Yw-Fl9" id="XIv-yq-9Tv"/>
+                <outlet property="progressIndicator" destination="qcJ-KL-gU0" id="leW-gY-Y80"/>
                 <outlet property="tableView" destination="in8-1V-b1x" id="xpF-35-qdP"/>
                 <outlet property="textFieldLoadingTip" destination="tpn-8j-1JJ" id="7bB-Nj-gBL"/>
                 <outlet property="viewIgnoreButtons" destination="41N-cx-Z3X" id="0LI-dO-lzL"/>
-                <outlet property="viewLoading" destination="qjD-zQ-md2" id="32H-eQ-0YJ"/>
                 <outlet property="viewProjectinfo" destination="goe-Af-5jg" id="AKk-AW-BSy"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -22,18 +22,18 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Project Info" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="382" height="314"/>
+            <rect key="contentRect" x="196" y="240" width="500" height="323"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="-3" width="382" height="314"/>
+                <rect key="frame" x="0.0" y="0.0" width="500" height="323"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="goe-Af-5jg">
-                        <rect key="frame" x="0.0" y="261" width="382" height="50"/>
+                        <rect key="frame" x="0.0" y="270" width="500" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="2" id="IR4-v8-7kd">
-                                <rect key="frame" x="75" y="27" width="296" height="19"/>
+                                <rect key="frame" x="75" y="27" width="414" height="19"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="XtK-Yh-DV9">
                                     <font key="font" metaFont="system" size="14"/>
@@ -42,7 +42,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" id="B9Q-li-Dkx">
-                                <rect key="frame" x="75" y="9" width="296" height="15"/>
+                                <rect key="frame" x="75" y="9" width="414" height="15"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Table View Cell" id="Tgt-Rw-5VV">
                                     <font key="font" metaFont="cellTitle"/>
@@ -58,14 +58,14 @@
                         </subviews>
                     </customView>
                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="aa2-6t-aB9">
-                        <rect key="frame" x="0.0" y="256" width="382" height="5"/>
+                        <rect key="frame" x="0.0" y="256" width="500" height="5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <customView id="YIq-Bb-Wnu">
-                        <rect key="frame" x="192" y="61" width="179" height="190"/>
+                        <rect key="frame" x="255" y="63" width="225" height="190"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jsd-1E-k1e">
@@ -133,11 +133,11 @@
                         </subviews>
                     </customView>
                     <customView id="3Kj-iX-K0I">
-                        <rect key="frame" x="19" y="61" width="165" height="190"/>
+                        <rect key="frame" x="12" y="63" width="227" height="190"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <customView id="41N-cx-Z3X">
-                                <rect key="frame" x="0.0" y="0.0" width="165" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="227" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="TLh-kX-V7T">
@@ -172,7 +172,7 @@
                                 </subviews>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="2Ef-vj-43G">
-                                <rect key="frame" x="0.0" y="20" width="165" height="170"/>
+                                <rect key="frame" x="0.0" y="20" width="227" height="170"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="73K-Q5-7cx">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
@@ -184,7 +184,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="AICellProjectView" width="160" minWidth="40" maxWidth="1000" id="08U-LI-Dw1">
+                                                <tableColumn identifier="AICellProjectView" width="222" minWidth="40" maxWidth="1000" id="08U-LI-Dw1">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="IGNORE DIR">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -198,11 +198,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="71e-Hn-3k7">
-                                                            <rect key="frame" x="1" y="1" width="160" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="222" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="1" id="r1Z-pv-fZl">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="222" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="UJD-39-28g">
                                                                         <font key="font" metaFont="system"/>
@@ -244,10 +244,23 @@
                             </scrollView>
                         </subviews>
                     </customView>
+                    <customView id="qcJ-KL-gU0" customClass="GRProgressIndicator">
+                        <rect key="frame" x="10" y="23" width="379" height="19"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tpn-8j-1JJ">
+                        <rect key="frame" x="10" y="2" width="480" height="20"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="left" title="准备就绪" id="31I-bs-UDx">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <button verticalHuggingPriority="750" id="h46-gD-fQr">
-                        <rect key="frame" x="133" y="9" width="117" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Image Parse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3fi-90-UQP">
+                        <rect key="frame" x="391" y="15" width="103" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Start Parse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3fi-90-UQP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -255,39 +268,12 @@
                             <action selector="___doImageParse:" target="-2" id="qhy-GT-ndQ"/>
                         </connections>
                     </button>
-                    <customView hidden="YES" id="qjD-zQ-md2" userLabel="Loading">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="314"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button id="Glp-Js-kMw">
-                                <rect key="frame" x="0.0" y="1" width="382" height="312"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="d4S-jR-fYa">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" doubleValue="50" bezeled="NO" controlSize="small" style="bar" id="lEm-Yw-Fl9">
-                                <rect key="frame" x="91" y="171" width="200" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="tpn-8j-1JJ">
-                                <rect key="frame" x="59" y="78" width="265" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="请稍后" id="31I-bs-UDx">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </customView>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="498" y="325"/>
+            <point key="canvasLocation" x="598" y="329.5"/>
         </window>
     </objects>
     <resources>
