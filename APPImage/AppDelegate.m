@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AIProjectListViewController.h"
+#import "AIFileParse.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,9 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+    [AIFileParse yytest];
+    
     // Insert code here to initialize your application
     AIProjectListViewController *vc = [[AIProjectListViewController alloc] init];
     self.viewControllerRoot = vc;

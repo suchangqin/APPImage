@@ -29,6 +29,11 @@
 		A900E4061A9EFEB1001E49AC /* NSDictionary+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4051A9EFEB1001E49AC /* NSDictionary+YYAdditions.m */; };
 		A900E4141A9F0F44001E49AC /* NSBundle+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4131A9F0F44001E49AC /* NSBundle+YYAdditions.m */; };
 		A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A9A40AE81AA14C3E00B4816A /* AIImageParseResultWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A40AE61AA14C3E00B4816A /* AIImageParseResultWindowController.m */; };
+		A9A40AE91AA14C3E00B4816A /* AIImageParseResultWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AE71AA14C3E00B4816A /* AIImageParseResultWindowController.xib */; };
+		A9A40AED1AA14CC200B4816A /* AIFileParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A40AEC1AA14CC200B4816A /* AIFileParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A9A40AEF1AA18B8700B4816A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A40AEE1AA18B8700B4816A /* WebKit.framework */; };
+		A9A40AF11AA18D2C00B4816A /* htmlTemp in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AF01AA18D2C00B4816A /* htmlTemp */; };
 		A9C301A21AA0550400B544C6 /* AIProjectInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */; };
 		A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */; };
 /* End PBXBuildFile section */
@@ -92,6 +97,13 @@
 		A9053A561A9F203D000779C9 /* APPDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPDefines.h; sourceTree = "<group>"; };
 		A999C53A1AA0023700D36015 /* NSObject+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYAdditions.h"; sourceTree = "<group>"; };
 		A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYAdditions.m"; sourceTree = "<group>"; };
+		A9A40AE51AA14C3E00B4816A /* AIImageParseResultWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIImageParseResultWindowController.h; sourceTree = "<group>"; };
+		A9A40AE61AA14C3E00B4816A /* AIImageParseResultWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIImageParseResultWindowController.m; sourceTree = "<group>"; };
+		A9A40AE71AA14C3E00B4816A /* AIImageParseResultWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIImageParseResultWindowController.xib; sourceTree = "<group>"; };
+		A9A40AEB1AA14CC200B4816A /* AIFileParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFileParse.h; sourceTree = "<group>"; };
+		A9A40AEC1AA14CC200B4816A /* AIFileParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFileParse.m; sourceTree = "<group>"; };
+		A9A40AEE1AA18B8700B4816A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		A9A40AF01AA18D2C00B4816A /* htmlTemp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = htmlTemp; sourceTree = "<group>"; };
 		A9C3019F1AA0550400B544C6 /* AIProjectInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProjectInfoWindowController.h; sourceTree = "<group>"; };
 		A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProjectInfoWindowController.m; sourceTree = "<group>"; };
 		A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectInfoWindowController.xib; sourceTree = "<group>"; };
@@ -102,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A40AEF1AA18B8700B4816A /* WebKit.framework in Frameworks */,
 				A900E3FF1A9EEAA6001E49AC /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +224,8 @@
 				A900E3E91A9EE2C1001E49AC /* AIAPI.m */,
 				A900E3FA1A9EE92E001E49AC /* AITableProjects.h */,
 				A900E3FB1A9EE92E001E49AC /* AITableProjects.m */,
+				A9A40AEB1AA14CC200B4816A /* AIFileParse.h */,
+				A9A40AEC1AA14CC200B4816A /* AIFileParse.m */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -218,9 +233,11 @@
 		A900E39E1A9EAF3F001E49AC /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A9A40AF01AA18D2C00B4816A /* htmlTemp */,
 				A900E3A51A9EB108001E49AC /* base */,
 				A900E3AB1A9EB717001E49AC /* 项目列表管理 */,
 				A9C301A41AA0550900B544C6 /* 项目信息 */,
+				A9A40AEA1AA14C4300B4816A /* 结果页面 */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -342,9 +359,20 @@
 		A900E4031A9EF322001E49AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9A40AEE1AA18B8700B4816A /* WebKit.framework */,
 				A900E3FE1A9EEAA6001E49AC /* libsqlite3.0.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9A40AEA1AA14C4300B4816A /* 结果页面 */ = {
+			isa = PBXGroup;
+			children = (
+				A9A40AE51AA14C3E00B4816A /* AIImageParseResultWindowController.h */,
+				A9A40AE61AA14C3E00B4816A /* AIImageParseResultWindowController.m */,
+				A9A40AE71AA14C3E00B4816A /* AIImageParseResultWindowController.xib */,
+			);
+			name = "结果页面";
 			sourceTree = "<group>";
 		};
 		A9C301A41AA0550900B544C6 /* 项目信息 */ = {
@@ -437,8 +465,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A40AF11AA18D2C00B4816A /* htmlTemp in Resources */,
 				A900E3AA1A9EB713001E49AC /* AIProjectListViewController.xib in Resources */,
 				A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */,
+				A9A40AE91AA14C3E00B4816A /* AIImageParseResultWindowController.xib in Resources */,
 				A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */,
 				A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */,
 				A900E3851A9EADDE001E49AC /* MainMenu.xib in Resources */,
@@ -475,7 +505,9 @@
 				A900E4061A9EFEB1001E49AC /* NSDictionary+YYAdditions.m in Sources */,
 				A900E3EA1A9EE2C1001E49AC /* AIAPI.m in Sources */,
 				A900E3B11A9EC0B3001E49AC /* NSColor+YYAdditions.m in Sources */,
+				A9A40AE81AA14C3E00B4816A /* AIImageParseResultWindowController.m in Sources */,
 				A900E3F81A9EE901001E49AC /* YYTableBase.m in Sources */,
+				A9A40AED1AA14CC200B4816A /* AIFileParse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

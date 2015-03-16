@@ -7,8 +7,10 @@
         <customObject id="-2" userLabel="File's Owner" customClass="AIProjectInfoWindowController">
             <connections>
                 <outlet property="buttonRemoveIgnore" destination="EZe-VM-a8k" id="SaP-lg-c17"/>
+                <outlet property="progressParse" destination="lEm-Yw-Fl9" id="XIv-yq-9Tv"/>
                 <outlet property="tableView" destination="in8-1V-b1x" id="xpF-35-qdP"/>
                 <outlet property="viewIgnoreButtons" destination="41N-cx-Z3X" id="0LI-dO-lzL"/>
+                <outlet property="viewLoading" destination="qjD-zQ-md2" id="32H-eQ-0YJ"/>
                 <outlet property="viewProjectinfo" destination="goe-Af-5jg" id="AKk-AW-BSy"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -42,7 +44,7 @@
                                 <rect key="frame" x="75" y="9" width="296" height="15"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Table View Cell" id="Tgt-Rw-5VV">
-                                    <font key="font" metaFont="titleBar" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -247,7 +249,28 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="___doImageParse:" target="-2" id="qhy-GT-ndQ"/>
+                        </connections>
                     </button>
+                    <customView hidden="YES" id="qjD-zQ-md2" userLabel="Loading">
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="314"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button id="Glp-Js-kMw">
+                                <rect key="frame" x="0.0" y="1" width="382" height="312"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="d4S-jR-fYa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="lEm-Yw-Fl9">
+                                <rect key="frame" x="183" y="149" width="16" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                        </subviews>
+                    </customView>
                 </subviews>
             </view>
             <connections>
