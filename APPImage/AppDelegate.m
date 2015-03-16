@@ -22,9 +22,6 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    
-    [AIFileParse yytest];
-    
     // Insert code here to initialize your application
     AIProjectListWindowController *wc = [[AIProjectListWindowController alloc] initWithWindowNibName:@"AIProjectListWindowController"];
     self.windowControllerProjectList = wc;

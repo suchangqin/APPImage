@@ -19,6 +19,8 @@
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSView *viewIgnoreButtons;
 
+@property (strong) AITableProjects *tableProjects;
+
 @property (strong) NSArray *arrayIOSInitIgnore;
 @property (strong) NSArray *arrayAndroidInitIgnore;
 @property (weak) IBOutlet NSButton *buttonRemoveIgnore;
@@ -60,9 +62,12 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [self.viewIgnoreButtons setBackgroundColor:RGBACOLOR(250, 250, 250, 1)];
+    _viewIgnoreButtons.layer.borderWidth = 1;
+    _viewIgnoreButtons.layer.borderColor = [NSColor lightGrayColor].CGColor;
     
+    _tableProjects = [[AITableProjects alloc] init];
     
-    {
+    {   //设置项目的图标，名称和路径
         NSDictionary *dict = _dictInProject;
         
         NSView *cellView = self.viewProjectinfo;
@@ -80,20 +85,35 @@
         NSTextField *textFieldPath = (NSTextField *) [cellView viewWithTag:3];
         textFieldPath.stringValue = [dict stringForKey:kTable_project_path];
 
+        //设置window的title
         NSString *typeName = type == AIProjectTypeAndroidAPP ? @"Android":@"Objective-C";
         self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeName];
     }
     
-    _viewIgnoreButtons.layer.borderWidth = 1;
-    _viewIgnoreButtons.layer.borderColor = [NSColor lightGrayColor].CGColor;
     
-    
-    
-    
+    //读取配置信息
+    NSDictionary *dictProperty = [_tableProjects queryPropertyWithId:[_dictInProject stringForKey:kTable_project_id]];
     _arrayAndroidInitIgnore = @[@"build",@"gradle",@"libs",@"libraries"];
     _arrayIOSInitIgnore = @[@"libs",@"libraries"];
 
-    _arrayIgnoreDir = [NSMutableArray arrayWithArray:[self ___getInitIgnoreArray]];
+    _arrayIgnoreDir = [NSMutableArray array];
+    //忽略的配置信息
+    NSString *ignorePty = [dictProperty stringForKey:kTable_project_ignore_property];
+    if (!DYY_isEmptyString(ignorePty)) {
+        [_arrayIgnoreDir addObjectsFromArray:[ignorePty componentsSeparatedByString:@","]];
+    }else{
+        [_arrayIgnoreDir addObjectsFromArray:[self ___getInitIgnoreArray]];
+    }
+    //大小的配置信息
+    NSString *sizePty = [dictProperty stringForKey:kTable_project_size_property];
+    if(!DYY_isEmptyString(sizePty)){
+        NSArray *sizes = [sizePty componentsSeparatedByString:@","];
+        NSString *level1 = [sizes firstObject];
+        NSString *level2 = [sizes lastObject];
+        [_popupButtonLevel1 selectItemWithTitle:level1];
+        [_popupButtonLevel2 selectItemWithTitle:level2];
+    }
+    
     [self.tableView reloadData];
     
 }
@@ -110,6 +130,9 @@
 }
 
 -(void) ___doImageParseValidated:(NSString *) path{
+    //保存配置信息
+    [self ___doSaveProperty:nil];
+    
     if (!self.urlAuthorizedURL) {
         self.urlAuthorizedURL = [[AIAPI sharedInstance] authorizedURLFromPath:path];
     }
@@ -137,6 +160,18 @@
 - (IBAction)___doImageCancel:(id)sender {
     [self.window endSheet:self.windowProgress];
     [self __cancelParse];
+}
+- (IBAction)___doSaveProperty:(id)sender {
+    NSString *level1 = _popupButtonLevel1.selectedItem.title;
+    NSString *level2 = _popupButtonLevel2.selectedItem.title;
+    NSString *sizePty = [NSString stringWithFormat:@"%@,%@",level1,level2];
+    NSString *ignorePty = [_arrayIgnoreDir componentsJoinedByString:@","];
+    BOOL success = [self.tableProjects updateForId:[self.dictInProject stringForKey:kTable_project_id] withSizeProperty:sizePty ignoreProperty:ignorePty];
+    NSString *result = @"保存失败";
+    if (success) {
+        result = @"保存成功";
+    }
+    
 }
 
 - (IBAction)___doImageParse:(id)sender {

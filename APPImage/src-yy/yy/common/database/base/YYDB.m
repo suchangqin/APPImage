@@ -107,6 +107,9 @@ NSString *databasePath(){
                 NSMutableDictionary *dict = [NSMutableDictionary dictionary];
                 for (int i=0; i<sqlite3_column_count(statement); i++) {
                     char *col_value = (char *)sqlite3_column_text(statement, i);
+                    if (col_value == NULL) {
+                        continue;
+                    }
                     NSString *value = [NSString stringWithUTF8String:col_value];
                     NSString *key = [arrayKey objectAtIndex:i];
                     [dict setObject:value forKey:key];

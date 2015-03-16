@@ -22,6 +22,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(AIAPI);
 
 -(void) addAuthorizedURL:(NSURL *) authorizedURL path:(NSString *) path;
 -(NSURL *) authorizedURLFromPath:(NSString *) path;
--(void) removeAuthorizedURLFromPath:(NSString *) path;
+//-(void) removeAuthorizedURLFromPath:(NSString *) path;
 
 @end

@@ -222,16 +222,14 @@
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:@"确定"];
             [alert setMessageText:@"文件目录已经存在"];
-            
             [alert setInformativeText:@"请在列表中查找"];
-            
             [alert setAlertStyle:NSWarningAlertStyle];
             [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
                 
             }];
         }else{
             NSString *name = [path lastPathComponent];
-            [_tableProjects inserWithName:name path:path type:type property:nil];
+            [_tableProjects insertWithName:name path:path type:type];
             [self ___reloadProjects];
         }
     }
