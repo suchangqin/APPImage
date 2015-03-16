@@ -21,12 +21,16 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-     NSRect screenRect = [[NSScreen mainScreen] frame];
+    NSRect screenRect = [[NSScreen mainScreen] frame];
     screenRect.size.height -= 40;
     screenRect.origin.y += 40;
     [self.window setFrame:screenRect display:YES];
     
     AIProjectTypeState type = [[self.dictInProject stringForKey:kTable_project_type] intValue];
+    NSString *proName = [_dictInProject stringForKey:kTable_project_name];
+    NSString *typeName = type == AIProjectTypeAndroidAPP ? @"Android":@"Objective-c";
+    self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeName];
+    
     NSString *tempName = type == AIProjectTypeAndroidAPP ? @"android_image_parse":@"ios_image_parse";
     NSString *filePath = [[NSBundle mainBundle] pathForResource:tempName ofType:@"html" inDirectory:@"htmlTemp"];
     NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
