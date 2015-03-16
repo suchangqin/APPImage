@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 suchangqin. All rights reserved.
 //
 
-#import "AIProjectListViewController.h"
+#import "AIProjectListWindowController.h"
 #import "AIAPI.h"
 #import "AITableProjects.h"
 #import "AIProjectInfoWindowController.h"
 #import "AIHelpWindowController.h"
 
-@interface AIProjectListViewController ()<NSTableViewDelegate,NSTableViewDataSource,NSMenuDelegate>
+@interface AIProjectListWindowController ()<NSTableViewDelegate,NSTableViewDataSource,NSMenuDelegate>
 
 @property (weak) IBOutlet NSView *viewListTop;
 @property (strong) AITableProjects *tableProjects;
@@ -29,16 +29,31 @@
 @property (weak) IBOutlet NSView *viewLeft;
 @property (weak) IBOutlet NSView *viewRight;
 @property (weak) IBOutlet NSTextField *textFieldVersion;
+@property (strong) IBOutlet NSView *viewContent;
 
 @end
 
-@implementation AIProjectListViewController
+@implementation AIProjectListWindowController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    
+//    
+//    NSView *view = self.window.contentView;
+//    [self.window setBackgroundColor:[NSColor whiteColor]];
+//    
+//    self.viewContent.frame = view.frame;
+//    [view addSubview:self.viewContent];
+//    
+//    CGRect frame = view.frame;
+//    frame.size.height += 12;
+//    view.frame = frame;
+//    [view setWantsLayer:YES];
+//    view.layer.borderWidth = 1.0;
+//    view.layer.borderColor = [NSColor redColor].CGColor;
+//    return;
     
     [self.viewListTop setBackgroundColor:RGBCOLOR(255, 255, 255)];
-    
     [self.viewLeft setBackgroundColor:[NSColor whiteColor]];
     self.tableView.backgroundColor = RGBCOLOR(241,240,240);
     
@@ -134,7 +149,7 @@
     [self ___doAddProjectWithType:AIProjectTypeAndroidAPP];
 }
 - (IBAction)___doShowHelp:(id)sender {
-    [(AppDelegate *)([NSApplication sharedApplication].delegate) ___doShowHelp:nil];
+    [(AppDelegate *)([NSApplication sharedApplication].delegate) showWindowHelp:nil];
 }
 
 

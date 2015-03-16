@@ -7,18 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import "AIProjectListViewController.h"
+#import "AIProjectListWindowController.h"
 #import "AIFileParse.h"
 #import "AIHelpWindowController.h"
 #import "AIAPI.h"
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
-@property (strong) NSViewController *viewControllerRoot;
-@property (strong) NSWindowController *windowControllerProjectInfo;
+@property (strong) NSWindowController *windowControllerProjectList;
 @property (strong) AIHelpWindowController *windowControllerHelp;
-
 
 @end
 
@@ -29,10 +26,10 @@
     [AIFileParse yytest];
     
     // Insert code here to initialize your application
-    AIProjectListViewController *vc = [[AIProjectListViewController alloc] init];
-    self.viewControllerRoot = vc;
-    self.window.contentView = vc.view;
-
+    AIProjectListWindowController *wc = [[AIProjectListWindowController alloc] initWithWindowNibName:@"AIProjectListWindowController"];
+    self.windowControllerProjectList = wc;
+    [wc showWindow:self];
+    [wc.window makeKeyAndOrderFront:self];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -42,11 +39,11 @@
 {
     if (!flag){
         [NSApp activateIgnoringOtherApps:NO];
-        [self.window makeKeyAndOrderFront:self];
+        [self.windowControllerProjectList.window makeKeyAndOrderFront:self];
     }
     return YES;
 }
--(IBAction)___doShowHelp:(id)sender{
+-(IBAction)showWindowHelp:(id)sender{
     AIHelpWindowController *wc = self.windowControllerHelp;
     if (!wc) {
         wc =[[AIHelpWindowController alloc] initWithWindowNibName:@"AIHelpWindowController"];

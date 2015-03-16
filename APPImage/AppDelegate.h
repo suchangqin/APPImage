@@ -10,7 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
--(IBAction)___doShowHelp:(id)sender;
+-(IBAction)showWindowHelp:(id)sender;
 
 @end
 

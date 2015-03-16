@@ -16,8 +16,8 @@
 		A900E3911A9EADDE001E49AC /* APPImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3901A9EADDE001E49AC /* APPImageTests.m */; };
 		A900E3A31A9EB0F6001E49AC /* APPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3A11A9EB0F6001E49AC /* APPBaseViewController.m */; };
 		A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A900E3A21A9EB0F6001E49AC /* APPBaseViewController.xib */; };
-		A900E3A91A9EB713001E49AC /* AIProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3A71A9EB713001E49AC /* AIProjectListViewController.m */; };
-		A900E3AA1A9EB713001E49AC /* AIProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A900E3A81A9EB713001E49AC /* AIProjectListViewController.xib */; };
+		A900E3A91A9EB713001E49AC /* AIProjectListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3A71A9EB713001E49AC /* AIProjectListWindowController.m */; };
+		A900E3AA1A9EB713001E49AC /* AIProjectListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A900E3A81A9EB713001E49AC /* AIProjectListWindowController.xib */; };
 		A900E3B11A9EC0B3001E49AC /* NSColor+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3B01A9EC0B3001E49AC /* NSColor+YYAdditions.m */; };
 		A900E3E11A9EC508001E49AC /* NSView+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3E01A9EC508001E49AC /* NSView+YYAdditions.m */; };
 		A900E3E61A9EDDC9001E49AC /* YYDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3E51A9EDDC9001E49AC /* YYDefines.m */; };
@@ -70,9 +70,9 @@
 		A900E3A01A9EB0F6001E49AC /* APPBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPBaseViewController.h; sourceTree = "<group>"; };
 		A900E3A11A9EB0F6001E49AC /* APPBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPBaseViewController.m; sourceTree = "<group>"; };
 		A900E3A21A9EB0F6001E49AC /* APPBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPBaseViewController.xib; sourceTree = "<group>"; };
-		A900E3A61A9EB713001E49AC /* AIProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProjectListViewController.h; sourceTree = "<group>"; };
-		A900E3A71A9EB713001E49AC /* AIProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProjectListViewController.m; sourceTree = "<group>"; };
-		A900E3A81A9EB713001E49AC /* AIProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectListViewController.xib; sourceTree = "<group>"; };
+		A900E3A61A9EB713001E49AC /* AIProjectListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProjectListWindowController.h; sourceTree = "<group>"; };
+		A900E3A71A9EB713001E49AC /* AIProjectListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProjectListWindowController.m; sourceTree = "<group>"; };
+		A900E3A81A9EB713001E49AC /* AIProjectListWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectListWindowController.xib; sourceTree = "<group>"; };
 		A900E3AF1A9EC0B3001E49AC /* NSColor+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+YYAdditions.h"; sourceTree = "<group>"; };
 		A900E3B01A9EC0B3001E49AC /* NSColor+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+YYAdditions.m"; sourceTree = "<group>"; };
 		A900E3DE1A9EC219001E49AC /* APPImage-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APPImage-Prefix.pch"; sourceTree = "<group>"; };
@@ -292,9 +292,9 @@
 		A900E3AB1A9EB717001E49AC /* 项目列表管理 */ = {
 			isa = PBXGroup;
 			children = (
-				A900E3A61A9EB713001E49AC /* AIProjectListViewController.h */,
-				A900E3A71A9EB713001E49AC /* AIProjectListViewController.m */,
-				A900E3A81A9EB713001E49AC /* AIProjectListViewController.xib */,
+				A900E3A61A9EB713001E49AC /* AIProjectListWindowController.h */,
+				A900E3A71A9EB713001E49AC /* AIProjectListWindowController.m */,
+				A900E3A81A9EB713001E49AC /* AIProjectListWindowController.xib */,
 			);
 			name = "项目列表管理";
 			sourceTree = "<group>";
@@ -513,7 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9A40AF11AA18D2C00B4816A /* htmlTemp in Resources */,
-				A900E3AA1A9EB713001E49AC /* AIProjectListViewController.xib in Resources */,
+				A900E3AA1A9EB713001E49AC /* AIProjectListWindowController.xib in Resources */,
 				A9004C6B1AA551F3008A123B /* AIHelpWindowController.xib in Resources */,
 				A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */,
 				A9A40AE91AA14C3E00B4816A /* AIImageParseResultWindowController.xib in Resources */,
@@ -541,7 +541,7 @@
 				A900E3F91A9EE901001E49AC /* YYTableTest.m in Sources */,
 				A900E3E61A9EDDC9001E49AC /* YYDefines.m in Sources */,
 				A900E4021A9EEB19001E49AC /* NSString+YYAdditions.m in Sources */,
-				A900E3A91A9EB713001E49AC /* AIProjectListViewController.m in Sources */,
+				A900E3A91A9EB713001E49AC /* AIProjectListWindowController.m in Sources */,
 				A900E3E11A9EC508001E49AC /* NSView+YYAdditions.m in Sources */,
 				A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */,
 				A9FD96C11AA3F8D20063CBD3 /* AIImageParseAPI.m in Sources */,

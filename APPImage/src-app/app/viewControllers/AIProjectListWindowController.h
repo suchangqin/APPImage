@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 suchangqin. All rights reserved.
 //
 
-#import "APPBaseViewController.h"
-
-@interface AIProjectListViewController : APPBaseViewController
+@interface AIProjectListWindowController : NSWindowController
 
 @end
