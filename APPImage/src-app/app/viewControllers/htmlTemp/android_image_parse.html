@@ -17,11 +17,20 @@
 		.a_n {color:#0c438f; display: block;}
 
 		#id_image_preview{
-			background: #e2f4dd;
-            text-align:center;
-			display: block;
+		}
+
+		.a_fun{
 			padding: 10px;
-            z-index:10000;
+			float: right;
+			text-align:center;
+			background: #e2f4dd;
+			margin-left: 15px;
+		}
+		.a_tip{
+			padding: 10px;
+			float: left;
+			text-align:center;
+			margin-right: 15px;
 		}
 
 		.tip{padding:10px 10px 0px 10px; color:rgb(81,158,236); }
@@ -49,7 +58,7 @@
 			._w2{background:#fcff00}
 			._e{background:#f45f5f}
 			._ok{background: rgb(202,235,192)}
-			._span{padding:10px 15px; margin: 0px 10px;}
+			._span{padding:10px 15px; margin: 0px 10px; line-height: 30px}
 			
 			.table_div .table .tr0{ background: rgb(255,255,255)}
 			.table_div .table .tr1{ background: rgb(245,245,245)}
@@ -66,6 +75,11 @@
                     yyoc.log(log);
                 }
             }
+        OC.exportHtmlFile = function(){
+            if(yyoc){
+                yyoc.exportHtmlFile();
+            }
+        }
         OC.alert = function(msg){
             if(yyoc){
                 yyoc.alert(msg);
@@ -158,6 +172,10 @@
 				COut.project();
 				COut.tableDistribute(S_images);
 				COut.preview(0);
+                      var exportDiv = yy.find.id("id_export_html")
+                      if(!yyoc){
+                          exportDiv.style.display = "none";
+                      }
 			}
 			var COut = {};
 			COut.project = function(){
@@ -216,16 +234,16 @@
 				
                 
                 if(Object.keys(sE).length){
-                    COut.tableTip("错误","_e",6);
+                    COut.tableTip("有错误的区域","_e",6);
                     COut.table(sE);
                 }
 
                 if(Object.keys(sW).length){
-                    COut.tableTip("警告","_w",6);
+                    COut.tableTip("仅有警告的区域","_w",6);
                     COut.table(sW);
                 }
                 if(Object.keys(sFine).length){
-                    COut.tableTip("正常","_ok",6);
+                    COut.tableTip("无误的区域","_ok",6);
                     COut.table(sFine);
                 }
 				
@@ -416,7 +434,7 @@
 	</head>
 
 	<body onload="myInit()">
-		<a id="id_image_preview" href="javascript:;"  >图片预览</a>
+		
 		<div>
 			<header style="padding: 10px">
 				<h1 style="color:#333"><span style="color:#000">文件目录:</span> 
@@ -425,10 +443,22 @@
 			</header>
 
 			<div id="create">
-				<div style="padding: 10px">
-					颜色说明：<span class="_w _span">轻微警告</span><span class="_w2 _span">严重警告</span><span class="_e _span">错误</span>  
-				</div>
-
+                <div style="padding: 0px">
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                
+                                <span class="a_tip" >颜色说明：</span> <span class="_w a_tip">轻微警告</span> <span class="_w2 a_tip">严重警告</span> <span class="_e a_tip">错误</span>
+                                <div class="clear"> </div>
+                            </td>
+                            <td  style="padding-right:10px">
+                                <a id="id_export_html" class="a_fun" href="javascript:OC.exportHtmlFile();"  >导出分析结果</a>
+                                <a id="id_image_preview" class="a_fun" href="javascript:;"  >图片预览</a>
+                                <div class="clear"> </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
 				
 				<div id="id_parse">
 					<div class="table_div">
@@ -437,7 +467,7 @@
 								<td>Line</td>
 								<td>图片名</td>
 								<td>图片</td>
-								<td>尺寸(w*h)</td>
+								<td>w * h</td>
 								<td>大小</td>
 								<td>索引文件数</td>
 							</tr>

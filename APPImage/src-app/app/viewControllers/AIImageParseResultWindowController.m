@@ -13,6 +13,7 @@
 @interface AIImageParseResultWindowController ()
 
 @property (weak) IBOutlet WebView *webView;
+@property (strong) NSString *stringHtmlCache;
 
 @end
 
@@ -46,7 +47,7 @@
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning withString:DYY_IntString(_intInWarningLevel1)];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning2 withString:DYY_IntString(_intInWarningLevel2)];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rPath withString:[_dictInProject stringForKey:kTable_project_path]];
-    
+    _stringHtmlCache = htmlString;
 //    NSURL *baseURL = [NSURL fileURLWithPath:filePath];
     [[_webView mainFrame] loadHTMLString:htmlString baseURL:nil];
     
@@ -79,10 +80,27 @@
         
     }];
 }
+-(void) ___webViewDoExportHtmlFile{
+    NSSavePanel*    panel = [NSSavePanel savePanel];
+    [panel setNameFieldStringValue:[NSString stringWithFormat:@"%@.html",self.window.title]];
+    [panel setMessage:@"请选择目录进行保存"];
+    [panel setAllowsOtherFileTypes:YES];
+    [panel setAllowedFileTypes:@[@"html"]];
+    [panel setExtensionHidden:NO];
+    [panel setCanCreateDirectories:YES];
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton)
+        {
+            NSString *path = [[panel URL] path];
+            [_stringHtmlCache writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        }
+    }];
+}
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)selector {
     if (selector == @selector(___webViewDoLog:)
         || selector == @selector(___webViewDoAlert:)
         || selector == @selector(___webViewDoShowFile:)
+        || selector == @selector(___webViewDoExportHtmlFile)
         ) {
         return NO;
     }
@@ -102,6 +120,8 @@
         return @"alert";
     }else if (sel == @selector(___webViewDoShowFile:)) {
         return @"showFile";
+    }else if (sel == @selector(___webViewDoExportHtmlFile)) {
+        return @"exportHtmlFile";
     }else {
         return nil;
     }

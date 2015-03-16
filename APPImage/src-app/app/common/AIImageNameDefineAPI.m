@@ -25,6 +25,8 @@
         
         NSMutableArray *arrayDefines = [NSMutableArray array];
         [arrayDefines addObject:@" "];
+        [arrayDefines addObject:@"// 请新建一个.h文件存放，如果放置在.m或者.swift文件里，检查索引会有问题"];
+        [arrayDefines addObject:@" "];
         [arrayDefines addObject:@"#ifndef APPImage_autocreate_image_name_h"];
         [arrayDefines addObject:@"#define APPImage_autocreate_image_name_h"];
         [arrayDefines addObject:@" "];
