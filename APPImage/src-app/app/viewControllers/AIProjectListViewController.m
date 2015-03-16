@@ -17,6 +17,8 @@
 @property (strong) AITableProjects *tableProjects;
 @property (weak) IBOutlet NSTableView *tableView;
 
+@property (strong) AIProjectInfoWindowController *projectInfoWindowController;
+
 
 @property (strong) NSArray *arrayProject;
 
@@ -47,22 +49,34 @@
     [self.tableView reloadData];
 }
 -(void) ___showProjectInfoViewControllerWithProjectDict:(NSDictionary *) projectDict{
-    NSArray *arrayInfoShow = [AIAPI sharedInstance].arrayWindowController;
+    
+    
     NSDictionary *dict = projectDict;
-    //先判断是不是已经存在了，存在直接激活窗口
-    for (NSWindowController *wc in arrayInfoShow) {
-        if([wc isKindOfClass:[AIProjectInfoWindowController class]]){
-            AIProjectInfoWindowController *infoWC = (AIProjectInfoWindowController*) wc;
-            if ([[infoWC.dictInProject stringForKey:kTable_project_id] isEqualToString:[dict stringForKey:kTable_project_id]]) {
-                [infoWC.window makeKeyAndOrderFront:self];
-                return;
-            }
-        }
+    
+    if (self.projectInfoWindowController) {
+        [self.projectInfoWindowController.window close];
+        self.projectInfoWindowController = nil;
     }
     AIProjectInfoWindowController *wc = [[AIProjectInfoWindowController alloc] initWithWindowNibName:@"AIProjectInfoWindowController"];
     wc.dictInProject = dict;
-    [[AIAPI sharedInstance] addWindowController:wc];
     [wc showWindow:self];
+    self.projectInfoWindowController = wc;
+    
+//    NSArray *arrayInfoShow = [AIAPI sharedInstance].arrayWindowController;
+//    //先判断是不是已经存在了，存在直接激活窗口
+//    for (NSWindowController *wc in arrayInfoShow) {
+//        if([wc isKindOfClass:[AIProjectInfoWindowController class]]){
+//            AIProjectInfoWindowController *infoWC = (AIProjectInfoWindowController*) wc;
+//            if ([[infoWC.dictInProject stringForKey:kTable_project_id] isEqualToString:[dict stringForKey:kTable_project_id]]) {
+//                [infoWC.window makeKeyAndOrderFront:self];
+//                return;
+//            }
+//        }
+//    }
+//    AIProjectInfoWindowController *wc = [[AIProjectInfoWindowController alloc] initWithWindowNibName:@"AIProjectInfoWindowController"];
+//    wc.dictInProject = dict;
+//    [[AIAPI sharedInstance] addWindowController:wc];
+//    [wc showWindow:self];
 }
 - (IBAction)___doAddIOSProject:(id)sender {
     [self ___doAddProjectWithType:AIProjectTypeIOSAPP];

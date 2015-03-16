@@ -25,10 +25,15 @@
 @property (weak) IBOutlet NSView *viewProjectinfo;
 @property (weak) IBOutlet NSView *viewLoading;
 @property (weak) IBOutlet NSProgressIndicator *progressParse;
+@property (weak) IBOutlet NSTextField *textFieldLoadingTip;
 
 @end
 
 @implementation AIProjectInfoWindowController
+
+
+#define _kAPP_IndexFiles   @"is"
+#define _kAPP_IndexFiles1x   @"is1x"
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -36,7 +41,7 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [self.viewIgnoreButtons setBackgroundColor:RGBACOLOR(250, 250, 250, 1)];
     
-    [self.viewLoading setBackgroundColor:RGBACOLOR(0, 0, 0, 0.1)];
+    [self.viewLoading setBackgroundColor:RGBACOLOR(0, 0, 0, 0.2)];
     
     
     {
@@ -80,8 +85,45 @@
     return _arrayIOSInitIngore;
 }
 
+
+-(void) ___checkIOSImageNameContainsWithImageDict:(NSMutableDictionary *) imageDict imageName:(NSString *) imageName lines:(NSString *) lines codeFilePath:(NSString *) codeFilePath dictPng:(NSDictionary *) dictPNG fileName:(NSString *) fileName kIndexPaths:(NSString *) kIndexPaths{
+    //#图片索引
+    NSString *define_prefix = @"kImage_";
+    NSString *imageNameFormat = [NSString stringWithFormat:@"%@%@",
+                                 define_prefix,
+                                 [[imageName stringByReplacingOccurrencesOfString:@"-" withString:@"_"] stringByReplacingOccurrencesOfString:@".png" withString:@""]
+                                 ];
+    NSString *imageNameFormat2 = [NSString stringWithFormat:@"\"%@\"",[imageName stringByReplacingOccurrencesOfString:@".png" withString:@""]];
+//    NSArray *fileNames = @[@"OFPJCarOrderCheckViewController.xib",
+//    @"OFPayAllSelectedOrdersViewController.xib",
+//    @"OFPJCartOrderResultViewController.xib",
+//    @"OFWDOrderPayResultViewController.xib",
+//    @"OFOrderPayResultViewController.xib",
+//    @"OFMyJiFenViewController.xib",
+//                           ];
+//    if ([imageName containsString:@"address_top_banner_bg"] && [fileNames containsObject:fileName]) {
+//        
+//    }
+    //#图片文件名包含
+    if	([lines containWithString:imageName] || [lines containWithString:imageNameFormat] || [lines containWithString:imageNameFormat2]){
+        if (![[imageDict allKeys] containsObject:kIndexPaths]) {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            [imageDict setObject:array forKey:kIndexPaths];
+        }
+        NSMutableArray *arrayIndexFiles =  imageDict[kIndexPaths];
+        [arrayIndexFiles addObject:fileName];
+    }
+    
+    //#如果是2x和3x的还得读取1x的索引数
+    if ([imageName hasSuffix:@"@2x.png"] || [imageName hasSuffix:@"@3x.png"]) {
+        NSString *imageName1x = [[imageName stringByReplacingOccurrencesOfString:@"@2x" withString:@""] stringByReplacingOccurrencesOfString:@"@3x" withString:@""];
+        imageDict = dictPNG[imageName];
+        [self ___checkIOSImageNameContainsWithImageDict:imageDict imageName:imageName1x lines:lines codeFilePath:codeFilePath dictPng:dictPNG fileName:fileName kIndexPaths:_kAPP_IndexFiles1x];
+    }
+
+}
 - (IBAction)___doImageParse:(id)sender {
-    #define _kAPP_IndexFiles   @"is"
+
     NSString *path = [self.dictInProject stringForKey:kTable_project_path];
     if (![[NSFileManager defaultManager] isExecutableFileAtPath:path]) {
         //如果目录不存在
@@ -98,97 +140,84 @@
     }
     
     
+    
     self.viewLoading.hidden = NO;
     [self.progressParse startAnimation:nil];
     
-    AIProjectTypeState type = [[self.dictInProject stringForKey:kTable_project_type] intValue];
-    
-    NSDictionary *dictFile = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".png"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIngoreDir];
-    // format
-    NSDictionary *dictPNG = [AIFileParse pngFileFormat:dictFile withType:type];
 
-    if (type == AIProjectTypeIOSAPP) {
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        void (^blockCheckIOSImageNameContains)(NSMutableDictionary *imageDict,NSString *imageName,NSString *lines,NSString *codeFilePath);
-        blockCheckIOSImageNameContains = ^(NSMutableDictionary *imageDict,NSString *imageName,NSString *lines,NSString *codeFilePath)
-        {
-            //#图片索引
-            NSString *define_prefix = @"kImage_";
-            NSString *imageNameFormat = [NSString stringWithFormat:@"%@%@",
-                                         define_prefix,
-                                         [[imageName stringByReplacingOccurrencesOfString:@"-" withString:@"_"] stringByReplacingOccurrencesOfString:@".png" withString:@""]
-                                         ];
-            NSString *imageNameFormat2 = [NSString stringWithFormat:@"\"%@\"",[imageName stringByReplacingOccurrencesOfString:@".png" withString:@""]];
-            //#图片文件名包含
-            if	([lines containWithString:imageName] || [lines containWithString:imageNameFormat] || [lines containWithString:imageNameFormat2]){
-                if (![[imageDict allKeys] containsObject:_kAPP_IndexFiles]) {
-                    NSMutableArray *array = [NSMutableArray arrayWithObject:codeFilePath];
-                    imageDict[_kAPP_IndexFiles] = array;
-                }
-                    
-                //#如果是2x和3x的还得读取1x的索引数
-                if ([imageName hasSuffix:@"@2x.png"] || [imageName hasSuffix:@"@3x.png"]) {
-                    NSString *imageName1x = [[imageName stringByReplacingOccurrencesOfString:@"@2x" withString:@""] stringByReplacingOccurrencesOfString:@"@3x" withString:@""];
-                    imageDict = dictPNG[imageName];
-                    blockCheckIOSImageNameContains(imageDict,imageName1x,lines,codeFilePath);
-                }
-            }
-        };
+        AIProjectTypeState type = [[self.dictInProject stringForKey:kTable_project_type] intValue];
         
-        NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xib",@".h",@".m",@".mm",@".plist"] stringSpecial:nil stringIgnore:@"APPImagesDefine.h" arrayIgnoreDir:self.arrayIngoreDir];
-        NSArray *imageNames = dictPNG.allKeys;
-    
-        for (NSString *fileName in dictFileCodes.allKeys) {
-            for (NSString *codePath in [dictFileCodes objectForKey:fileName]) {
-                NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:codePath];
-                NSString *lines = [[NSString alloc] initWithData:[fh readDataToEndOfFile] encoding:NSUTF8StringEncoding];
-                for (NSString *imageName in imageNames) {
-                    NSMutableDictionary *imageDict = [dictPNG objectForKey:imageName];
-                    blockCheckIOSImageNameContains(imageDict,imageName,lines,codePath);
-                }
-            }
-        }
-        AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
-        [[AIAPI sharedInstance] addWindowController:wc];
-        wc.dictInSource = dictPNG;
-        wc.dictInProject = _dictInProject;
-        [wc showWindow:self];
-    }else{
-        NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xml",@".java"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIngoreDir];
-        NSArray *imageNames = dictPNG.allKeys;
-        for (NSString *codeFilePath in dictFileCodes.allKeys) {
-            NSArray *codePaths = dictFileCodes[codeFilePath];
-            for (NSString *p in codePaths) {
-                NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:p];
-                NSString *lines = [[NSString alloc] initWithData:[fh readDataToEndOfFile] encoding:NSUTF8StringEncoding];
-                for (NSString *imageName in imageNames) {
-                    NSString *imageNameFormat = [[imageName stringByReplacingOccurrencesOfString:@".9.png" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
-                    NSString *imageName1 = [NSString stringWithFormat:@"drawable/%@",imageNameFormat];
-                    NSString *imageName2 = [NSString stringWithFormat:@"R.drawable.%@",imageNameFormat];
-                    if ([lines containsString:imageName1] || [lines containsString:imageName2]) {
-                        NSMutableDictionary *imageDict = dictPNG[imageName];
-                        if (![imageDict.allKeys containsObject:_kAPP_IndexFiles]) {
-                            imageDict[_kAPP_IndexFiles] = [NSMutableArray array];
+        NSDictionary *dictFile = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".png"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIngoreDir];
+        // format
+        NSDictionary *dictPNG = [AIFileParse pngFileFormat:dictFile withType:type];
+        
+        if (type == AIProjectTypeIOSAPP) {
+        
+            
+            NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xib",@".h",@".m",@".mm",@".plist"] stringSpecial:nil stringIgnore:@"APPImagesDefine.h" arrayIgnoreDir:self.arrayIngoreDir];
+            NSArray *imageNames = dictPNG.allKeys;
+            for (NSString *fileName in dictFileCodes.allKeys) {
+                for (NSString *codePath in [dictFileCodes objectForKey:fileName]) {
+                    @autoreleasepool {
+                        NSString *lines = nil;
+                        @autoreleasepool{
+                            NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:codePath];
+                            NSData *data = [fh readDataToEndOfFile];
+                            lines = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                         }
-                        [imageDict[_kAPP_IndexFiles] addObject:codeFilePath];
+                        for (NSString *imageName in imageNames) {
+                            NSMutableDictionary *imageDict = [dictPNG objectForKey:imageName];
+                            [self ___checkIOSImageNameContainsWithImageDict:imageDict imageName:imageName lines:lines codeFilePath:codePath dictPng:dictPNG fileName:fileName kIndexPaths:_kAPP_IndexFiles];
+                        }
                     }
                 }
             }
+            AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
+            [[AIAPI sharedInstance] addWindowController:wc];
+            wc.dictInSource = dictPNG;
+            wc.dictInProject = _dictInProject;
+            [wc showWindow:self];
+        }else{
+            NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xml",@".java"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIngoreDir];
+            NSArray *imageNames = dictPNG.allKeys;
+            for (NSString *codeFilePath in dictFileCodes.allKeys) {
+                NSArray *codePaths = dictFileCodes[codeFilePath];
+                for (NSString *p in codePaths) {
+                    NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:p];
+                    NSString *lines = [[NSString alloc] initWithData:[fh readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+                    for (NSString *imageName in imageNames) {
+                        NSString *imageNameFormat = [[imageName stringByReplacingOccurrencesOfString:@".9.png" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
+                        NSString *imageName1 = [NSString stringWithFormat:@"drawable/%@",imageNameFormat];
+                        NSString *imageName2 = [NSString stringWithFormat:@"R.drawable.%@",imageNameFormat];
+                        if ([lines containsString:imageName1] || [lines containsString:imageName2]) {
+                            NSMutableDictionary *imageDict = dictPNG[imageName];
+                            if (![imageDict.allKeys containsObject:_kAPP_IndexFiles]) {
+                                imageDict[_kAPP_IndexFiles] = [NSMutableArray array];
+                            }
+                            [imageDict[_kAPP_IndexFiles] addObject:codeFilePath];
+                        }
+                    }
+                }
+            }
+            
+                AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
+                [[AIAPI sharedInstance] addWindowController:wc];
+                wc.dictInSource = dictPNG;
+                wc.dictInProject = _dictInProject;
+                [wc showWindow:self];
+            
+            
         }
+
         
-        AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
-        [[AIAPI sharedInstance] addWindowController:wc];
-        wc.dictInSource = dictPNG;
-        wc.dictInProject = _dictInProject;
-        [wc showWindow:self];
         
-    }
+        self.viewLoading.hidden = YES;
+        [self.progressParse stopAnimation:nil];
+        
+    });
     
-    
-    
-    
-    self.viewLoading.hidden = YES;
-    [self.progressParse stopAnimation:nil];
     
     
 }

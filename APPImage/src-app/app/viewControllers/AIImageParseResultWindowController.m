@@ -21,6 +21,10 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
+     NSRect screenRect = [[NSScreen mainScreen] frame];
+
+    [self.window setFrame:screenRect display:YES];
+    
     AIProjectTypeState type = [[self.dictInProject stringForKey:kTable_project_type] intValue];
     NSString *tempName = type == AIProjectTypeAndroidAPP ? @"android_image_parse":@"ios_image_parse";
     NSString *filePath = [[NSBundle mainBundle] pathForResource:tempName ofType:@"html" inDirectory:@"htmlTemp"];

@@ -9,6 +9,7 @@
                 <outlet property="buttonRemoveIgnore" destination="EZe-VM-a8k" id="SaP-lg-c17"/>
                 <outlet property="progressParse" destination="lEm-Yw-Fl9" id="XIv-yq-9Tv"/>
                 <outlet property="tableView" destination="in8-1V-b1x" id="xpF-35-qdP"/>
+                <outlet property="textFieldLoadingTip" destination="tpn-8j-1JJ" id="7bB-Nj-gBL"/>
                 <outlet property="viewIgnoreButtons" destination="41N-cx-Z3X" id="0LI-dO-lzL"/>
                 <outlet property="viewLoading" destination="qjD-zQ-md2" id="32H-eQ-0YJ"/>
                 <outlet property="viewProjectinfo" destination="goe-Af-5jg" id="AKk-AW-BSy"/>
@@ -18,11 +19,9 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Project Info" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="382" height="314"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="382" height="314"/>
-            <value key="maxSize" type="size" width="382" height="314"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="-3" width="382" height="314"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -265,9 +264,18 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="lEm-Yw-Fl9">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tpn-8j-1JJ">
+                                <rect key="frame" x="59" y="169" width="265" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="可能需要等待几分钟" id="31I-bs-UDx">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" doubleValue="50" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="lEm-Yw-Fl9">
                                 <rect key="frame" x="183" y="149" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </progressIndicator>
                         </subviews>
                     </customView>
