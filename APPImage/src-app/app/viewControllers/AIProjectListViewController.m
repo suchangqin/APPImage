@@ -132,9 +132,7 @@
     [self ___doAddProjectWithType:AIProjectTypeAndroidAPP];
 }
 - (IBAction)___doShowHelp:(id)sender {
-    AIHelpWindowController *wc = [[AIHelpWindowController alloc] initWithWindowNibName:@"AIHelpWindowController"];
-    [[AIAPI sharedInstance] addWindowController:wc];
-    [wc showWindow:self];
+    [(AppDelegate *)([NSApplication sharedApplication].delegate) ___doShowHelp:nil];
 }
 
 
@@ -209,7 +207,7 @@
                 
             }];
         }else{
-            NSString *name = [[path componentsSeparatedByString:@"/"] lastObject];
+            NSString *name = [path lastPathComponent];
             [_tableProjects inserWithName:name path:path type:type property:nil];
             [self ___reloadProjects];
         }

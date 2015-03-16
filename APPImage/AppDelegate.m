@@ -9,12 +9,16 @@
 #import "AppDelegate.h"
 #import "AIProjectListViewController.h"
 #import "AIFileParse.h"
+#import "AIHelpWindowController.h"
+#import "AIAPI.h"
 
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
 @property (strong) NSViewController *viewControllerRoot;
 @property (strong) NSWindowController *windowControllerProjectInfo;
+@property (strong) AIHelpWindowController *windowControllerHelp;
+
 
 @end
 
@@ -42,4 +46,16 @@
     }
     return YES;
 }
+-(IBAction)___doShowHelp:(id)sender{
+    AIHelpWindowController *wc = self.windowControllerHelp;
+    if (!wc) {
+        wc =[[AIHelpWindowController alloc] initWithWindowNibName:@"AIHelpWindowController"];
+        self.windowControllerHelp = wc;
+        [wc showWindow:self];
+    }else{
+        [wc.window makeKeyAndOrderFront:self];
+    }
+}
+
+
 @end

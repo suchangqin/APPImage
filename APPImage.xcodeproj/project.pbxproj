@@ -680,6 +680,7 @@
 				GCC_PREFIX_HEADER = "APPImage/APPImage-Prefix.pch";
 				INFOPLIST_FILE = APPImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -694,6 +695,7 @@
 				GCC_PREFIX_HEADER = "APPImage/APPImage-Prefix.pch";
 				INFOPLIST_FILE = APPImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

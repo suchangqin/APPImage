@@ -32,6 +32,8 @@
 @property (weak) IBOutlet NSButton *buttonParse;
 
 @property (strong) AIImageParseAPI *imageParseAPI;
+@property (weak) IBOutlet NSView *viewParsingDisable;
+
 
 @end
 
@@ -117,7 +119,9 @@
     // start loading
     self.progressIndicator.doubleValue = 0.0;
     [self.progressIndicator startAnimation:nil];
+    [self.buttonParse setTitle:@"Parsing..."];
     self.buttonParse.enabled = NO;
+    self.viewParsingDisable.hidden = NO;
     
     // start parse
     AIImageParseAPI *api = [[AIImageParseAPI alloc] init];
@@ -150,12 +154,27 @@
     [self.buttonRemoveIgnore setState:YES];
 }
 - (IBAction)___doAddIgnore:(id)sender {
-    DYYLog(@"+");
-    [self.arrayIgnoreDir addObject:@"dir"];
-    [self ___reloadData];
-    [self.tableView scrollRowToVisible:self.tableView.numberOfRows-1];
-    //不做延迟不能相应focus方法
-    [self performSelector:@selector(___selectLastRowToChangeName) withObject:nil afterDelay:0.1];
+    
+    NSString *path = [self.dictInProject stringForKey:kTable_project_path];
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setDirectoryURL:[NSURL URLWithString:path]];
+    [panel setAllowsMultipleSelection:NO];
+    [panel setCanChooseDirectories:YES];
+    [panel setCanChooseFiles:NO];
+    //    [panel setAllowedFileTypes:@[@"xcodeproj"]];
+    //    [panel setAllowsOtherFileTypes:YES];
+    if ([panel runModal] == NSModalResponseOK) {
+        NSString *name = [[panel.URLs.firstObject path] lastPathComponent];
+        [self.arrayIgnoreDir addObject:name];
+        [self ___reloadData];
+        [self.tableView scrollRowToVisible:self.tableView.numberOfRows-1];
+    }
+    
+//    [self.arrayIgnoreDir addObject:@"dir"];
+//    [self ___reloadData];
+//    [self.tableView scrollRowToVisible:self.tableView.numberOfRows-1];
+//    //不做延迟不能相应focus方法
+//    [self performSelector:@selector(___selectLastRowToChangeName) withObject:nil afterDelay:0.1];
 
 }
 -(void) ___buttonIgnoreStateChange{
@@ -197,7 +216,9 @@
         
         if (row>[[self ___getInitIgnoreArray] count]-1) {
             [textFieldName setTextColor:[NSColor controlTextColor]];
-            [textFieldName setEditable:YES];
+//            [textFieldName setEditable:YES];
+            //不让编辑
+            [textFieldName setEditable:NO];
         }else{
             [textFieldName setTextColor:[NSColor lightGrayColor]];
             [textFieldName setEditable:NO];
@@ -217,6 +238,8 @@
 #pragma mark - ImageParseAPI
 -(void)imageParseDoParseEndWithImageParseResult:(NSDictionary *)imageParseResult{
     self.buttonParse.enabled = YES;
+    [self.buttonParse setTitle:@"Parse Again"];
+    self.viewParsingDisable.hidden = YES;
     [self.progressIndicator stopAnimation:nil];
     
     int level1 = [_popupButtonLevel1.selectedItem.title intValue];
