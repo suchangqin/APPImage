@@ -36,7 +36,6 @@
     NSString *rWarning2 = @"${ai warning2}";
     NSString *rPath	  = @"${ai filePath}";
     //NULL//
-    
     htmlString = [htmlString stringByReplacingOccurrencesOfString:@"//NULL//" withString:@""];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rSource withString:[_dictInSource jsonStringWithPrettyPrint:YES]];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning withString:DYY_IntString(_intInWarningLevel1)];
@@ -54,6 +53,50 @@
     AIAPI *api = [AIAPI sharedInstance];
     [api removeWindowController:self];
     return YES;
+}
+
+#pragma mark - webview delegate
+-(void) ___webViewDoLog:(NSString *) log{
+    DYYLog(@"webView log:%@",log);
+}
+-(void) ___webViewDoShowFile:(NSString *) filePath{
+   [[NSWorkspace sharedWorkspace] selectFile:filePath inFileViewerRootedAtPath:filePath];
+}
+-(void) ___webViewDoAlert:(NSString *) msg{
+    DYYLog(@"webView alert:%@",msg);
+    //如果目录不存在
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"确认"];
+    [alert setMessageText:@"提示"];
+    [alert setInformativeText:msg];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+        
+    }];
+}
++ (BOOL)isSelectorExcludedFromWebScript:(SEL)selector {
+    if (selector == @selector(___webViewDoLog:)
+        || selector == @selector(___webViewDoAlert:)
+        || selector == @selector(___webViewDoShowFile:)
+        ) {
+        return NO;
+    }
+    return YES;
+}
+- (void)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject {
+    [windowScriptObject setValue:self forKey:@"yyoc"];
+}
+
++ (NSString *) webScriptNameForSelector:(SEL)sel {
+    if (sel == @selector(___webViewDoLog:)) {
+        return @"log";
+    }else if (sel == @selector(___webViewDoAlert:)) {
+        return @"alert";
+    }else if (sel == @selector(___webViewDoShowFile:)) {
+        return @"showFile";
+    }else {
+        return nil;
+    }
 }
 
 @end

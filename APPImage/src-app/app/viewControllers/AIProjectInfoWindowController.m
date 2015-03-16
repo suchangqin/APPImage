@@ -104,9 +104,9 @@
         //如果目录不存在
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"知道了"];
-        [alert setMessageText:@"目录不存在"];
+        [alert setMessageText:@"项目不存在"];
         
-        [alert setInformativeText:@"是不是移动到别的目录下了？"];
+        [alert setInformativeText:@"是不是已经删除或者移动到别的目录下了？"];
         [alert setAlertStyle:NSWarningAlertStyle];
         [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
             
@@ -127,23 +127,6 @@
     api.type = [[_dictInProject stringForKey:kTable_project_type] intValue];
     self.imageParseAPI = api;
     [api startParseImageProject];
-    
-//    int level1 = [_popupButtonLevel1.selectedItem.title intValue];
-//    int level2 = [_popupButtonLevel2.selectedItem.title intValue];
-
-    
-//    AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
-//    [[AIAPI sharedInstance] addWindowController:wc];
-//    wc.dictInSource = dictPNG;
-//    wc.dictInProject = _dictInProject;
-//    wc.intInWarningLevel1 = level1;
-//    wc.intInWarningLevel2 = level2;
-//    [wc showWindow:self];
-    
-//    self.viewLoading.hidden = YES;
-//    [self.progressParse stopAnimation:nil];
-    
-    
 }
 
 - (IBAction)___changeDirName:(NSTextField *)sender {
@@ -235,6 +218,19 @@
 -(void)imageParseDoParseEndWithImageParseResult:(NSDictionary *)imageParseResult{
     self.buttonParse.enabled = YES;
     [self.progressIndicator stopAnimation:nil];
+    
+    int level1 = [_popupButtonLevel1.selectedItem.title intValue];
+    int level2 = [_popupButtonLevel2.selectedItem.title intValue];
+
+
+    
+    AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
+    [[AIAPI sharedInstance] addWindowController:wc];
+    wc.dictInSource = imageParseResult;
+    wc.dictInProject = _dictInProject;
+    wc.intInWarningLevel1 = level1;
+    wc.intInWarningLevel2 = level2;
+    [wc showWindow:self];
 }
 -(void)imageParseDoParseWithLogInfo:(NSString *)logInfo currentIndex:(float)currentIndex allCount:(float)allCount{
     self.textFieldLoadingTip.stringValue = logInfo;

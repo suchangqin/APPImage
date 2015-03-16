@@ -68,10 +68,15 @@
 }
 -(void) ___log:(NSString *) log index:(float) index all:(float) all{
     dispatch_async(dispatch_get_main_queue(), ^{
+        DYYLog(@"%@",log);
         [self.delegate imageParseDoParseWithLogInfo:log currentIndex:index allCount:all];
     });
 }
-
+-(void) ___endParse:(NSDictionary *) dictPNG{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate imageParseDoParseEndWithImageParseResult:dictPNG];
+    });
+}
 -(void) startParseImageProject{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *path = self.stringProjectPath;
@@ -92,6 +97,9 @@
             int index = 0;
             for (NSString *fileName in dictFileCodes.allKeys) {
                 for (NSString *codePath in [dictFileCodes objectForKey:fileName]) {
+                    if([fileName isEqualTo:@"AppDelegate.m"]){
+                        
+                    }
                     if (!self.delegate) {
                         goto CancelBlock;
                     }
@@ -153,12 +161,13 @@
                 }
             }
         }
-        [self.delegate imageParseDoParseWithLogInfo:@"分析完毕！" currentIndex:100 allCount:100];
-        [self.delegate imageParseDoParseEndWithImageParseResult:dictPNG];
+        [self ___log:@"分析完毕！" index:100 all:100];
+        [self ___endParse:dictPNG];
         
-    CancelBlock:
-        DYYLogError(@"cancel parse");
-        return;
+        CancelBlock:{
+            DYYLogError(@"cancel parse");
+            return;
+        }
     });
 }
 -(void) cancelParse{

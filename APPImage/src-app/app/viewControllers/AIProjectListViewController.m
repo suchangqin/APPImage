@@ -62,7 +62,20 @@
 }
 
 -(void) ___reloadProjects{
-    self.arrayProject = [_tableProjects queryAll];
+    NSArray *array = [_tableProjects queryAll];
+    //目录找不到则自动删除
+    NSMutableArray *proArray = [NSMutableArray array];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    for(NSDictionary *pro in array){
+        NSString *path = [pro stringForKey:kTable_project_path];
+        if ([fm fileExistsAtPath:path]) {
+            [proArray addObject:pro];
+        }else{
+            [self.tableProjects deleteForId:[pro stringForKey:kTable_project_id]];
+        }
+    }
+    self.arrayProject = proArray;
+    
     [self.tableView reloadData];
 }
 -(void) ___showProjectInfoViewControllerWithProjectDict:(NSDictionary *) projectDict{

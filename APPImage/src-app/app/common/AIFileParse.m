@@ -109,58 +109,60 @@
 }
 +(NSMutableDictionary *) pngFileFormat:(NSDictionary *) pngDict withType:(AIProjectTypeState) type{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
     for (NSString *pngName in [pngDict allKeys]) {
-        NSFileManager *fm = [NSFileManager defaultManager];
-        
-        if(type == AIProjectTypeAndroidAPP){
-            NSMutableArray *files = [NSMutableArray array];
-            for (NSString *path in [pngDict arrayForKey:pngName]) {
+        @autoreleasepool {
+            if(type == AIProjectTypeAndroidAPP){
+                NSMutableArray *files = [NSMutableArray array];
+                for (NSString *path in [pngDict arrayForKey:pngName]) {
+                    NSDictionary * attributes = [fm attributesOfItemAtPath:path error:nil];
+                    NSNumber *fileSize = [attributes objectForKey:NSFileSize];
+                    
+                    
+                    NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
+                    float h = image.size.height;
+                    float w = image.size.width;
+                    NSDictionary *format = @{
+                                             _kAPP_FilePath:path,
+                                             _kAPP_Size:fileSize,
+                                             _kAPP_Width:@(w),
+                                             _kAPP_Height:@(h)
+                                             };
+                    [files addObject:[NSMutableDictionary dictionaryWithDictionary:format]];
+                }
+                NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+                [newDict setObject:files forKey:_kAPP_Files];
+                
+                [dict setObject:newDict forKey:pngName];
+            }else{
+                NSString *path = [[pngDict arrayForKey:pngName] firstObject];
+                
+                
                 NSDictionary * attributes = [fm attributesOfItemAtPath:path error:nil];
                 NSNumber *fileSize = [attributes objectForKey:NSFileSize];
                 
+                int scale = 1;
+                if ([pngName hasSuffix:@"@3x.png"]) {
+                    scale = 3;
+                }
+                if ([pngName hasSuffix:@"@2x.png"]) {
+                    scale = 2;
+                }
                 
                 NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
-                float h = image.size.height;
-                float w = image.size.width;
+                float h = image.size.height*scale;
+                float w = image.size.width*scale;
+                
+                
                 NSDictionary *format = @{
                                          _kAPP_FilePath:path,
                                          _kAPP_Size:fileSize,
                                          _kAPP_Width:@(w),
                                          _kAPP_Height:@(h)
                                          };
-                [files addObject:[NSMutableDictionary dictionaryWithDictionary:format]];
+                [dict setObject:[NSMutableDictionary dictionaryWithDictionary:format] forKey:pngName];
             }
-            NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
-            [newDict setObject:files forKey:_kAPP_Files];
-            
-            [dict setObject:newDict forKey:pngName];
-        }else{
-            NSString *path = [[pngDict arrayForKey:pngName] firstObject];
-            
-            
-            NSDictionary * attributes = [fm attributesOfItemAtPath:path error:nil];
-            NSNumber *fileSize = [attributes objectForKey:NSFileSize];
-
-            int scale = 1;
-            if ([pngName hasSuffix:@"@3x.png"]) {
-                scale = 3;
-            }
-            if ([pngName hasSuffix:@"@2x.png"]) {
-                scale = 2;
-            }
-            
-            NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
-            float h = image.size.height*scale;
-            float w = image.size.width*scale;
-
-            
-            NSDictionary *format = @{
-                                     _kAPP_FilePath:path,
-                                     _kAPP_Size:fileSize,
-                                     _kAPP_Width:@(w),
-                                     _kAPP_Height:@(h)
-                                     };
-            [dict setObject:[NSMutableDictionary dictionaryWithDictionary:format] forKey:pngName];
         }
     }
     return dict;

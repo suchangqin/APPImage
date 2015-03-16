@@ -24,15 +24,17 @@
 			right:10px;
 			display: block;
 			padding: 10px;
+            z-index:10000;
 		}
 
 		.tip{padding:10px 10px 0px 10px; color:rgb(81,158,236); }
 		
 			.table_div{
+                
 				padding:10px;
 			}
 			.table_div .table{ 
-				width:100%;
+                width:100%;
 			 background: rgb(166,166,166);
 				border-collapse:separate;
 				border-spacing: 1px; 
@@ -58,6 +60,30 @@
 			.table_div .table .tdLine{ background: rgb(220,220,220); font-weight:bold; color:rgb(0,0,0);}
 			.table_div .table td{ padding: 8px; }
 		</style>
+        
+        <script  type="text/javascript">
+            var yyoc;
+            var OC = {}
+            OC.log = function(msg){
+                if(yyoc){
+                    yyoc.log(log);
+                }
+            }
+        OC.alert = function(msg){
+            if(yyoc){
+                yyoc.alert(msg);
+            }else{
+                alert(msg);
+            }
+        }
+        OC.showFile = function(path){
+            if(yyoc){
+                yyoc.showFile(path);
+            }else{
+                window.open(path);
+            }
+        }
+        </script>
 		
 		<script  type="text/javascript">
 						
@@ -126,9 +152,9 @@
 	        function _fImageLink(imageName,imagePath){
 	        	
 	        	var path = imagePath;
-	        	var open = " window.open('"+path+"') ";
+	        	var open = " OC.showFile('"+path+"') ";
 	        	var image = '<img onclick="'+open+'" class="'+kClassImagePreview+'" style="cursor:pointer;max-width:150px;max-height:150px;display:none;" src="'+path+'" />';
-	        	return "<a target='_blank' class='a_n' href='"+path+"' >"+imageName+"</a>" + image;
+	        	return "<a target='_blank' class='a_n' href=\"javascript:" +open+ "\"  >"+imageName+"</a>" + image;
 	        }
 	        
 			function myInit(){
@@ -274,7 +300,7 @@
 							var dirTd = yy.div.create("td");
 							newTr.appendChild(dirTd);
 							var fp = file[kFilePath];
-							yy.div.html(dirTd,_fImageLink(fp,fp));
+							yy.div.html(dirTd,_fImageLink("图"+(i+1),fp));
 						  	//像素
 							var pixelTd = yy.div.create("td");
 							newTr.appendChild(pixelTd);
@@ -328,7 +354,7 @@
 								};
 								title += newLine;
 								
-								var alertStr = " onclick='alert(this.title)' ";
+								var alertStr = " onclick='OC.alert(this.title)' ";
 								if(allcount == 0){
 									CShow.e(indexTd);
 									title = "";
@@ -407,7 +433,7 @@
 							<tr class="trHead">
 								<td>Line</td>
 								<td>图片名</td>
-								<td>目录</td>
+								<td>图片</td>
 								<td>像数</td>
 								<td>大小</td>
 								<td>索引文件数</td>

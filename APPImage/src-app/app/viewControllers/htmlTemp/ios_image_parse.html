@@ -24,6 +24,7 @@
 			right:10px;
 			display: block;
 			padding: 10px;
+            z-index:10000;
 		}
 
 		.tip{padding:10px 10px 0px 10px; color:rgb(81,158,236); }
@@ -57,7 +58,30 @@
 			.table_div .table .tdLine{ background: rgb(220,220,220); font-weight:bold; color:rgb(0,0,0);}
 			.table_div .table td{ padding: 8px; }
 		</style>
-		
+		<script  type="text/javascript">
+            var yyoc;
+            var OC = {}
+            OC.log = function(msg){
+                if(yyoc){
+                    yyoc.log(log);
+                }
+            }
+            OC.alert = function(msg){
+                if(yyoc){
+                    yyoc.alert(msg);
+                }else{
+                    alert(msg);
+                }
+            }
+            OC.showFile = function(path){
+                if(yyoc){
+                    yyoc.showFile(path);
+                }else{
+                    window.open(path);
+                }
+            }
+        </script>
+
 		<script  type="text/javascript">
 						
 			var S_images = {'app_tab_item_badge_bg@2x.png': {'fp': '/YYProduct/images/app_tab_item_badge_bg@2x.png', 'h': 66, 's': 3117, 'w': 66, 'is1x': ['APPTabBarItem.xib']}, 'Default@2x.png': {'fp': '/YYProduct/Default@2x.png', 'h': 960, 's': 16107, 'w': 640}, 'app_b_nav_rect.png': {'fp': '/YYProduct/images/app_b_nav_rect.png', 'h': 29, 's': 989, 'is': ['APPXibButtonNavRect.xib'], 'w': 29}, 'test.png': {'fp': '/YYProduct/test.png', 'h': 260, 's': 1404, 'w': 223}, 'app_tab_item_icon_0.png': {'fp': '/YYProduct/images/app_tab_item_icon_0.png', 'h': 50, 's': 2927, 'is': ['APPTemplateNoPageMoreViewController.m'], 'w': 64}, 'test1@2x.png': {'fp': '/YYProduct/test1@2x.png', 'h': 518, 's': 2263, 'w': 445, 'is1x': ['APPTestPartSelectortViewController.m']}, 'app_tab_item_sel_bg.png': {'fp': '/YYProduct/images/app_tab_item_sel_bg.png', 'h': 50, 's': 4502, 'is': ['APPTabBarView.xib'], 'w': 64}, 'app_tab_item_icon_1_sel@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_1_sel@2x.png', 'h': 100, 's': 4458, 'w': 128, 'is1x': ['APPTemplatePageMoreViewController.m']}, 'Default.png': {'fp': '/YYProduct/Default.png', 'h': 480, 's': 6540, 'w': 320}, 'app_tab_item_badge_bg.png': {'fp': '/YYProduct/images/app_tab_item_badge_bg.png', 'h': 33, 's': 1425, 'is': ['APPTabBarItem.xib'], 'w': 33}, 'app_cell_arrow_right.png': {'fp': '/YYProduct/images/app_cell_arrow_right.png', 'h': 14, 's': 1082, 'is': ['APPUIGlobal.m'], 'w': 10}, 'app_cell_arrow_right@3x.png': {'fp': '/YYProduct/images/app_cell_arrow_right@3x.png', 'is1x': ['APPUIGlobal.m'], 'h': 28, 'is': ['APPTestCustomIndexBarViewController.m'], 's': 1198, 'w': 20}, 'app_tab_item_icon_1_sel.png': {'fp': '/YYProduct/images/app_tab_item_icon_1_sel.png', 'h': 50, 's': 2433, 'is': ['APPTemplatePageMoreViewController.m'], 'w': 64}, 'app_b_back@2x.png': {'fp': '/YYProduct/images/app_b_back@2x.png', 'h': 60, 's': 1606, 'w': 82, 'is1x': ['APPXibButtonBack.xib']}, 'app_tab_item_sel_bg@2x.png': {'fp': '/YYProduct/images/app_tab_item_sel_bg@2x.png', 'h': 100, 's': 10065, 'w': 128, 'is1x': ['APPTabBarView.xib']}, 'app_nav_bg@3x.png': {'fp': '/YYProduct/images/app_nav_bg@3x.png', 'h': 60, 's': 987, 'w': 60, 'is1x': ['APPBaseViewController.m']}, 'app-icon-114.png': {'fp': '/YYProduct/app-icon-114.png', 'h': 114, 's': 1078, 'is': ['YYProduct-Info.plist'], 'w': 114}, 'app_cell_arrow_right@2x.png': {'fp': '/YYProduct/images/app_cell_arrow_right@2x.png', 'h': 28, 's': 1198, 'w': 20, 'is1x': ['APPUIGlobal.m']}, 'app_nav_bg.png': {'fp': '/YYProduct/images/app_nav_bg.png', 'h': 30, 's': 954, 'is': ['APPBaseViewController.m'], 'w': 30}, 'test@2x.png': {'fp': '/YYProduct/test@2x.png', 'h': 518, 's': 2263, 'is': ['APPTestPartSelectortViewController.m'], 'w': 445}, 'app_tab_item_icon_0_sel.png': {'fp': '/YYProduct/images/app_tab_item_icon_0_sel.png', 'h': 50, 's': 3081, 'is': ['APPTemplateNoPageMoreViewController.m'], 'w': 64}, 'test1@3x.png': {'fp': '/YYProduct/test1@3x.png', 'h': 778, 's': 3429, 'w': 668, 'is1x': ['APPTestPartSelectortViewController.m']}, 'app_tab_item_icon_1@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_1@2x.png', 'h': 100, 's': 3236, 'w': 128, 'is1x': ['APPTemplatePageMoreViewController.m']}, 'app_tab_bar_bg@2x.png': {'fp': '/YYProduct/images/app_tab_bar_bg@2x.png', 'h': 100, 's': 1739, 'w': 640, 'is1x': ['APPTabBarView.xib', 'APPTestCaptureImageViewController.xib']}, 'app_tab_item_icon_0_sel@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_0_sel@2x.png', 'h': 100, 's': 6861, 'w': 128, 'is1x': ['APPTemplateNoPageMoreViewController.m']}, 'app_tab_item_icon_0@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_0@2x.png', 'h': 100, 's': 4640, 'w': 128, 'is1x': ['APPTemplateNoPageMoreViewController.m']}, 'app-icon-57.png': {'fp': '/YYProduct/app-icon-57.png', 'h': 57, 's': 979, 'is': ['YYProduct-Info.plist'], 'w': 57}, 'app_b_nav_rect@2x.png': {'fp': '/YYProduct/images/app_b_nav_rect@2x.png', 'h': 58, 's': 1069, 'w': 58, 'is1x': ['APPXibButtonNavRect.xib']}, 'test@3x.png': {'fp': '/YYProduct/test@3x.png', 'h': 778, 's': 3429, 'w': 668}, 'Default-568h@2x.png': {'fp': '/YYProduct/Default-568h@2x.png', 'h': 1136, 's': 18594, 'w': 640}};
@@ -123,13 +147,14 @@
 	                tmpNumStr = "(" + tmpNumStr.substring(1,tmpNumStr.length) + ")";  
 	            return tmpNumStr;       // Return our formatted string!  
 	        };
-	        
+    
+        
 	        function _fImageLink(imageName,imagePath){
 	        	
 	        	var path = imagePath;
-	        	var open = " window.open('"+path+"') ";
+	        	var open = " OC.showFile('"+path+"') ";
 	        	var image = '<img onclick="'+open+'" class="'+kClassImagePreview+'" style="cursor:pointer;max-width:150px;max-height:150px;display:none;" src="'+path+'" />';
-	        	return "<a target='_blank' class='a_n' href='"+path+"' >"+imageName+"</a>" + image;
+	        	return "<a target='_blank' class='a_n' href=\"javascript:" +open+ "\" >"+imageName+"</a>" + image;
 	        }
 	        
 			function myInit(){
@@ -614,7 +639,7 @@
 							CShow.w2(index);
 						}
 						
-						var alertStr = " onclick='alert(this.title)' ";
+						var alertStr = " onclick='OC.alert(this.title)' ";
 						if(c1+c2+c3 == 0){
 							CShow.e(index);
 							title = "";

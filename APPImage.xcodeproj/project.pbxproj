@@ -37,6 +37,7 @@
 		A9A40AF31AA1B07400B4816A /* Readme in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AF21AA1B07400B4816A /* Readme */; };
 		A9C301A21AA0550400B544C6 /* AIProjectInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */; };
 		A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */; };
+		A9FC9F171AA43C45008A61E5 /* GRP_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FC9F161AA43C45008A61E5 /* GRP_images.xcassets */; };
 		A9FD96C11AA3F8D20063CBD3 /* AIImageParseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FD96C01AA3F8D20063CBD3 /* AIImageParseAPI.m */; };
 		A9FD96CA1AA42D540063CBD3 /* GRProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FD96C81AA42D540063CBD3 /* GRProgressIndicator.m */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,7 @@
 		A9C3019F1AA0550400B544C6 /* AIProjectInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProjectInfoWindowController.h; sourceTree = "<group>"; };
 		A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProjectInfoWindowController.m; sourceTree = "<group>"; };
 		A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectInfoWindowController.xib; sourceTree = "<group>"; };
+		A9FC9F161AA43C45008A61E5 /* GRP_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GRP_images.xcassets; sourceTree = "<group>"; };
 		A9FD96BF1AA3F8D20063CBD3 /* AIImageParseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIImageParseAPI.h; sourceTree = "<group>"; };
 		A9FD96C01AA3F8D20063CBD3 /* AIImageParseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIImageParseAPI.m; sourceTree = "<group>"; };
 		A9FD96C71AA42D540063CBD3 /* GRProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRProgressIndicator.h; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				A9FD96C71AA42D540063CBD3 /* GRProgressIndicator.h */,
 				A9FD96C81AA42D540063CBD3 /* GRProgressIndicator.m */,
 				A9FD96C91AA42D540063CBD3 /* GRProgressIndicatorThemes.h */,
+				A9FC9F161AA43C45008A61E5 /* GRP_images.xcassets */,
 			);
 			path = GRProgressIndicator;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */,
 				A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */,
 				A900E3851A9EADDE001E49AC /* MainMenu.xib in Resources */,
+				A9FC9F171AA43C45008A61E5 /* GRP_images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
