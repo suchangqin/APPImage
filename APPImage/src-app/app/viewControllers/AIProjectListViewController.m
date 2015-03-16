@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    
     [self.viewListTop setBackgroundColor:RGBCOLOR(255, 255, 255)];
     
     [self.viewLeft setBackgroundColor:[NSColor whiteColor]];
@@ -79,10 +79,12 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     for(NSDictionary *pro in array){
         NSString *path = [pro stringForKey:kTable_project_path];
-        if ([fm fileExistsAtPath:path]) {
+        if ([fm fileExistsAtPath:path] && [[AIAPI sharedInstance] authorizedURLFromPath:path]) {
+            //如果项目存在并且有权限
             [proArray addObject:pro];
         }else{
             [self.tableProjects deleteForId:[pro stringForKey:kTable_project_id]];
+//            [[AIAPI sharedInstance] removeAuthorizedURLFromPath:path];
         }
     }
     self.arrayProject = proArray;
@@ -144,22 +146,26 @@
 - (IBAction)___doMenuDelete:(NSMenuItem *)sender{
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
     NSString *id_ = [dict stringForKey:kTable_project_id];
+//    NSString  *path = [dict stringForKey:kTable_project_path];
     [self.tableProjects deleteForId:id_];
+//    [[AIAPI sharedInstance] removeAuthorizedURLFromPath:path];
     [self ___reloadProjects];
 }
 
 - (IBAction)___doMenuShowInFinder:(id)sender {
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
     NSString *path = [dict stringForKey:kTable_project_path];
-
    [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:path];
 }
 
 - (IBAction)___doMenuShowInTerminal:(id)sender {
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
     NSString *path = [dict stringForKey:kTable_project_path];
+    //打开授权
+    NSURL *url = [[AIAPI sharedInstance] authorizedURLFromPath:path];
+    [url startAccessingSecurityScopedResource];
     [[NSWorkspace sharedWorkspace] openFile:path withApplication:self.stringTerminalPath];
- 
+    [url stopAccessingSecurityScopedResource];
 }
 
 - (IBAction)___doMenuCopyPath:(id)sender {
@@ -191,10 +197,12 @@
     //    [panel setAllowedFileTypes:@[@"xcodeproj"]];
     //    [panel setAllowsOtherFileTypes:YES];
     if ([panel runModal] == NSModalResponseOK) {
-        NSString *path = [panel.URLs.firstObject path];
-        [api setStringRecentSelectedDir:path];
-        DYYLog(@"select dir : %@",path);
-
+        
+        NSURL *selectedURL = panel.URLs.firstObject;
+        NSString *path = [selectedURL path];
+        [api addAuthorizedURL:selectedURL path:path];//保存授权信息
+        [api setStringRecentSelectedDir:path];//保存最近浏览目录
+        
         if ([_tableProjects existWithPath:path]) {
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:@"确定"];

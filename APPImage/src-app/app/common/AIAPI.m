@@ -56,5 +56,30 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(AIAPI);
         [self.arrayWindowController removeObject:windowController];
     }
 }
+-(void) removeAuthorizedURLFromPath:(NSString *) path{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:path];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+-(void) addAuthorizedURL:(NSURL *) authorizedURL path:(NSString *) path{
+    //保存授权路径
+    NSData *bookmarkData = [authorizedURL bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
+                                 includingResourceValuesForKeys:nil
+                                                  relativeToURL:nil
+                                                          error:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:bookmarkData forKey:path];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+-(NSURL *) authorizedURLFromPath:(NSString *) path{
+    NSData *bookMarkDataToResolve = [[NSUserDefaults standardUserDefaults] objectForKey:path];
+    if (bookMarkDataToResolve != nil) {
+        // we have a saved bookmark from last time, so resolve the bookmark data into our NSURL
+        return [NSURL URLByResolvingBookmarkData:bookMarkDataToResolve
+                                                        options:NSURLBookmarkResolutionWithSecurityScope
+                                                  relativeToURL:nil
+                                            bookmarkDataIsStale:nil
+                                                          error:nil];
+    }
+    return nil;
+}
 
 @end

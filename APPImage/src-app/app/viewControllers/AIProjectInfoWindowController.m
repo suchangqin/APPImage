@@ -34,6 +34,8 @@
 @property (strong) AIImageParseAPI *imageParseAPI;
 @property (strong) IBOutlet NSView *viewParsingDisable;
 
+@property (strong) NSURL *urlAuthorizedURL;
+
 
 @end
 
@@ -103,10 +105,34 @@
     return _arrayIOSInitIgnore;
 }
 
-- (IBAction)___doImageParse:(id)sender {
+-(void) ___doImageParseValidated:(NSString *) path{
+    if (!self.urlAuthorizedURL) {
+        self.urlAuthorizedURL = [[AIAPI sharedInstance] authorizedURLFromPath:path];
+    }
+    
+    [self.urlAuthorizedURL startAccessingSecurityScopedResource];
 
+    [self __cancelParse];
+    // start loading
+    self.progressIndicator.doubleValue = 0.0;
+    [self.progressIndicator startAnimation:nil];
+    [self.buttonParse setTitle:@"Parsing..."];
+    self.buttonParse.enabled = NO;
+    self.viewParsingDisable.hidden = NO;
+    
+    // start parse
+    AIImageParseAPI *imageParseApi = [[AIImageParseAPI alloc] init];
+    imageParseApi.delegate = self;
+    imageParseApi.stringProjectPath = path;
+    imageParseApi.arrayIgnoreDir = self.arrayIgnoreDir;
+    imageParseApi.type = [[_dictInProject stringForKey:kTable_project_type] intValue];
+    self.imageParseAPI = imageParseApi;
+    [imageParseApi startParseImageProject];
+}
+
+- (IBAction)___doImageParse:(id)sender {
     NSString *path = [self.dictInProject stringForKey:kTable_project_path];
-    if (![[NSFileManager defaultManager] isExecutableFileAtPath:path]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         //如果目录不存在
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"知道了"];
@@ -119,22 +145,8 @@
         }];
         return;
     }
-    [self __cancelParse];
-    // start loading
-    self.progressIndicator.doubleValue = 0.0;
-    [self.progressIndicator startAnimation:nil];
-    [self.buttonParse setTitle:@"Parsing..."];
-    self.buttonParse.enabled = NO;
-    self.viewParsingDisable.hidden = NO;
     
-    // start parse
-    AIImageParseAPI *api = [[AIImageParseAPI alloc] init];
-    api.delegate = self;
-    api.stringProjectPath = path;
-    api.arrayIgnoreDir = self.arrayIgnoreDir;
-    api.type = [[_dictInProject stringForKey:kTable_project_type] intValue];
-    self.imageParseAPI = api;
-    [api startParseImageProject];
+    [self ___doImageParseValidated:path];
 }
 
 - (IBAction)___changeDirName:(NSTextField *)sender {
@@ -249,6 +261,7 @@
 }
 #pragma mark - window delegate
 - (BOOL)windowShouldClose:(id)sender{
+    [self.urlAuthorizedURL stopAccessingSecurityScopedResource];
     [self __cancelParse];
     return YES;
 }

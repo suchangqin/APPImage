@@ -36,7 +36,6 @@
 		A9A40AED1AA14CC200B4816A /* AIFileParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A40AEC1AA14CC200B4816A /* AIFileParse.m */; };
 		A9A40AEF1AA18B8700B4816A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A40AEE1AA18B8700B4816A /* WebKit.framework */; };
 		A9A40AF11AA18D2C00B4816A /* htmlTemp in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AF01AA18D2C00B4816A /* htmlTemp */; };
-		A9A40AF31AA1B07400B4816A /* Readme in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AF21AA1B07400B4816A /* Readme */; };
 		A9C301A21AA0550400B544C6 /* AIProjectInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */; };
 		A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */; };
 		A9FC9F171AA43C45008A61E5 /* GRP_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FC9F161AA43C45008A61E5 /* GRP_images.xcassets */; };
@@ -113,7 +112,6 @@
 		A9A40AEC1AA14CC200B4816A /* AIFileParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFileParse.m; sourceTree = "<group>"; };
 		A9A40AEE1AA18B8700B4816A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A9A40AF01AA18D2C00B4816A /* htmlTemp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = htmlTemp; sourceTree = "<group>"; };
-		A9A40AF21AA1B07400B4816A /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		A9C3019F1AA0550400B544C6 /* AIProjectInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProjectInfoWindowController.h; sourceTree = "<group>"; };
 		A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProjectInfoWindowController.m; sourceTree = "<group>"; };
 		A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectInfoWindowController.xib; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 		A900E3791A9EADDE001E49AC /* APPImage */ = {
 			isa = PBXGroup;
 			children = (
-				A9A40AF21AA1B07400B4816A /* Readme */,
 				A900E3811A9EADDE001E49AC /* Images.xcassets */,
 				A900E39A1A9EAE13001E49AC /* src-app */,
 				A900E39B1A9EAE1D001E49AC /* src-yy */,
@@ -520,7 +517,6 @@
 				A9004C6B1AA551F3008A123B /* AIHelpWindowController.xib in Resources */,
 				A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */,
 				A9A40AE91AA14C3E00B4816A /* AIImageParseResultWindowController.xib in Resources */,
-				A9A40AF31AA1B07400B4816A /* Readme in Resources */,
 				A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */,
 				A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */,
 				A900E3851A9EADDE001E49AC /* MainMenu.xib in Resources */,

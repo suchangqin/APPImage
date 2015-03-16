@@ -21,9 +21,10 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-//     NSRect screenRect = [[NSScreen mainScreen] frame];
-//
-//    [self.window setFrame:screenRect display:YES];
+     NSRect screenRect = [[NSScreen mainScreen] frame];
+    screenRect.size.height -= 40;
+    screenRect.origin.y += 40;
+    [self.window setFrame:screenRect display:YES];
     
     AIProjectTypeState type = [[self.dictInProject stringForKey:kTable_project_type] intValue];
     NSString *tempName = type == AIProjectTypeAndroidAPP ? @"android_image_parse":@"ios_image_parse";

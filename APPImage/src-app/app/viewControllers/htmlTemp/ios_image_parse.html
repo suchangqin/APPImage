@@ -150,7 +150,7 @@
 	        	
 	        	var path = imagePath;
 	        	var open = " OC.showFile('"+path+"') ";
-	        	var image = '<img onclick="'+open+'" class="'+kClassImagePreview+'" style="cursor:pointer;max-width:150px;max-height:150px;display:none;" src="'+path+'" />';
+	        	var image = '<img onclick="'+open+'" class="'+kClassImagePreview+'" style="cursor:pointer;max-width:150px;max-height:150px;display:none;" src="file://'+path+'" />';
 	        	return "<a target='_blank' class='a_n' href=\"javascript:" +open+ "\" >"+imageName+"</a>" + image;
 	        }
 	        

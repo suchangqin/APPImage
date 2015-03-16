@@ -18,10 +18,10 @@
 @implementation YYDB
 
 NSString *databasePath(){
-    return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:DATABASE_NAME];
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    return [documentsDirectory stringByAppendingPathComponent:DATABASE_NAME];
+//    return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:DATABASE_NAME];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:DATABASE_NAME];
 }
 
 -(BOOL) connectDatabase{

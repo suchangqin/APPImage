@@ -14,9 +14,14 @@
 
 @property (strong) NSMutableArray *arrayWindowController;
 
+
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(AIAPI);
 
 -(void) addWindowController:(NSWindowController *) windowController;
 -(void) removeWindowController:(NSWindowController *) windowController;
+
+-(void) addAuthorizedURL:(NSURL *) authorizedURL path:(NSString *) path;
+-(NSURL *) authorizedURLFromPath:(NSString *) path;
+-(void) removeAuthorizedURLFromPath:(NSString *) path;
 
 @end
