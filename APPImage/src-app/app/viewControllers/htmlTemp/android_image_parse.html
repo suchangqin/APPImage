@@ -300,7 +300,8 @@
 							var dirTd = yy.div.create("td");
 							newTr.appendChild(dirTd);
 							var fp = file[kFilePath];
-							yy.div.html(dirTd,_fImageLink("图"+(i+1),fp));
+                            var pathShow = fp.replace(S_projectPath,"");
+							yy.div.html(dirTd,_fImageLink(pathShow,fp));
 						  	//像素
 							var pixelTd = yy.div.create("td");
 							newTr.appendChild(pixelTd);
