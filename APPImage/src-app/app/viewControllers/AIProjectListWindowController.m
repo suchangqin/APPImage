@@ -199,7 +199,7 @@
     AIAPI *api = [AIAPI sharedInstance];
     
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    [panel setDirectoryURL:[NSURL URLWithString:[api stringRecentSelectedDir]]];
+    [panel setDirectoryURL:[NSURL URLWithString:UTF8([api stringRecentSelectedDir])]];
     [panel setAllowsMultipleSelection:NO];
     [panel setCanChooseDirectories:YES];
     [panel setCanChooseFiles:NO];

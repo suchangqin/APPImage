@@ -86,8 +86,10 @@
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     //[dateFormatter setDateFormat:@"hh:mm:ss"]
     [dateFormatter setDateFormat:@"HHmmss"];
-
+    
+    NSString *path = [self.dictInProject stringForKey:kTable_project_path];
     NSSavePanel*    panel = [NSSavePanel savePanel];
+    [panel setDirectoryURL:[NSURL URLWithString:UTF8(path)]];
     [panel setNameFieldStringValue:[NSString stringWithFormat:@"%@_%@.html",self.window.title,[dateFormatter stringFromDate:[NSDate date]]]];
     [panel setMessage:@"请选择目录进行保存"];
     [panel setAllowsOtherFileTypes:YES];

@@ -235,7 +235,7 @@
     
     NSString *path = [self.dictInProject stringForKey:kTable_project_path];
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    [panel setDirectoryURL:[NSURL URLWithString:path]];
+    [panel setDirectoryURL:[NSURL URLWithString:UTF8(path)]];
     [panel setAllowsMultipleSelection:NO];
     [panel setCanChooseDirectories:YES];
     [panel setCanChooseFiles:NO];
