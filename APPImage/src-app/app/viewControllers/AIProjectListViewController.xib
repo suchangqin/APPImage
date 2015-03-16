@@ -74,45 +74,48 @@
                                                 </textFieldCell>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
-                                                    <customView id="6mL-21-7Af">
+                                                    <tableCellView id="wI1-5g-xL5">
                                                         <rect key="frame" x="0.0" y="0.0" width="429" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Vnx-FC-IEL">
-                                                                <rect key="frame" x="12" y="3" width="44" height="44"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-app-android" id="lSv-9m-hZf"/>
-                                                            </imageView>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="EEG-a8-cpr">
-                                                                <rect key="frame" x="68" y="27" width="343" height="20"/>
+                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="2" id="vkd-Mn-r7U">
+                                                                <rect key="frame" x="72" y="27" width="343" height="19"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="project name" id="ngN-rc-rC2">
+                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="rEd-a6-q1U">
                                                                     <font key="font" metaFont="system" size="14"/>
-                                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                                 <connections>
-                                                                    <action selector="___doProjectNameChanged:" target="-2" id="RYm-42-d38"/>
+                                                                    <action selector="___doProjectNameChanged:" target="-2" id="mg1-eL-kjK"/>
                                                                 </connections>
                                                             </textField>
+                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" id="25K-7M-F0s">
+                                                                <rect key="frame" x="72" y="9" width="343" height="15"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Table View Cell" id="343-kx-fPk">
+                                                                    <font key="font" metaFont="cellTitle"/>
+                                                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Vnx-FC-IEL">
+                                                                <rect key="frame" x="16" y="3" width="44" height="44"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-app-android" id="lSv-9m-hZf"/>
+                                                            </imageView>
                                                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="VfI-Cr-fZ3">
-                                                                <rect key="frame" x="0.0" y="-2" width="429" height="5"/>
+                                                                <rect key="frame" x="-3" y="-2" width="429" height="5"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <font key="titleFont" metaFont="system"/>
                                                             </box>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" id="ZtE-Kd-ORP">
-                                                                <rect key="frame" x="68" y="9" width="343" height="17"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Label" id="2Qm-lo-A8W">
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                    <color key="textColor" red="0.23921568627450981" green="0.23921568627450981" blue="0.23921568627450981" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                            </textField>
                                                         </subviews>
-                                                    </customView>
+                                                        <connections>
+                                                            <outlet property="textField" destination="vkd-Mn-r7U" id="AZ5-L2-kuA"/>
+                                                        </connections>
+                                                    </tableCellView>
                                                 </prototypeCellViews>
                                             </tableColumn>
                                         </tableColumns>

@@ -17,31 +17,12 @@
 @property (strong) AITableProjects *tableProjects;
 @property (weak) IBOutlet NSTableView *tableView;
 
-@property (strong) NSMutableArray *arrayWC;
-
 
 @property (strong) NSArray *arrayProject;
-
-- (IBAction)___doAddIOSProject:(id)sender;
-- (IBAction)___doAddAndroidProject:(id)sender;
-
-- (IBAction)___doMenuOpen:(id)sender;
-- (IBAction)___doMenuDelete:(id)sender;
-- (IBAction)___doMenuShowInFinder:(id)sender;
-- (IBAction)___doMenuShowInTerminal:(id)sender;
-- (IBAction)___doMenuCopyPath:(id)sender;
-- (IBAction)___doMenuRename:(id)sender;
 
 @end
 
 @implementation AIProjectListViewController
-
-
-#define Cell_View_Tag(_row) (_row - 1000)
-#define Cell_View_Row(_tag) (_tag + 1000)
-
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,13 +47,15 @@
     [self.tableView reloadData];
 }
 -(void) ___showProjectInfoViewControllerWithProjectDict:(NSDictionary *) projectDict{
-    
     NSArray *arrayInfoShow = [AIAPI sharedInstance].arrayWindowController;
     NSDictionary *dict = projectDict;
-    for (AIProjectInfoWindowController *infoWC in arrayInfoShow) {
-        if ([[infoWC.dictInProject stringForKey:kTable_project_id] isEqualToString:[dict stringForKey:kTable_project_id]]) {
-            [infoWC.window makeKeyAndOrderFront:self];
-            return;
+    for (NSWindowController *wc in arrayInfoShow) {
+        if([wc isKindOfClass:[AIProjectInfoWindowController class]]){
+            AIProjectInfoWindowController *infoWC = (AIProjectInfoWindowController*) wc;
+            if ([[infoWC.dictInProject stringForKey:kTable_project_id] isEqualToString:[dict stringForKey:kTable_project_id]]) {
+                [infoWC.window makeKeyAndOrderFront:self];
+                return;
+            }
         }
     }
     
@@ -137,8 +120,9 @@
 }
 
 - (IBAction)___doMenuRename:(id)sender {
-    NSTextField *textField = (NSTextField *)     [self.tableView viewWithTag:2];
-    [textField becomeFirstResponder];
+    NSView *cellView = [_tableView viewAtColumn:0 row:self.tableView.clickedRow makeIfNecessary:NO];
+    NSTextField *textFieldName = (NSTextField *) [cellView viewWithTag:2];
+    [textFieldName becomeFirstResponder];
 }
 
 - (void)___doAddProjectWithType:(AIProjectTypeState)type {
@@ -216,6 +200,22 @@
         return cellView;
     }
     return nil;
+}
+-(void)tableViewSelectionDidChange:(NSNotification *)notification{
+//    高亮变色，效果不好，不能用
+//    for (int i=0;i<[_arrayProject count]; i++) {
+//        NSView *cellView = [_tableView viewAtColumn:0 row:i makeIfNecessary:NO];
+//        NSTextField *textFieldName = (NSTextField *) [cellView viewWithTag:2];
+//        NSTextField *textFieldPath = (NSTextField *) [cellView viewWithTag:3];
+//        if (i == self.tableView.selectedRow) {
+//            [textFieldName setTextColor:[NSColor whiteColor]];
+//            [textFieldPath setTextColor:[NSColor whiteColor]];
+//        }else{
+//            [textFieldName setTextColor:RGBCOLOR(51, 51, 51)];
+//            [textFieldPath setTextColor:RGBCOLOR(61, 61, 61)];
+//        }
+//    }
+    
 }
 -(IBAction) ___doProjectNameChanged:(NSTextField *) sender{
     NSString *name = sender.stringValue;
