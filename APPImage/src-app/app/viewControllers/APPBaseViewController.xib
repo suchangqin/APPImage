@@ -25,40 +25,5 @@
                 </button>
             </subviews>
         </customView>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="Oyd-wP-vLY">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="-45" y="1107" width="480" height="270"/>
-            <rect key="screenRect" x="-241" y="900" width="1920" height="1057"/>
-            <view key="contentView" id="zgm-xW-xth">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <box autoresizesSubviews="NO" title="忽略的文件夹" boxType="oldStyle" borderType="line" id="iTy-Np-dRU">
-                        <rect key="frame" x="137" y="118" width="221" height="147"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="219" height="130"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="STHeitiSC-Light"/>
-                    </box>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="383" y="247"/>
-        </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="9Ya-57-72u" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="-45" y="1012" width="276" height="378"/>
-            <rect key="screenRect" x="-241" y="900" width="1920" height="1057"/>
-            <view key="contentView" id="hqE-pW-mAq">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="378"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </view>
-            <point key="canvasLocation" x="400" y="546"/>
-        </window>
     </objects>
 </document>

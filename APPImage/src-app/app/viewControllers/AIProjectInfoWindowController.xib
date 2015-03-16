@@ -41,11 +41,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" id="B9Q-li-Dkx">
-                                <rect key="frame" x="75" y="9" width="414" height="15"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" id="zuC-Hz-gLN">
+                                <rect key="frame" x="75" y="8" width="407" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Table View Cell" id="Tgt-Rw-5VV">
-                                    <font key="font" metaFont="cellTitle"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Label" id="2oZ-ko-SUy">
+                                    <font key="font" metaFont="titleBar" size="12"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -261,7 +261,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" id="h46-gD-fQr">
-                        <rect key="frame" x="391" y="15" width="103" height="32"/>
+                        <rect key="frame" x="391" y="16" width="103" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Start Parse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3fi-90-UQP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

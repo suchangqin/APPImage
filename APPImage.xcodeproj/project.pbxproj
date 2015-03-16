@@ -33,7 +33,7 @@
 		A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A9A40AE81AA14C3E00B4816A /* AIImageParseResultWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A40AE61AA14C3E00B4816A /* AIImageParseResultWindowController.m */; };
 		A9A40AE91AA14C3E00B4816A /* AIImageParseResultWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AE71AA14C3E00B4816A /* AIImageParseResultWindowController.xib */; };
-		A9A40AED1AA14CC200B4816A /* AIFileParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A40AEC1AA14CC200B4816A /* AIFileParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A9A40AED1AA14CC200B4816A /* AIFileParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A40AEC1AA14CC200B4816A /* AIFileParse.m */; };
 		A9A40AEF1AA18B8700B4816A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A40AEE1AA18B8700B4816A /* WebKit.framework */; };
 		A9A40AF11AA18D2C00B4816A /* htmlTemp in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AF01AA18D2C00B4816A /* htmlTemp */; };
 		A9A40AF31AA1B07400B4816A /* Readme in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AF21AA1B07400B4816A /* Readme */; };

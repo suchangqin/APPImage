@@ -23,6 +23,7 @@
 @property (weak) IBOutlet NSMenuItem *menuItemTerminal;
 
 @property (strong) NSArray *arrayProject;
+@property (weak) IBOutlet NSTextField *viewNoProjects;
 
 @property (strong) NSString *stringTerminalPath;
 @property (weak) IBOutlet NSView *viewLeft;
@@ -56,7 +57,7 @@
     
     //查找Terminal项目
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *terminalPath = @"/Applications/Utilities/Terminal1.app";
+    NSString *terminalPath = @"/Applications/Utilities/Terminal.app";
     if(![fm fileExistsAtPath:terminalPath]){
         //不存在，到另一个里去找
         terminalPath = @"/Applications/Terminal.app";
@@ -87,6 +88,11 @@
     self.arrayProject = proArray;
     
     [self.tableView reloadData];
+    if ([self.arrayProject count]) {
+        _viewNoProjects.hidden = YES;
+    }else{
+        _viewNoProjects.hidden = NO;
+    }
 }
 -(void) ___showProjectInfoViewControllerWithProjectDict:(NSDictionary *) projectDict{
     

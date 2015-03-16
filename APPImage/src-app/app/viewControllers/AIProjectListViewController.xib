@@ -12,6 +12,7 @@
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="viewLeft" destination="PiY-aQ-Yh1" id="vrW-mk-wtN"/>
                 <outlet property="viewListTop" destination="ieZ-AO-JTX" id="dDu-RR-bIC"/>
+                <outlet property="viewNoProjects" destination="cz7-G0-106" id="uGA-FQ-DGl"/>
                 <outlet property="viewRight" destination="UCF-HA-SCW" id="Zji-Qg-wuV"/>
             </connections>
         </customObject>
@@ -253,15 +254,6 @@
                                                                             <action selector="___doProjectNameChanged:" target="-2" id="mg1-eL-kjK"/>
                                                                         </connections>
                                                                     </textField>
-                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" id="25K-7M-F0s">
-                                                                        <rect key="frame" x="72" y="9" width="345" height="15"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Table View Cell" id="343-kx-fPk">
-                                                                            <font key="font" metaFont="cellTitle"/>
-                                                                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                        </textFieldCell>
-                                                                    </textField>
                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Vnx-FC-IEL">
                                                                         <rect key="frame" x="16" y="3" width="44" height="44"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -274,6 +266,15 @@
                                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <font key="titleFont" metaFont="system"/>
                                                                     </box>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" id="xKh-fe-gqa">
+                                                                        <rect key="frame" x="72" y="8" width="345" height="17"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Label" id="sGk-CC-Oa1">
+                                                                            <font key="font" metaFont="cellTitle"/>
+                                                                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
                                                                 </subviews>
                                                                 <connections>
                                                                     <outlet property="textField" destination="vkd-Mn-r7U" id="AZ5-L2-kuA"/>
@@ -304,6 +305,15 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </tableHeaderView>
                                 </scrollView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cz7-G0-106">
+                                    <rect key="frame" x="127" y="227" width="179" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Projects" id="zcy-Gp-vGc">
+                                        <font key="font" metaFont="system" size="17"/>
+                                        <color key="textColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.49411764705882355" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
                             </subviews>
                         </customView>
                     </subviews>
