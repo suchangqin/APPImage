@@ -57,8 +57,8 @@
         }
         .importent {color:#F16}
         
-        ._w{background:#feffb9}
-        ._w2{background:#fcff00}
+        ._w{background:#ffffd5}
+        ._w2{background:#ffff00}
         ._e{background:#f45f5f}
         ._i{}
         ._eTip{background:#e6aeae}
@@ -324,7 +324,7 @@
                 COut.table(imageE);
             }
             if(imageW.length){
-                COut.tableTip("仅有警告的区域","_w",11);
+                COut.tableTip("仅有警告的区域","_w2",11);
                 COut.table(imageW);
             }
             if (imageFine.length) {
@@ -658,7 +658,7 @@
                         warning = false;
                     }
                     
-                    allcount = c1 + " " + c2 + " " + c3 + " = "+(c1+c2+c3);
+                    allcount = c1 + "+" + c2 + "+" + c3 + " = "+(c1+c2+c3);
                     
                     var index = yy.div.create("td");
                     
@@ -800,7 +800,7 @@
                             <td>@2x大小</td>
                             <td>@3x大小</td>
                             
-                            <td>索引文件数</td>
+                            <td>@1x@2x@3x索引</td>
                         </tr>
                         
                     </table>

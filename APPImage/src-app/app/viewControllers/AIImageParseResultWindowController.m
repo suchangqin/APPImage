@@ -70,7 +70,6 @@
 }
 -(void) ___webViewDoAlert:(NSString *) msg{
     DYYLog(@"webView alert:%@",msg);
-    //如果目录不存在
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"确认"];
     [alert setMessageText:@"提示"];
@@ -81,8 +80,15 @@
     }];
 }
 -(void) ___webViewDoExportHtmlFile{
+    //得到毫秒
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    //[dateFormatter setDateFormat:@"hh:mm:ss"]
+    [dateFormatter setDateFormat:@"HHmmss"];
+
     NSSavePanel*    panel = [NSSavePanel savePanel];
-    [panel setNameFieldStringValue:[NSString stringWithFormat:@"%@.html",self.window.title]];
+    [panel setNameFieldStringValue:[NSString stringWithFormat:@"%@_%@.html",self.window.title,[dateFormatter stringFromDate:[NSDate date]]]];
     [panel setMessage:@"请选择目录进行保存"];
     [panel setAllowsOtherFileTypes:YES];
     [panel setAllowedFileTypes:@[@"html"]];

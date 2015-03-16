@@ -50,7 +50,6 @@
 }
 
 -(void) ___dismiss{
-    NSLog(@"- dismiss ");
     //透明度变化
     CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnim.fromValue = [NSNumber numberWithFloat:1.0];
