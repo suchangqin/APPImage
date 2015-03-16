@@ -252,7 +252,7 @@
 
         NSImageView *imageView = (NSImageView *) [cellView viewWithTag:1];
         AIProjectTypeState type = [[dict stringForKey:kTable_project_type] intValue];
-        NSString *iconName = type == AIProjectTypeAndroidAPP ? @"i-app-android" : @"i-app-mac-ios";
+        NSString *iconName = type == AIProjectTypeAndroidAPP ? kImage_i_app_android:kImage_i_app_mac_ios;
         imageView.image = [NSImage imageNamed:iconName];
         
         NSTextField *textFieldName = (NSTextField *) [cellView viewWithTag:2];

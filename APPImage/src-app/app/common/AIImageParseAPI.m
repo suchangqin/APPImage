@@ -39,16 +39,6 @@
                                  [[imageName stringByReplacingOccurrencesOfString:@"-" withString:@"_"] stringByReplacingOccurrencesOfString:@".png" withString:@""]
                                  ];
     NSString *imageNameFormat2 = [NSString stringWithFormat:@"\"%@\"",[imageName stringByReplacingOccurrencesOfString:@".png" withString:@""]];
-    //    NSArray *fileNames = @[@"OFPJCarOrderCheckViewController.xib",
-    //    @"OFPayAllSelectedOrdersViewController.xib",
-    //    @"OFPJCartOrderResultViewController.xib",
-    //    @"OFWDOrderPayResultViewController.xib",
-    //    @"OFOrderPayResultViewController.xib",
-    //    @"OFMyJiFenViewController.xib",
-    //                           ];
-    //    if ([imageName containsString:@"address_top_banner_bg"] && [fileNames containsObject:fileName]) {
-    //
-    //    }
     //#图片文件名包含
     if	([lines containWithString:imageName] || [lines containWithString:imageNameFormat] || [lines containWithString:imageNameFormat2]){
         if (![[imageDict allKeys] containsObject:kIndexPaths]) {

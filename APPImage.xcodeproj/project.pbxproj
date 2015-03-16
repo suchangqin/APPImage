@@ -124,6 +124,7 @@
 		A9CE287E1AAAE0C00030C70D /* AIImageNameDefineAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIImageNameDefineAPI.h; sourceTree = "<group>"; };
 		A9CE287F1AAAE0C00030C70D /* AIImageNameDefineAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIImageNameDefineAPI.m; sourceTree = "<group>"; };
 		A9CEA3561AA5FF830074D953 /* APPImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = APPImage.entitlements; sourceTree = "<group>"; };
+		A9E8DD831AAD7E1F0008E7C9 /* APPImageNameDefineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPImageNameDefineHeader.h; sourceTree = "<group>"; };
 		A9FC9F161AA43C45008A61E5 /* GRP_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GRP_images.xcassets; sourceTree = "<group>"; };
 		A9FD96BF1AA3F8D20063CBD3 /* AIImageParseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIImageParseAPI.h; sourceTree = "<group>"; };
 		A9FD96C01AA3F8D20063CBD3 /* AIImageParseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIImageParseAPI.m; sourceTree = "<group>"; };
@@ -254,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				A9053A561A9F203D000779C9 /* APPDefines.h */,
+				A9E8DD831AAD7E1F0008E7C9 /* APPImageNameDefineHeader.h */,
 				A96B23841AA98922006AFA1F /* 配置 */,
 				A96B23851AA98943006AFA1F /* 数据库 */,
 				A96B23861AA98958006AFA1F /* 解析文件 */,

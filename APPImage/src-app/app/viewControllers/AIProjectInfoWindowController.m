@@ -80,7 +80,7 @@
         
         NSImageView *imageView = (NSImageView *) [cellView viewWithTag:1];
         AIProjectTypeState type = [[dict stringForKey:kTable_project_type] intValue];
-        NSString *iconName = type == AIProjectTypeAndroidAPP ? @"i-app-android" : @"i-app-mac-ios";
+        NSString *iconName = type == AIProjectTypeAndroidAPP ? kImage_i_app_android:kImage_i_app_mac_ios;
         imageView.image = [NSImage imageNamed:iconName];
         
 
@@ -97,7 +97,7 @@
         if (type == AIProjectTypeIOSAPP) {
             typeFix = @"Objective-C";
             _viewDefineImageName.hidden = NO;
-            [_viewDefineImageName setBackgroundColor:RGBACOLOR(0, 0, 0, 0.08)];
+            [_viewDefineImageName setBackgroundColor:RGBACOLOR(0, 0, 0, 0.1)];
         }
         self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeFix];
     }
