@@ -7,16 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "AIProjectListViewController.h"
 
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
+@property (strong) NSViewController *viewControllerRoot;
+
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    AIProjectListViewController *vc = [[AIProjectListViewController alloc] init];
+    self.viewControllerRoot = vc;
+    self.window.contentView = vc.view;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

@@ -12,6 +12,20 @@
 		A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A900E3811A9EADDE001E49AC /* Images.xcassets */; };
 		A900E3851A9EADDE001E49AC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A900E3831A9EADDE001E49AC /* MainMenu.xib */; };
 		A900E3911A9EADDE001E49AC /* APPImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3901A9EADDE001E49AC /* APPImageTests.m */; };
+		A900E3A31A9EB0F6001E49AC /* APPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3A11A9EB0F6001E49AC /* APPBaseViewController.m */; };
+		A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A900E3A21A9EB0F6001E49AC /* APPBaseViewController.xib */; };
+		A900E3A91A9EB713001E49AC /* AIProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3A71A9EB713001E49AC /* AIProjectListViewController.m */; };
+		A900E3AA1A9EB713001E49AC /* AIProjectListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A900E3A81A9EB713001E49AC /* AIProjectListViewController.xib */; };
+		A900E3B11A9EC0B3001E49AC /* NSColor+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3B01A9EC0B3001E49AC /* NSColor+YYAdditions.m */; };
+		A900E3E11A9EC508001E49AC /* NSView+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3E01A9EC508001E49AC /* NSView+YYAdditions.m */; };
+		A900E3E61A9EDDC9001E49AC /* YYDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3E51A9EDDC9001E49AC /* YYDefines.m */; };
+		A900E3EA1A9EE2C1001E49AC /* AIAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3E91A9EE2C1001E49AC /* AIAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A900E3F71A9EE901001E49AC /* YYDB.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3F11A9EE901001E49AC /* YYDB.m */; };
+		A900E3F81A9EE901001E49AC /* YYTableBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3F31A9EE901001E49AC /* YYTableBase.m */; };
+		A900E3F91A9EE901001E49AC /* YYTableTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3F61A9EE901001E49AC /* YYTableTest.m */; };
+		A900E3FC1A9EE92E001E49AC /* AITableProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E3FB1A9EE92E001E49AC /* AITableProjects.m */; };
+		A900E3FF1A9EEAA6001E49AC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A900E3FE1A9EEAA6001E49AC /* libsqlite3.0.dylib */; };
+		A900E4021A9EEB19001E49AC /* NSString+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4011A9EEB19001E49AC /* NSString+YYAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +49,37 @@
 		A900E38A1A9EADDE001E49AC /* APPImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APPImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A900E38F1A9EADDE001E49AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A900E3901A9EADDE001E49AC /* APPImageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APPImageTests.m; sourceTree = "<group>"; };
+		A900E3A01A9EB0F6001E49AC /* APPBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPBaseViewController.h; sourceTree = "<group>"; };
+		A900E3A11A9EB0F6001E49AC /* APPBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPBaseViewController.m; sourceTree = "<group>"; };
+		A900E3A21A9EB0F6001E49AC /* APPBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPBaseViewController.xib; sourceTree = "<group>"; };
+		A900E3A61A9EB713001E49AC /* AIProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProjectListViewController.h; sourceTree = "<group>"; };
+		A900E3A71A9EB713001E49AC /* AIProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProjectListViewController.m; sourceTree = "<group>"; };
+		A900E3A81A9EB713001E49AC /* AIProjectListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectListViewController.xib; sourceTree = "<group>"; };
+		A900E3AF1A9EC0B3001E49AC /* NSColor+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+YYAdditions.h"; sourceTree = "<group>"; };
+		A900E3B01A9EC0B3001E49AC /* NSColor+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+YYAdditions.m"; sourceTree = "<group>"; };
+		A900E3DE1A9EC219001E49AC /* APPImage-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APPImage-Prefix.pch"; sourceTree = "<group>"; };
+		A900E3DF1A9EC508001E49AC /* NSView+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+YYAdditions.h"; sourceTree = "<group>"; };
+		A900E3E01A9EC508001E49AC /* NSView+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+YYAdditions.m"; sourceTree = "<group>"; };
+		A900E3E21A9EC57A001E49AC /* YYAdditionsHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYAdditionsHeaders.h; sourceTree = "<group>"; };
+		A900E3E41A9EDDC9001E49AC /* YYDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDefines.h; sourceTree = "<group>"; };
+		A900E3E51A9EDDC9001E49AC /* YYDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDefines.m; sourceTree = "<group>"; };
+		A900E3E71A9EDDE4001E49AC /* YYAllHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYAllHeader.h; sourceTree = "<group>"; };
+		A900E3E81A9EE2C1001E49AC /* AIAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIAPI.h; sourceTree = "<group>"; };
+		A900E3E91A9EE2C1001E49AC /* AIAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIAPI.m; sourceTree = "<group>"; };
+		A900E3EC1A9EE460001E49AC /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		A900E3ED1A9EE460001E49AC /* YYLibrariesHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYLibrariesHeader.h; sourceTree = "<group>"; };
+		A900E3F01A9EE901001E49AC /* YYDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDB.h; sourceTree = "<group>"; };
+		A900E3F11A9EE901001E49AC /* YYDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDB.m; sourceTree = "<group>"; };
+		A900E3F21A9EE901001E49AC /* YYTableBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTableBase.h; sourceTree = "<group>"; };
+		A900E3F31A9EE901001E49AC /* YYTableBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTableBase.m; sourceTree = "<group>"; };
+		A900E3F51A9EE901001E49AC /* YYTableTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTableTest.h; sourceTree = "<group>"; };
+		A900E3F61A9EE901001E49AC /* YYTableTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTableTest.m; sourceTree = "<group>"; };
+		A900E3FA1A9EE92E001E49AC /* AITableProjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITableProjects.h; sourceTree = "<group>"; };
+		A900E3FB1A9EE92E001E49AC /* AITableProjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITableProjects.m; sourceTree = "<group>"; };
+		A900E3FD1A9EE963001E49AC /* YYCommonHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYCommonHeaders.h; sourceTree = "<group>"; };
+		A900E3FE1A9EEAA6001E49AC /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		A900E4001A9EEB19001E49AC /* NSString+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YYAdditions.h"; sourceTree = "<group>"; };
+		A900E4011A9EEB19001E49AC /* NSString+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A900E3FF1A9EEAA6001E49AC /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +106,7 @@
 			children = (
 				A900E3791A9EADDE001E49AC /* APPImage */,
 				A900E38D1A9EADDE001E49AC /* APPImageTests */,
+				A900E4031A9EF322001E49AC /* Frameworks */,
 				A900E3781A9EADDE001E49AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,10 +123,9 @@
 		A900E3791A9EADDE001E49AC /* APPImage */ = {
 			isa = PBXGroup;
 			children = (
-				A900E37C1A9EADDE001E49AC /* AppDelegate.h */,
-				A900E37D1A9EADDE001E49AC /* AppDelegate.m */,
+				A900E39A1A9EAE13001E49AC /* src-app */,
+				A900E39B1A9EAE1D001E49AC /* src-yy */,
 				A900E3811A9EADDE001E49AC /* Images.xcassets */,
-				A900E3831A9EADDE001E49AC /* MainMenu.xib */,
 				A900E37A1A9EADDE001E49AC /* Supporting Files */,
 			);
 			path = APPImage;
@@ -88,6 +134,10 @@
 		A900E37A1A9EADDE001E49AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A900E3DE1A9EC219001E49AC /* APPImage-Prefix.pch */,
+				A900E37C1A9EADDE001E49AC /* AppDelegate.h */,
+				A900E37D1A9EADDE001E49AC /* AppDelegate.m */,
+				A900E3831A9EADDE001E49AC /* MainMenu.xib */,
 				A900E37B1A9EADDE001E49AC /* Info.plist */,
 				A900E37F1A9EADDE001E49AC /* main.m */,
 			);
@@ -109,6 +159,169 @@
 				A900E38F1A9EADDE001E49AC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A900E39A1A9EAE13001E49AC /* src-app */ = {
+			isa = PBXGroup;
+			children = (
+				A900E39F1A9EAF3F001E49AC /* libs */,
+				A900E39C1A9EAF3F001E49AC /* app */,
+			);
+			path = "src-app";
+			sourceTree = "<group>";
+		};
+		A900E39B1A9EAE1D001E49AC /* src-yy */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3AC1A9EC089001E49AC /* libs */,
+				A900E3AD1A9EC089001E49AC /* yy */,
+			);
+			path = "src-yy";
+			sourceTree = "<group>";
+		};
+		A900E39C1A9EAF3F001E49AC /* app */ = {
+			isa = PBXGroup;
+			children = (
+				A900E39D1A9EAF3F001E49AC /* common */,
+				A900E39E1A9EAF3F001E49AC /* viewControllers */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		A900E39D1A9EAF3F001E49AC /* common */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3E81A9EE2C1001E49AC /* AIAPI.h */,
+				A900E3E91A9EE2C1001E49AC /* AIAPI.m */,
+				A900E3FA1A9EE92E001E49AC /* AITableProjects.h */,
+				A900E3FB1A9EE92E001E49AC /* AITableProjects.m */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		A900E39E1A9EAF3F001E49AC /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3A51A9EB108001E49AC /* base */,
+				A900E3AB1A9EB717001E49AC /* 项目列表管理 */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		A900E39F1A9EAF3F001E49AC /* libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		A900E3A51A9EB108001E49AC /* base */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3A01A9EB0F6001E49AC /* APPBaseViewController.h */,
+				A900E3A11A9EB0F6001E49AC /* APPBaseViewController.m */,
+				A900E3A21A9EB0F6001E49AC /* APPBaseViewController.xib */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
+		A900E3AB1A9EB717001E49AC /* 项目列表管理 */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3A61A9EB713001E49AC /* AIProjectListViewController.h */,
+				A900E3A71A9EB713001E49AC /* AIProjectListViewController.m */,
+				A900E3A81A9EB713001E49AC /* AIProjectListViewController.xib */,
+			);
+			name = "项目列表管理";
+			sourceTree = "<group>";
+		};
+		A900E3AC1A9EC089001E49AC /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3ED1A9EE460001E49AC /* YYLibrariesHeader.h */,
+				A900E3EB1A9EE460001E49AC /* SynthesizeSingleton */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		A900E3AD1A9EC089001E49AC /* yy */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3E71A9EDDE4001E49AC /* YYAllHeader.h */,
+				A900E3E31A9EDD51001E49AC /* common */,
+				A900E3AE1A9EC089001E49AC /* additions */,
+			);
+			path = yy;
+			sourceTree = "<group>";
+		};
+		A900E3AE1A9EC089001E49AC /* additions */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3E21A9EC57A001E49AC /* YYAdditionsHeaders.h */,
+				A900E3AF1A9EC0B3001E49AC /* NSColor+YYAdditions.h */,
+				A900E3B01A9EC0B3001E49AC /* NSColor+YYAdditions.m */,
+				A900E4001A9EEB19001E49AC /* NSString+YYAdditions.h */,
+				A900E4011A9EEB19001E49AC /* NSString+YYAdditions.m */,
+				A900E3DF1A9EC508001E49AC /* NSView+YYAdditions.h */,
+				A900E3E01A9EC508001E49AC /* NSView+YYAdditions.m */,
+			);
+			path = additions;
+			sourceTree = "<group>";
+		};
+		A900E3E31A9EDD51001E49AC /* common */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3FD1A9EE963001E49AC /* YYCommonHeaders.h */,
+				A900E3E41A9EDDC9001E49AC /* YYDefines.h */,
+				A900E3E51A9EDDC9001E49AC /* YYDefines.m */,
+				A900E3EE1A9EE901001E49AC /* database */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		A900E3EB1A9EE460001E49AC /* SynthesizeSingleton */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3EC1A9EE460001E49AC /* SynthesizeSingleton.h */,
+			);
+			path = SynthesizeSingleton;
+			sourceTree = "<group>";
+		};
+		A900E3EE1A9EE901001E49AC /* database */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3EF1A9EE901001E49AC /* base */,
+				A900E3F41A9EE901001E49AC /* test */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+		A900E3EF1A9EE901001E49AC /* base */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3F01A9EE901001E49AC /* YYDB.h */,
+				A900E3F11A9EE901001E49AC /* YYDB.m */,
+				A900E3F21A9EE901001E49AC /* YYTableBase.h */,
+				A900E3F31A9EE901001E49AC /* YYTableBase.m */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		A900E3F41A9EE901001E49AC /* test */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3F51A9EE901001E49AC /* YYTableTest.h */,
+				A900E3F61A9EE901001E49AC /* YYTableTest.m */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		A900E4031A9EF322001E49AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3FE1A9EEAA6001E49AC /* libsqlite3.0.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +404,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A900E3AA1A9EB713001E49AC /* AIProjectListViewController.xib in Resources */,
+				A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */,
 				A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */,
 				A900E3851A9EADDE001E49AC /* MainMenu.xib in Resources */,
 			);
@@ -210,8 +425,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A900E3F91A9EE901001E49AC /* YYTableTest.m in Sources */,
+				A900E3E61A9EDDC9001E49AC /* YYDefines.m in Sources */,
+				A900E4021A9EEB19001E49AC /* NSString+YYAdditions.m in Sources */,
+				A900E3A91A9EB713001E49AC /* AIProjectListViewController.m in Sources */,
+				A900E3E11A9EC508001E49AC /* NSView+YYAdditions.m in Sources */,
 				A900E3801A9EADDE001E49AC /* main.m in Sources */,
+				A900E3A31A9EB0F6001E49AC /* APPBaseViewController.m in Sources */,
+				A900E3F71A9EE901001E49AC /* YYDB.m in Sources */,
 				A900E37E1A9EADDE001E49AC /* AppDelegate.m in Sources */,
+				A900E3FC1A9EE92E001E49AC /* AITableProjects.m in Sources */,
+				A900E3EA1A9EE2C1001E49AC /* AIAPI.m in Sources */,
+				A900E3B11A9EC0B3001E49AC /* NSColor+YYAdditions.m in Sources */,
+				A900E3F81A9EE901001E49AC /* YYTableBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +552,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "APPImage/APPImage-Prefix.pch";
 				INFOPLIST_FILE = APPImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -337,6 +565,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "APPImage/APPImage-Prefix.pch";
 				INFOPLIST_FILE = APPImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

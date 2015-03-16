@@ -1,0 +1,10 @@
+.DS_Store
+.svn
+build/
+*.ipa
+*.app
+*.mobileprovision
+dist/
+*.xcodeproj/
+!*.xcodeproj/project.pbxproj
+DerivedData/
