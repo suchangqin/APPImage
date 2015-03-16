@@ -43,6 +43,9 @@ property_ = nil;\
 property_ = [value_ copy];\
 }
 
+// 版本号
+#define DYY_APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
 @interface YYDefines : NSObject
 
 @end

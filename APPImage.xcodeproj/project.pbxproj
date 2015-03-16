@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9004C6A1AA551F3008A123B /* AIHelpWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9004C681AA551F3008A123B /* AIHelpWindowController.m */; };
+		A9004C6B1AA551F3008A123B /* AIHelpWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9004C691AA551F3008A123B /* AIHelpWindowController.xib */; };
 		A900E37E1A9EADDE001E49AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E37D1A9EADDE001E49AC /* AppDelegate.m */; };
 		A900E3801A9EADDE001E49AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E37F1A9EADDE001E49AC /* main.m */; };
 		A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A900E3811A9EADDE001E49AC /* Images.xcassets */; };
@@ -54,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A9004C671AA551F3008A123B /* AIHelpWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHelpWindowController.h; sourceTree = "<group>"; };
+		A9004C681AA551F3008A123B /* AIHelpWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHelpWindowController.m; sourceTree = "<group>"; };
+		A9004C691AA551F3008A123B /* AIHelpWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIHelpWindowController.xib; sourceTree = "<group>"; };
 		A900E3771A9EADDE001E49AC /* APPImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A900E37B1A9EADDE001E49AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A900E37C1A9EADDE001E49AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -142,6 +147,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9004C6C1AA551F8008A123B /* 帮助 */ = {
+			isa = PBXGroup;
+			children = (
+				A9004C671AA551F3008A123B /* AIHelpWindowController.h */,
+				A9004C681AA551F3008A123B /* AIHelpWindowController.m */,
+				A9004C691AA551F3008A123B /* AIHelpWindowController.xib */,
+			);
+			name = "帮助";
+			sourceTree = "<group>";
+		};
 		A900E36E1A9EADDE001E49AC = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +270,7 @@
 				A900E3AB1A9EB717001E49AC /* 项目列表管理 */,
 				A9C301A41AA0550900B544C6 /* 项目信息 */,
 				A9A40AEA1AA14C4300B4816A /* 结果页面 */,
+				A9004C6C1AA551F8008A123B /* 帮助 */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -496,6 +512,7 @@
 			files = (
 				A9A40AF11AA18D2C00B4816A /* htmlTemp in Resources */,
 				A900E3AA1A9EB713001E49AC /* AIProjectListViewController.xib in Resources */,
+				A9004C6B1AA551F3008A123B /* AIHelpWindowController.xib in Resources */,
 				A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */,
 				A9A40AE91AA14C3E00B4816A /* AIImageParseResultWindowController.xib in Resources */,
 				A9A40AF31AA1B07400B4816A /* Readme in Resources */,
@@ -529,6 +546,7 @@
 				A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */,
 				A9FD96C11AA3F8D20063CBD3 /* AIImageParseAPI.m in Sources */,
 				A900E3801A9EADDE001E49AC /* main.m in Sources */,
+				A9004C6A1AA551F3008A123B /* AIHelpWindowController.m in Sources */,
 				A900E3A31A9EB0F6001E49AC /* APPBaseViewController.m in Sources */,
 				A900E4141A9F0F44001E49AC /* NSBundle+YYAdditions.m in Sources */,
 				A9C301A21AA0550400B544C6 /* AIProjectInfoWindowController.m in Sources */,

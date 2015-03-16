@@ -668,11 +668,12 @@
         </menu>
         <window title="APPImage" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="500"/>
+            <rect key="contentRect" x="335" y="390" width="700" height="470"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="480" height="500"/>
+            <value key="minSize" type="size" width="700" height="470"/>
+            <value key="maxSize" type="size" width="999" height="470"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="500"/>
+                <rect key="frame" x="0.0" y="0.0" width="700" height="470"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <point key="canvasLocation" x="336.5" y="409"/>

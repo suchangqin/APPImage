@@ -10,6 +10,7 @@
 #import "AIAPI.h"
 #import "AITableProjects.h"
 #import "AIProjectInfoWindowController.h"
+#import "AIHelpWindowController.h"
 
 @interface AIProjectListViewController ()<NSTableViewDelegate,NSTableViewDataSource,NSMenuDelegate>
 
@@ -24,6 +25,9 @@
 @property (strong) NSArray *arrayProject;
 
 @property (strong) NSString *stringTerminalPath;
+@property (weak) IBOutlet NSView *viewLeft;
+@property (weak) IBOutlet NSView *viewRight;
+@property (weak) IBOutlet NSTextField *textFieldVersion;
 
 @end
 
@@ -33,6 +37,9 @@
     [super viewDidLoad];
     // Do view setup here.
     [self.viewListTop setBackgroundColor:RGBCOLOR(255, 255, 255)];
+    
+    [self.viewLeft setBackgroundColor:[NSColor whiteColor]];
+    self.tableView.backgroundColor = RGBCOLOR(241,240,240);
     
     self.tableProjects = [[AITableProjects alloc] init];
     
@@ -45,9 +52,11 @@
     
     [self ___reloadProjects];
     
+    self.textFieldVersion.stringValue = [NSString stringWithFormat:@"Version %@",DYY_APP_VERSION];
+    
     //查找Terminal项目
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *terminalPath = @"/Applications/Utilities/Terminal.app";
+    NSString *terminalPath = @"/Applications/Utilities/Terminal1.app";
     if(![fm fileExistsAtPath:terminalPath]){
         //不存在，到另一个里去找
         terminalPath = @"/Applications/Terminal.app";
@@ -56,8 +65,9 @@
         }
     }
     self.stringTerminalPath = terminalPath;
+    //如果没有则禁用
     if (!self.stringTerminalPath) {
-        self.menuItemTerminal.hidden = YES;
+        self.menuItemTerminal.action = nil;
     }
 }
 
@@ -115,6 +125,13 @@
 - (IBAction)___doAddAndroidProject:(id)sender {
     [self ___doAddProjectWithType:AIProjectTypeAndroidAPP];
 }
+- (IBAction)___doShowHelp:(id)sender {
+    AIHelpWindowController *wc = [[AIHelpWindowController alloc] initWithWindowNibName:@"AIHelpWindowController"];
+    [[AIAPI sharedInstance] addWindowController:wc];
+    [wc showWindow:self];
+}
+
+
 
 - (IBAction)___doMenuOpen:(id)sender {
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
@@ -273,9 +290,6 @@
     NSUInteger clickRow = self.tableView.clickedRow;
     NSUInteger allRows = [self.arrayProject count];
     for (NSMenuItem *item in menu.itemArray) {
-        if (item == _menuItemTerminal) {
-            continue;
-        }
         if (clickRow > allRows) {
             item.hidden = YES;
         }else{
