@@ -12,6 +12,11 @@
 
 @property (nonatomic,copy) NSString *stringRecentSelectedDir;     //最近打开的文件目录
 
+@property (strong) NSMutableArray *arrayWindowController;
+
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(AIAPI);
+
+-(void) addWindowController:(NSWindowController *) windowController;
+-(void) removeWindowController:(NSWindowController *) windowController;
 
 @end

@@ -7,6 +7,12 @@
 //
 
 #import "AIAPI.h"
+#import "AIProjectInfoWindowController.h"
+
+@interface AIAPI()
+
+
+@end
 
 @implementation AIAPI
 
@@ -19,6 +25,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(AIAPI);
 - (void)dealloc
 {
     [_stringRecentSelectedDir release];
+    [_arrayWindowController release];
     [super dealloc];
 }
 
@@ -36,6 +43,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(AIAPI);
     DYY_Property_set_object_copy(_stringRecentSelectedDir, stringRecentSelectedDir);
     [[NSUserDefaults standardUserDefaults] setObject:_stringRecentSelectedDir forKey:__kUser_stringRecentSelectedDir];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void) addWindowController:(NSWindowController *) windowController{
+    if (!self.arrayWindowController) {
+        self.arrayWindowController = [NSMutableArray array];
+    }
+    [self.arrayWindowController addObject:windowController];
+}
+-(void) removeWindowController:(NSWindowController *) windowController{
+    if ([self.arrayWindowController containsObject:windowController]) {
+        [self.arrayWindowController removeObject:windowController];
+    }
 }
 
 @end

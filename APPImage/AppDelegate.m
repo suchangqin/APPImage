@@ -13,6 +13,7 @@
 
 @property (weak) IBOutlet NSWindow *window;
 @property (strong) NSViewController *viewControllerRoot;
+@property (strong) NSWindowController *windowControllerProjectInfo;
 
 @end
 
@@ -28,5 +29,12 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
-
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+    if (!flag){
+        [NSApp activateIgnoringOtherApps:NO];
+        [self.window makeKeyAndOrderFront:self];
+    }
+    return YES;
+}
 @end

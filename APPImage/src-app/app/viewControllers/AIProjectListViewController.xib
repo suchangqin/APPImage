@@ -17,6 +17,34 @@
             <rect key="frame" x="0.0" y="0.0" width="431" height="452"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <customView id="YCL-se-xxO">
+                    <rect key="frame" x="0.0" y="414" width="431" height="38"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" id="BPS-Mb-59u">
+                            <rect key="frame" x="14" y="6" width="128" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="+ New iOS Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bxG-NK-rIs">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="___doAddIOSProject:" target="-2" id="cXM-uk-7X9"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" id="mUX-qx-lYb">
+                            <rect key="frame" x="150" y="6" width="153" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="+ New Android Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wkD-qG-TBP">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="___doAddAndroidProject:" target="-2" id="K3X-xN-izo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
                 <customView id="ieZ-AO-JTX">
                     <rect key="frame" x="0.0" y="0.0" width="431" height="414"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,34 +138,6 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </tableHeaderView>
                         </scrollView>
-                    </subviews>
-                </customView>
-                <customView id="YCL-se-xxO">
-                    <rect key="frame" x="0.0" y="414" width="431" height="38"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <button verticalHuggingPriority="750" id="BPS-Mb-59u">
-                            <rect key="frame" x="14" y="6" width="128" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="+ New iOS Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bxG-NK-rIs">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="___doAddIOSProject:" target="-2" id="cXM-uk-7X9"/>
-                            </connections>
-                        </button>
-                        <button verticalHuggingPriority="750" id="mUX-qx-lYb">
-                            <rect key="frame" x="150" y="6" width="153" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="+ New Android Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wkD-qG-TBP">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="___doAddAndroidProject:" target="-2" id="K3X-xN-izo"/>
-                            </connections>
-                        </button>
                     </subviews>
                 </customView>
             </subviews>

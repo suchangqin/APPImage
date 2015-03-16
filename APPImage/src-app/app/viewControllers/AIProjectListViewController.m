@@ -9,11 +9,15 @@
 #import "AIProjectListViewController.h"
 #import "AIAPI.h"
 #import "AITableProjects.h"
+#import "AIProjectInfoWindowController.h"
+
 @interface AIProjectListViewController ()<NSTableViewDelegate,NSTableViewDataSource,NSMenuDelegate>
 
 @property (weak) IBOutlet NSView *viewListTop;
 @property (strong) AITableProjects *tableProjects;
 @property (weak) IBOutlet NSTableView *tableView;
+
+@property (strong) NSMutableArray *arrayWC;
 
 
 @property (strong) NSArray *arrayProject;
@@ -61,7 +65,33 @@
     self.arrayProject = [_tableProjects queryAll];
     [self.tableView reloadData];
 }
-
+-(void) ___showProjectInfoViewControllerWithProjectDict:(NSDictionary *) projectDict{
+    
+    NSArray *arrayInfoShow = [AIAPI sharedInstance].arrayWindowController;
+    NSDictionary *dict = projectDict;
+    for (AIProjectInfoWindowController *infoWC in arrayInfoShow) {
+        if ([[infoWC.dictInProject stringForKey:kTable_project_id] isEqualToString:[dict stringForKey:kTable_project_id]]) {
+            [infoWC.window makeKeyAndOrderFront:self];
+            return;
+        }
+    }
+    
+    AIProjectInfoWindowController *wc = [[AIProjectInfoWindowController alloc] initWithWindowNibName:@"AIProjectInfoWindowController"];
+    wc.dictInProject = dict;
+    [[AIAPI sharedInstance] addWindowController:wc];
+    
+    NSUInteger fixPositon= [arrayInfoShow count]*10;
+    
+    CGRect f = self.view.window.frame;
+    
+    int x = CGRectGetMaxX(f) + fixPositon;
+    int y = CGRectGetMinY(f) + CGRectGetHeight(f)-CGRectGetHeight(wc.window.frame) -fixPositon;
+    
+    [wc.window setFrameOrigin:NSMakePoint(x,y)];
+    
+    [wc showWindow:self];
+    
+}
 - (IBAction)___doAddIOSProject:(id)sender {
     [self ___doAddProjectWithType:AIProjectTypeIOSAPP];
 }
@@ -71,7 +101,8 @@
 }
 
 - (IBAction)___doMenuOpen:(id)sender {
-    
+    NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
+    [self ___showProjectInfoViewControllerWithProjectDict:dict];
 }
 - (IBAction)___doMenuDelete:(NSMenuItem *)sender{
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
@@ -152,8 +183,7 @@
         return;
     }
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.selectedRow];
-    
-    DYYLog(@"double click with: %@",dict);
+    [self ___showProjectInfoViewControllerWithProjectDict:dict];
     
 }
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
