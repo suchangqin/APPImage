@@ -68,7 +68,7 @@
     
     [self ___reloadProjects];
     
-    self.textFieldVersion.stringValue = [NSString stringWithFormat:@"Version %@",DYY_APP_VERSION];
+//    self.textFieldVersion.stringValue = [NSString stringWithFormat:@"Version %@",DYY_APP_VERSION];
     
     //查找Terminal项目
     NSFileManager *fm = [NSFileManager defaultManager];
