@@ -11,23 +11,26 @@
 #import "AITableProjects.h"
 #import "AIImageParseResultWindowController.h"
 #import "AIFileParse.h"
+#import "AIImageParseAPI.h"
 
-@interface AIProjectInfoWindowController ()<NSTableViewDelegate,NSTableViewDataSource>
+@interface AIProjectInfoWindowController ()<NSTableViewDelegate,NSTableViewDataSource,AIImageParseAPIDelegate>
 
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSView *viewIgnoreButtons;
 
-@property (strong) NSArray *arrayIOSInitIngore;
-@property (strong) NSArray *arrayAndroidInitIngore;
+@property (strong) NSArray *arrayIOSInitIgnore;
+@property (strong) NSArray *arrayAndroidInitIgnore;
 @property (weak) IBOutlet NSButton *buttonRemoveIgnore;
 
-@property (strong) NSMutableArray *arrayIngoreDir;
+@property (strong) NSMutableArray *arrayIgnoreDir;
 @property (weak) IBOutlet NSView *viewProjectinfo;
 @property (weak) IBOutlet NSView *viewLoading;
 @property (weak) IBOutlet NSProgressIndicator *progressParse;
 @property (weak) IBOutlet NSTextField *textFieldLoadingTip;
 @property (weak) IBOutlet NSPopUpButton *popupButtonLevel1;
 @property (weak) IBOutlet NSPopUpButton *popupButtonLevel2;
+
+@property (strong) AIImageParseAPI *imageParseAPI;
 
 @end
 
@@ -36,6 +39,15 @@
 
 #define _kAPP_IndexFiles   @"is"
 #define _kAPP_IndexFiles1x   @"is1x"
+
+-(void)dealloc{
+    [self __cancelParse];
+}
+
+-(void) __cancelParse{
+    [self.imageParseAPI cancelParse];
+    self.imageParseAPI = nil;
+}
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -66,10 +78,10 @@
     _viewIgnoreButtons.layer.borderColor = [NSColor lightGrayColor].CGColor;
     
     
-    _arrayAndroidInitIngore = @[@"build",@"gradle",@"libs",@"libraries"];
-    _arrayIOSInitIngore = @[@"libs",@"libraries"];
+    _arrayAndroidInitIgnore = @[@"build",@"gradle",@"libs",@"libraries"];
+    _arrayIOSInitIgnore = @[@"libs",@"libraries"];
 
-    _arrayIngoreDir = [NSMutableArray arrayWithArray:[self ___getInitIgnoreArray]];
+    _arrayIgnoreDir = [NSMutableArray arrayWithArray:[self ___getInitIgnoreArray]];
     [self.tableView reloadData];
     
     
@@ -81,9 +93,9 @@
 }
 -(NSArray *) ___getInitIgnoreArray{
     if ([[_dictInProject stringForKey:kTable_project_type] intValue] == AIProjectTypeAndroidAPP) {
-        return _arrayAndroidInitIngore;
+        return _arrayAndroidInitIgnore;
     }
-    return _arrayIOSInitIngore;
+    return _arrayIOSInitIgnore;
 }
 
 
@@ -123,6 +135,9 @@
     }
 
 }
+-(void) ___parseThread{
+
+}
 - (IBAction)___doImageParse:(id)sender {
 
     NSString *path = [self.dictInProject stringForKey:kTable_project_path];
@@ -141,91 +156,34 @@
     }
     
     
-    
+    // start loading
     self.viewLoading.hidden = NO;
     [self.progressParse startAnimation:nil];
     
-    int level1 = [_popupButtonLevel1.selectedItem.title intValue];
-    int level2 = [_popupButtonLevel2.selectedItem.title intValue];
-    
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        AIProjectTypeState type = [[self.dictInProject stringForKey:kTable_project_type] intValue];
-        
-        NSDictionary *dictFile = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".png"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIngoreDir];
-        // format
-        NSDictionary *dictPNG = [AIFileParse pngFileFormat:dictFile withType:type];
-        
-        if (type == AIProjectTypeIOSAPP) {
-        
-            
-            NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xib",@".h",@".m",@".mm",@".plist"] stringSpecial:nil stringIgnore:@"APPImagesDefine.h" arrayIgnoreDir:self.arrayIngoreDir];
-            NSArray *imageNames = dictPNG.allKeys;
-            for (NSString *fileName in dictFileCodes.allKeys) {
-                for (NSString *codePath in [dictFileCodes objectForKey:fileName]) {
-                    @autoreleasepool {
-                        NSString *lines = nil;
-                        @autoreleasepool{
-                            NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:codePath];
-                            NSData *data = [fh readDataToEndOfFile];
-                            lines = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                        }
-                        for (NSString *imageName in imageNames) {
-                            NSMutableDictionary *imageDict = [dictPNG objectForKey:imageName];
-                            [self ___checkIOSImageNameContainsWithImageDict:imageDict imageName:imageName lines:lines codeFilePath:codePath dictPng:dictPNG fileName:fileName kIndexPaths:_kAPP_IndexFiles];
-                        }
-                    }
-                }
-            }
-            AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
-            [[AIAPI sharedInstance] addWindowController:wc];
-            wc.dictInSource = dictPNG;
-            wc.dictInProject = _dictInProject;
-            wc.intInWarningLevel1 = level1;
-            wc.intInWarningLevel2 = level2;
-            [wc showWindow:self];
-        }else{
-            NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xml",@".java"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIngoreDir];
-            NSArray *imageNames = dictPNG.allKeys;
-            for (NSString *codeFilePath in dictFileCodes.allKeys) {
-                NSArray *codePaths = dictFileCodes[codeFilePath];
-                for (NSString *p in codePaths) {
-                    NSFileHandle *fh = [NSFileHandle fileHandleForReadingAtPath:p];
-                    NSString *lines = [[NSString alloc] initWithData:[fh readDataToEndOfFile] encoding:NSUTF8StringEncoding];
-                    for (NSString *imageName in imageNames) {
-                        NSString *imageNameFormat = [[imageName stringByReplacingOccurrencesOfString:@".9.png" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
-                        NSString *imageName1 = [NSString stringWithFormat:@"drawable/%@",imageNameFormat];
-                        NSString *imageName2 = [NSString stringWithFormat:@"R.drawable.%@",imageNameFormat];
-                        if ([lines containsString:imageName1] || [lines containsString:imageName2]) {
-                            NSMutableDictionary *imageDict = dictPNG[imageName];
-                            if (![imageDict.allKeys containsObject:_kAPP_IndexFiles]) {
-                                imageDict[_kAPP_IndexFiles] = [NSMutableArray array];
-                            }
-                            [imageDict[_kAPP_IndexFiles] addObject:codeFilePath];
-                        }
-                    }
-                }
-            }
-            
-            AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
-            [[AIAPI sharedInstance] addWindowController:wc];
-            wc.dictInSource = dictPNG;
-            wc.dictInProject = _dictInProject;
-            wc.intInWarningLevel1 = level1;
-            wc.intInWarningLevel2 = level2;
-            [wc showWindow:self];
-            
-            
-        }
-
-        
-        
-        self.viewLoading.hidden = YES;
-        [self.progressParse stopAnimation:nil];
-        
-    });
+    // start parse
+    AIImageParseAPI *api = [[AIImageParseAPI alloc] init];
+    api.delegate = self;
+    api.stringProjectPath = path;
+    api.arrayIgnoreDir = self.arrayIgnoreDir;
+    api.type = [[_dictInProject stringForKey:kTable_project_type] intValue];
+    self.imageParseAPI = api;
+    [api startParseImageProject];
     
+//    int level1 = [_popupButtonLevel1.selectedItem.title intValue];
+//    int level2 = [_popupButtonLevel2.selectedItem.title intValue];
+
+    
+//    AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
+//    [[AIAPI sharedInstance] addWindowController:wc];
+//    wc.dictInSource = dictPNG;
+//    wc.dictInProject = _dictInProject;
+//    wc.intInWarningLevel1 = level1;
+//    wc.intInWarningLevel2 = level2;
+//    [wc showWindow:self];
+    
+//    self.viewLoading.hidden = YES;
+//    [self.progressParse stopAnimation:nil];
     
     
 }
@@ -241,10 +199,10 @@
     if (DYY_isEmptyString(newString)) {
         newString = @"dir";
     }
-    [self.arrayIngoreDir replaceObjectAtIndex:row withObject:newString];
+    [self.arrayIgnoreDir replaceObjectAtIndex:row withObject:newString];
 }
 -(void) ___selectLastRowToChangeName{
-    NSView *cellView = [self.tableView viewAtColumn:0 row:[self.arrayIngoreDir count]-1 makeIfNecessary:NO];
+    NSView *cellView = [self.tableView viewAtColumn:0 row:[self.arrayIgnoreDir count]-1 makeIfNecessary:NO];
     NSTextField *textFieldName = (NSTextField *) [cellView viewWithTag:1];
     [textFieldName becomeFirstResponder];
     
@@ -252,7 +210,7 @@
 }
 - (IBAction)___doAddIgnore:(id)sender {
     DYYLog(@"+");
-    [self.arrayIngoreDir addObject:@"dir"];
+    [self.arrayIgnoreDir addObject:@"dir"];
     [self ___reloadData];
     [self.tableView scrollRowToVisible:self.tableView.numberOfRows-1];
     //不做延迟不能相应focus方法
@@ -260,7 +218,7 @@
 
 }
 -(void) ___buttonIgnoreStateChange{
-    if (self.tableView.selectedRow > [[self ___getInitIgnoreArray] count]-1 && self.tableView.selectedRow<[_arrayIngoreDir count]) {
+    if (self.tableView.selectedRow > [[self ___getInitIgnoreArray] count]-1 && self.tableView.selectedRow<[_arrayIgnoreDir count]) {
         self.buttonRemoveIgnore.enabled = YES;
     }else{
         self.buttonRemoveIgnore.enabled = NO;
@@ -269,7 +227,7 @@
 - (IBAction)___doRemoveIgnore:(id)sender {
     DYYLog(@"-");
     NSInteger row = self.tableView.selectedRow;
-    [self.arrayIngoreDir removeObjectAtIndex:row];
+    [self.arrayIgnoreDir removeObjectAtIndex:row];
     [self ___reloadData];
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row-1] byExtendingSelection:NO];
     [self ___buttonIgnoreStateChange];
@@ -278,10 +236,10 @@
 
 #pragma mark - tableview datasource
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return [_arrayIngoreDir count];
+    return [_arrayIgnoreDir count];
 }
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-    return [_arrayIngoreDir objectAtIndex:row];
+    return [_arrayIgnoreDir objectAtIndex:row];
 }
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     NSString *CellIdent = @"AICellProjectView";
@@ -289,7 +247,7 @@
     NSString *iden = [ tableColumn identifier ];
     if ([iden isEqualToString:CellIdent]) {
         
-        NSString *ignore = [_arrayIngoreDir objectAtIndex:row];
+        NSString *ignore = [_arrayIgnoreDir objectAtIndex:row];
         
         NSView *cellView = [ tableView makeViewWithIdentifier:CellIdent owner:self ];
         
@@ -312,9 +270,17 @@
 }
 #pragma mark - window delegate
 - (BOOL)windowShouldClose:(id)sender{
-    AIAPI *api = [AIAPI sharedInstance];
-    [api removeWindowController:self];
+    [self __cancelParse];
     return YES;
 }
-
+#pragma mark - ImageParseAPI
+-(void)imageParseDoParseEndWithImageParseResult:(NSDictionary *)imageParseResult{
+    
+}
+-(void)imageParseDoParseWithLogInfo:(NSString *)logInfo currentIndex:(float)currentIndex allCount:(float)allCount{
+    DYYLog(@"(%f,%f)%@",currentIndex,allCount,logInfo);
+    self.textFieldLoadingTip.stringValue = logInfo;
+    self.progressParse.maxValue = allCount;
+    [self.progressParse setDoubleValue:currentIndex];
+}
 @end

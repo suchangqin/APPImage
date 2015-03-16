@@ -267,19 +267,19 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tpn-8j-1JJ">
-                                <rect key="frame" x="59" y="169" width="265" height="17"/>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" doubleValue="50" bezeled="NO" controlSize="small" style="bar" id="lEm-Yw-Fl9">
+                                <rect key="frame" x="91" y="171" width="200" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="可能需要等待几分钟" id="31I-bs-UDx">
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="tpn-8j-1JJ">
+                                <rect key="frame" x="59" y="78" width="265" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="请稍后" id="31I-bs-UDx">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" doubleValue="50" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="lEm-Yw-Fl9">
-                                <rect key="frame" x="183" y="149" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </progressIndicator>
                         </subviews>
                     </customView>
                 </subviews>
