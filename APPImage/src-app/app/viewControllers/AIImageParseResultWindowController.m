@@ -28,7 +28,7 @@
     
     AIProjectTypeState type = [[self.dictInProject stringForKey:kTable_project_type] intValue];
     NSString *proName = [_dictInProject stringForKey:kTable_project_name];
-    NSString *typeName = type == AIProjectTypeAndroidAPP ? @"Android":@"Objective-c";
+    NSString *typeName = type == AIProjectTypeAndroidAPP ? @"Android":@"Objective-C";
     self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeName];
     
     NSString *tempName = type == AIProjectTypeAndroidAPP ? @"android_image_parse":@"ios_image_parse";

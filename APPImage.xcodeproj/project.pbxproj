@@ -246,14 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				A9053A561A9F203D000779C9 /* APPDefines.h */,
-				A900E3E81A9EE2C1001E49AC /* AIAPI.h */,
-				A900E3E91A9EE2C1001E49AC /* AIAPI.m */,
-				A900E3FA1A9EE92E001E49AC /* AITableProjects.h */,
-				A900E3FB1A9EE92E001E49AC /* AITableProjects.m */,
-				A9A40AEB1AA14CC200B4816A /* AIFileParse.h */,
-				A9A40AEC1AA14CC200B4816A /* AIFileParse.m */,
-				A9FD96BF1AA3F8D20063CBD3 /* AIImageParseAPI.h */,
-				A9FD96C01AA3F8D20063CBD3 /* AIImageParseAPI.m */,
+				A96B23841AA98922006AFA1F /* 配置 */,
+				A96B23851AA98943006AFA1F /* 数据库 */,
+				A96B23861AA98958006AFA1F /* 解析文件 */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -262,7 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				A9A40AF01AA18D2C00B4816A /* htmlTemp */,
-				A900E3A51A9EB108001E49AC /* base */,
+				A900E3A51A9EB108001E49AC /* 测试 */,
 				A900E3AB1A9EB717001E49AC /* 项目列表管理 */,
 				A9C301A41AA0550900B544C6 /* 项目信息 */,
 				A9A40AEA1AA14C4300B4816A /* 结果页面 */,
@@ -279,14 +274,14 @@
 			path = libs;
 			sourceTree = "<group>";
 		};
-		A900E3A51A9EB108001E49AC /* base */ = {
+		A900E3A51A9EB108001E49AC /* 测试 */ = {
 			isa = PBXGroup;
 			children = (
 				A900E3A01A9EB0F6001E49AC /* APPBaseViewController.h */,
 				A900E3A11A9EB0F6001E49AC /* APPBaseViewController.m */,
 				A900E3A21A9EB0F6001E49AC /* APPBaseViewController.xib */,
 			);
-			name = base;
+			name = "测试";
 			sourceTree = "<group>";
 		};
 		A900E3AB1A9EB717001E49AC /* 项目列表管理 */ = {
@@ -393,6 +388,35 @@
 				A900E3FE1A9EEAA6001E49AC /* libsqlite3.0.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A96B23841AA98922006AFA1F /* 配置 */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3E81A9EE2C1001E49AC /* AIAPI.h */,
+				A900E3E91A9EE2C1001E49AC /* AIAPI.m */,
+			);
+			name = "配置";
+			sourceTree = "<group>";
+		};
+		A96B23851AA98943006AFA1F /* 数据库 */ = {
+			isa = PBXGroup;
+			children = (
+				A900E3FA1A9EE92E001E49AC /* AITableProjects.h */,
+				A900E3FB1A9EE92E001E49AC /* AITableProjects.m */,
+			);
+			name = "数据库";
+			sourceTree = "<group>";
+		};
+		A96B23861AA98958006AFA1F /* 解析文件 */ = {
+			isa = PBXGroup;
+			children = (
+				A9A40AEB1AA14CC200B4816A /* AIFileParse.h */,
+				A9A40AEC1AA14CC200B4816A /* AIFileParse.m */,
+				A9FD96BF1AA3F8D20063CBD3 /* AIImageParseAPI.h */,
+				A9FD96C01AA3F8D20063CBD3 /* AIImageParseAPI.m */,
+			);
+			name = "解析文件";
 			sourceTree = "<group>";
 		};
 		A9A40AEA1AA14C4300B4816A /* 结果页面 */ = {

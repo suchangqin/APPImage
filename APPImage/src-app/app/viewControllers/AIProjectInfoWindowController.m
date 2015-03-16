@@ -29,12 +29,11 @@
 @property (weak) IBOutlet NSPopUpButton *popupButtonLevel1;
 @property (weak) IBOutlet NSPopUpButton *popupButtonLevel2;
 @property (weak) IBOutlet GRProgressIndicator *progressIndicator;
-@property (weak) IBOutlet NSButton *buttonParse;
 
 @property (strong) AIImageParseAPI *imageParseAPI;
-@property (strong) IBOutlet NSView *viewParsingDisable;
 
 @property (strong) NSURL *urlAuthorizedURL;
+@property (strong) IBOutlet NSWindow *windowProgress;
 
 
 @end
@@ -52,6 +51,8 @@
 -(void) __cancelParse{
     [self.imageParseAPI cancelParse];
     self.imageParseAPI = nil;
+    self.progressIndicator.doubleValue = 0.0;
+    self.textFieldLoadingTip.stringValue = @"准备就绪";
 }
 
 - (void)windowDidLoad {
@@ -71,10 +72,16 @@
         NSString *iconName = type == AIProjectTypeAndroidAPP ? @"i-app-android" : @"i-app-mac-ios";
         imageView.image = [NSImage imageNamed:iconName];
         
+
+        NSString *proName = [_dictInProject stringForKey:kTable_project_name];
+        
         NSTextField *textFieldName = (NSTextField *) [cellView viewWithTag:2];
-        textFieldName.stringValue = [dict stringForKey:kTable_project_name];
+        textFieldName.stringValue = proName;
         NSTextField *textFieldPath = (NSTextField *) [cellView viewWithTag:3];
         textFieldPath.stringValue = [dict stringForKey:kTable_project_path];
+
+        NSString *typeName = type == AIProjectTypeAndroidAPP ? @"Android":@"Objective-C";
+        self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeName];
     }
     
     _viewIgnoreButtons.layer.borderWidth = 1;
@@ -88,13 +95,6 @@
 
     _arrayIgnoreDir = [NSMutableArray arrayWithArray:[self ___getInitIgnoreArray]];
     [self.tableView reloadData];
-    
-    CGRect f = ((NSView *)self.window.contentView).frame;
-    self.viewParsingDisable.frame = f;
-    [self.window.contentView addSubview:self.viewParsingDisable];
-    
-    [self.viewParsingDisable setBackgroundColor:RGBACOLOR(0, 0, 0, 0.1)];
-    
     
 }
 #pragma mark - ___
@@ -116,13 +116,14 @@
     
     [self.urlAuthorizedURL startAccessingSecurityScopedResource];
 
-    [self __cancelParse];
+    
+    [self.window beginSheet:_windowProgress completionHandler:^(NSModalResponse returnCode) {
+        
+    }];
+    
     // start loading
     self.progressIndicator.doubleValue = 0.0;
     [self.progressIndicator startAnimation:nil];
-    [self.buttonParse setTitle:@"Parsing..."];
-    self.buttonParse.enabled = NO;
-    self.viewParsingDisable.hidden = NO;
     
     // start parse
     AIImageParseAPI *imageParseApi = [[AIImageParseAPI alloc] init];
@@ -132,6 +133,10 @@
     imageParseApi.type = [[_dictInProject stringForKey:kTable_project_type] intValue];
     self.imageParseAPI = imageParseApi;
     [imageParseApi startParseImageProject];
+}
+- (IBAction)___doImageCancel:(id)sender {
+    [self.window endSheet:self.windowProgress];
+    [self __cancelParse];
 }
 
 - (IBAction)___doImageParse:(id)sender {
@@ -271,16 +276,12 @@
 }
 #pragma mark - ImageParseAPI
 -(void)imageParseDoParseEndWithImageParseResult:(NSDictionary *)imageParseResult{
-    self.buttonParse.enabled = YES;
-    [self.buttonParse setTitle:@"Parse Again"];
-    self.viewParsingDisable.hidden = YES;
-    [self.progressIndicator stopAnimation:nil];
+    
+    [self ___doImageCancel:nil];
     
     int level1 = [_popupButtonLevel1.selectedItem.title intValue];
     int level2 = [_popupButtonLevel2.selectedItem.title intValue];
 
-
-    
     AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
     [[AIAPI sharedInstance] addWindowController:wc];
     wc.dictInSource = imageParseResult;
