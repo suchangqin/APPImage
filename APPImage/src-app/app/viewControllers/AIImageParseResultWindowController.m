@@ -42,9 +42,8 @@
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning2 withString:DYY_IntString(_intInWarningLevel2)];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rPath withString:[_dictInProject stringForKey:kTable_project_path]];
     
-    
-    NSURL *baseURL = [NSURL fileURLWithPath:filePath];
-    [[_webView mainFrame] loadHTMLString:htmlString baseURL:baseURL];
+//    NSURL *baseURL = [NSURL fileURLWithPath:filePath];
+    [[_webView mainFrame] loadHTMLString:htmlString baseURL:nil];
     
 }
 
@@ -86,6 +85,9 @@
 }
 - (void)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject {
     [windowScriptObject setValue:self forKey:@"yyoc"];
+}
+-(void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
+    [_webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
 }
 
 + (NSString *) webScriptNameForSelector:(SEL)sel {
