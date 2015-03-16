@@ -118,6 +118,7 @@
 		A9C3019F1AA0550400B544C6 /* AIProjectInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProjectInfoWindowController.h; sourceTree = "<group>"; };
 		A9C301A01AA0550400B544C6 /* AIProjectInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProjectInfoWindowController.m; sourceTree = "<group>"; };
 		A9C301A11AA0550400B544C6 /* AIProjectInfoWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProjectInfoWindowController.xib; sourceTree = "<group>"; };
+		A9CEA3561AA5FF830074D953 /* APPImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = APPImage.entitlements; sourceTree = "<group>"; };
 		A9E50DCC1AA4595E00A03B4B /* APPImage.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = APPImage.icns; sourceTree = "<group>"; };
 		A9FC9F161AA43C45008A61E5 /* GRP_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GRP_images.xcassets; sourceTree = "<group>"; };
 		A9FD96BF1AA3F8D20063CBD3 /* AIImageParseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIImageParseAPI.h; sourceTree = "<group>"; };
@@ -191,6 +192,7 @@
 		A900E37A1A9EADDE001E49AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A9CEA3561AA5FF830074D953 /* APPImage.entitlements */,
 				A9E50DCC1AA4595E00A03B4B /* APPImage.icns */,
 				A900E3DE1A9EC219001E49AC /* APPImage-Prefix.pch */,
 				A900E37C1A9EADDE001E49AC /* AppDelegate.h */,
@@ -480,6 +482,11 @@
 					A900E3761A9EADDE001E49AC = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = L7V6YXNSVA;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					A900E3891A9EADDE001E49AC = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -674,6 +681,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = APPImage/APPImage.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -689,6 +697,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = APPImage/APPImage.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
