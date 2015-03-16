@@ -69,6 +69,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(AIAPI);
     [[NSUserDefaults standardUserDefaults] setObject:bookmarkData forKey:path];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+-(BOOL) authorizedURLStartFromPath:(NSString *)path{
+    NSURL *url = [self authorizedURLFromPath:path];
+    [url startAccessingSecurityScopedResource];
+    if (url) {
+        return YES;
+    }
+    return NO;
+}
 -(NSURL *) authorizedURLFromPath:(NSString *) path{
     NSData *bookMarkDataToResolve = [[NSUserDefaults standardUserDefaults] objectForKey:path];
     if (bookMarkDataToResolve != nil) {

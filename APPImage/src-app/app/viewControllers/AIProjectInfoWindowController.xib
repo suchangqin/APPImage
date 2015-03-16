@@ -12,6 +12,7 @@
                 <outlet property="progressIndicator" destination="qcJ-KL-gU0" id="leW-gY-Y80"/>
                 <outlet property="tableView" destination="in8-1V-b1x" id="xpF-35-qdP"/>
                 <outlet property="textFieldLoadingTip" destination="tpn-8j-1JJ" id="7bB-Nj-gBL"/>
+                <outlet property="viewDefineImageName" destination="Naj-Fj-yS7" id="NbQ-kA-n7O"/>
                 <outlet property="viewIgnoreButtons" destination="41N-cx-Z3X" id="0LI-dO-lzL"/>
                 <outlet property="viewProjectinfo" destination="goe-Af-5jg" id="AKk-AW-BSy"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -80,7 +81,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jsd-1E-k1e">
-                                <rect key="frame" x="4" y="175" width="175" height="17"/>
+                                <rect key="frame" x="8" y="175" width="175" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="图片大小警告设置(单位：KB) " id="sr1-XL-s0g">
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
@@ -144,6 +145,43 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <customView hidden="YES" id="Naj-Fj-yS7">
+                                <rect key="frame" x="0.0" y="0.0" width="190" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="X8W-iP-wGn">
+                                        <rect key="frame" x="8" y="63" width="133" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="图片名称索引生成" id="Q1n-GQ-n3U">
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" id="e6b-wr-cQU">
+                                        <rect key="frame" x="23" y="1" width="144" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="后缀不含“.png”" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MUX-fQ-H8U">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="___doImageNameDefineStart:" target="-2" id="ocn-Lx-k10"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" tag="1" id="FYZ-JE-2aA">
+                                        <rect key="frame" x="23" y="27" width="144" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="后缀含“.png”" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VTs-Ww-UCx">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="___doImageNameDefineStart:" target="-2" id="EVb-pJ-HoW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </customView>
                         </subviews>
                     </customView>
                     <customView id="3Kj-iX-K0I">
@@ -263,7 +301,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="598" y="331.5"/>
+            <point key="canvasLocation" x="598" y="331"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="7js-2O-buC" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>

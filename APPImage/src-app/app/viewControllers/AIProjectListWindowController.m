@@ -94,12 +94,11 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     for(NSDictionary *pro in array){
         NSString *path = [pro stringForKey:kTable_project_path];
-        if ([fm fileExistsAtPath:path] && [[AIAPI sharedInstance] authorizedURLFromPath:path]) {
+        if ([fm fileExistsAtPath:path] && [[AIAPI sharedInstance] authorizedURLStartFromPath:path]) {
             //如果项目存在并且有权限
             [proArray addObject:pro];
         }else{
             [self.tableProjects deleteForId:[pro stringForKey:kTable_project_id]];
-//            [[AIAPI sharedInstance] removeAuthorizedURLFromPath:path];
         }
     }
     self.arrayProject = proArray;
@@ -163,7 +162,6 @@
     NSString *id_ = [dict stringForKey:kTable_project_id];
 //    NSString  *path = [dict stringForKey:kTable_project_path];
     [self.tableProjects deleteForId:id_];
-//    [[AIAPI sharedInstance] removeAuthorizedURLFromPath:path];
     [self ___reloadProjects];
 }
 
@@ -176,11 +174,7 @@
 - (IBAction)___doMenuShowInTerminal:(id)sender {
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
     NSString *path = [dict stringForKey:kTable_project_path];
-    //打开授权
-    NSURL *url = [[AIAPI sharedInstance] authorizedURLFromPath:path];
-    [url startAccessingSecurityScopedResource];
     [[NSWorkspace sharedWorkspace] openFile:path withApplication:self.stringTerminalPath];
-    [url stopAccessingSecurityScopedResource];
 }
 
 - (IBAction)___doMenuCopyPath:(id)sender {

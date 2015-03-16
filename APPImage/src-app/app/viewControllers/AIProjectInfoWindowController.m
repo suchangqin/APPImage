@@ -13,8 +13,9 @@
 #import "AIFileParse.h"
 #import "AIImageParseAPI.h"
 #import "GRProgressIndicator.h"
+#import "AIImageNameDefineAPI.h"
 
-@interface AIProjectInfoWindowController ()<NSTableViewDelegate,NSTableViewDataSource,AIImageParseAPIDelegate>
+@interface AIProjectInfoWindowController ()<NSTableViewDelegate,NSTableViewDataSource,AIImageParseAPIDelegate,AIImageNameDefineAPIDelegate>
 
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSView *viewIgnoreButtons;
@@ -33,9 +34,10 @@
 @property (weak) IBOutlet GRProgressIndicator *progressIndicator;
 
 @property (strong) AIImageParseAPI *imageParseAPI;
+@property (strong) AIImageNameDefineAPI *imageNameDefineAPI;
 
-@property (strong) NSURL *urlAuthorizedURL;
 @property (strong) IBOutlet NSWindow *windowProgress;
+@property (weak) IBOutlet NSView *viewDefineImageName;
 
 
 @end
@@ -49,12 +51,16 @@
 -(void)dealloc{
     [self __cancelParse];
 }
-
+-(void) ___initProgress{
+    self.progressIndicator.doubleValue = 0.0;
+    self.textFieldLoadingTip.stringValue = @"";
+}
 -(void) __cancelParse{
     [self.imageParseAPI cancelParse];
     self.imageParseAPI = nil;
-    self.progressIndicator.doubleValue = 0.0;
-    self.textFieldLoadingTip.stringValue = @"准备就绪";
+    self.imageNameDefineAPI.delegate = nil;
+    self.imageNameDefineAPI = nil;
+    [self ___initProgress];
 }
 
 - (void)windowDidLoad {
@@ -85,9 +91,15 @@
         NSTextField *textFieldPath = (NSTextField *) [cellView viewWithTag:3];
         textFieldPath.stringValue = [dict stringForKey:kTable_project_path];
 
-        //设置window的title
-        NSString *typeName = type == AIProjectTypeAndroidAPP ? @"Android":@"Objective-C";
-        self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeName];
+        
+        //其它显示
+        NSString *typeFix = @"Android";
+        if (type == AIProjectTypeIOSAPP) {
+            typeFix = @"Objective-C";
+            _viewDefineImageName.hidden = NO;
+            [_viewDefineImageName setBackgroundColor:RGBACOLOR(0, 0, 0, 0.05)];
+        }
+        self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeFix];
     }
     
     
@@ -133,20 +145,12 @@
     //保存配置信息
     [self ___doSaveProperty:nil];
     
-    if (!self.urlAuthorizedURL) {
-        self.urlAuthorizedURL = [[AIAPI sharedInstance] authorizedURLFromPath:path];
-    }
-    
-    [self.urlAuthorizedURL startAccessingSecurityScopedResource];
-
-    
-    [self.window beginSheet:_windowProgress completionHandler:^(NSModalResponse returnCode) {
-        
-    }];
-    
     // start loading
-    self.progressIndicator.doubleValue = 0.0;
+    [self ___initProgress];
+    self.progressIndicator.indeterminate = NO;
     [self.progressIndicator startAnimation:nil];
+    [self.window beginSheet:_windowProgress completionHandler:^(NSModalResponse returnCode) {
+    }];
     
     // start parse
     AIImageParseAPI *imageParseApi = [[AIImageParseAPI alloc] init];
@@ -166,12 +170,26 @@
     NSString *level2 = _popupButtonLevel2.selectedItem.title;
     NSString *sizePty = [NSString stringWithFormat:@"%@,%@",level1,level2];
     NSString *ignorePty = [_arrayIgnoreDir componentsJoinedByString:@","];
-    BOOL success = [self.tableProjects updateForId:[self.dictInProject stringForKey:kTable_project_id] withSizeProperty:sizePty ignoreProperty:ignorePty];
-    NSString *result = @"保存失败";
-    if (success) {
-        result = @"保存成功";
-    }
+    [self.tableProjects updateForId:[self.dictInProject stringForKey:kTable_project_id] withSizeProperty:sizePty ignoreProperty:ignorePty];
+}
+- (IBAction)___doImageNameDefineStart:(NSButton *)sender {
     
+    // start loading
+    [self ___initProgress];
+    self.progressIndicator.indeterminate = YES;
+    [self.progressIndicator startAnimation:nil];
+    [self.window beginSheet:_windowProgress completionHandler:^(NSModalResponse returnCode) {
+    }];
+    self.textFieldLoadingTip.stringValue = @"请稍后，正在读取图片信息...";
+    
+    NSString *path = [self.dictInProject stringForKey:kTable_project_path];
+    // start parse
+    AIImageNameDefineAPI *api = [[AIImageNameDefineAPI alloc] init];
+    api.delegate = self;
+    api.stringProjectPath = path;
+    api.arrayIgnoreDir = self.arrayIgnoreDir;
+    self.imageNameDefineAPI = api;
+    [api startImageNameDefineProject:sender.tag];
 }
 
 - (IBAction)___doImageParse:(id)sender {
@@ -305,7 +323,6 @@
 }
 #pragma mark - window delegate
 - (BOOL)windowShouldClose:(id)sender{
-    [self.urlAuthorizedURL stopAccessingSecurityScopedResource];
     [self __cancelParse];
     return YES;
 }
@@ -329,5 +346,21 @@
     self.textFieldLoadingTip.stringValue = logInfo;
     self.progressIndicator.maxValue = allCount;
     self.progressIndicator.doubleValue = currentIndex;
+}
+#pragma mark - ImageNameDefineAPI
+-(void)imageNameDefineFinishedWithDefineString:(NSString *)defineString{
+    [self ___doImageCancel:nil];
+    DYYLog(@"%@",defineString);
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb declareTypes:[NSArray arrayWithObject:NSStringPboardType]
+               owner:self];
+    [pb setString:defineString forType:NSStringPboardType];
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"知道了"];
+    [alert setMessageText:@"生成完毕"];
+    [alert setInformativeText:@"已复制到粘贴板"];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+    }];
 }
 @end
