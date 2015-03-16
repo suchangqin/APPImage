@@ -213,14 +213,8 @@
         [api setStringRecentSelectedDir:path];//保存最近浏览目录
         
         if ([_tableProjects existWithPath:path]) {
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"确定"];
-            [alert setMessageText:@"文件目录已经存在"];
-            [alert setInformativeText:@"请在列表中查找"];
-            [alert setAlertStyle:NSWarningAlertStyle];
-            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
-                
-            }];
+            YYToastView *toast = [YYToastView toastViewWithTitle:@"项目已经存在！"];
+            [toast showInView:self.viewRight];
         }else{
             NSString *name = [path lastPathComponent];
             [_tableProjects insertWithName:name path:path type:type];

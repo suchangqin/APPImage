@@ -13,7 +13,13 @@
 - (NSArray *) loadNibWithNibName:(NSString *)nibName owner:(id)owner{
     NSArray *topLevelObjects;
     if ([[NSBundle mainBundle] loadNibNamed:nibName owner:owner topLevelObjects:&topLevelObjects]) {
-        return topLevelObjects;
+        NSMutableArray *reArray = [NSMutableArray array];
+        for (id one in topLevelObjects) {
+            if ([one isKindOfClass:[NSWindow class]] || [one isKindOfClass:[NSView class]]) {
+                [reArray addObject:one]; //只要视图列表
+            }
+        }
+        return reArray;
     }
     return nil;
 }

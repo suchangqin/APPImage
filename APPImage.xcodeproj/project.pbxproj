@@ -30,6 +30,8 @@
 		A900E4021A9EEB19001E49AC /* NSString+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4011A9EEB19001E49AC /* NSString+YYAdditions.m */; };
 		A900E4061A9EFEB1001E49AC /* NSDictionary+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4051A9EFEB1001E49AC /* NSDictionary+YYAdditions.m */; };
 		A900E4141A9F0F44001E49AC /* NSBundle+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4131A9F0F44001E49AC /* NSBundle+YYAdditions.m */; };
+		A9230C211AAD48CD003E1CA3 /* YYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9230C1E1AAD48CD003E1CA3 /* YYToastView.m */; };
+		A9230C221AAD48CD003E1CA3 /* YYToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9230C201AAD48CD003E1CA3 /* YYToastView.xib */; };
 		A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A9A40AE81AA14C3E00B4816A /* AIImageParseResultWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A40AE61AA14C3E00B4816A /* AIImageParseResultWindowController.m */; };
 		A9A40AE91AA14C3E00B4816A /* AIImageParseResultWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9A40AE71AA14C3E00B4816A /* AIImageParseResultWindowController.xib */; };
@@ -104,6 +106,9 @@
 		A900E4121A9F0F44001E49AC /* NSBundle+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+YYAdditions.h"; sourceTree = "<group>"; };
 		A900E4131A9F0F44001E49AC /* NSBundle+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+YYAdditions.m"; sourceTree = "<group>"; };
 		A9053A561A9F203D000779C9 /* APPDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPDefines.h; sourceTree = "<group>"; };
+		A9230C1E1AAD48CD003E1CA3 /* YYToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYToastView.m; sourceTree = "<group>"; };
+		A9230C1F1AAD48CD003E1CA3 /* YYToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYToastView.h; sourceTree = "<group>"; };
+		A9230C201AAD48CD003E1CA3 /* YYToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YYToastView.xib; sourceTree = "<group>"; };
 		A999C53A1AA0023700D36015 /* NSObject+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYAdditions.h"; sourceTree = "<group>"; };
 		A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYAdditions.m"; sourceTree = "<group>"; };
 		A9A40AE51AA14C3E00B4816A /* AIImageParseResultWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIImageParseResultWindowController.h; sourceTree = "<group>"; };
@@ -342,6 +347,9 @@
 				A900E3FD1A9EE963001E49AC /* YYCommonHeaders.h */,
 				A900E3E41A9EDDC9001E49AC /* YYDefines.h */,
 				A900E3E51A9EDDC9001E49AC /* YYDefines.m */,
+				A9230C1F1AAD48CD003E1CA3 /* YYToastView.h */,
+				A9230C1E1AAD48CD003E1CA3 /* YYToastView.m */,
+				A9230C201AAD48CD003E1CA3 /* YYToastView.xib */,
 				A900E3EE1A9EE901001E49AC /* database */,
 			);
 			path = common;
@@ -549,6 +557,7 @@
 				A9C301A31AA0550400B544C6 /* AIProjectInfoWindowController.xib in Resources */,
 				A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */,
 				A900E3851A9EADDE001E49AC /* MainMenu.xib in Resources */,
+				A9230C221AAD48CD003E1CA3 /* YYToastView.xib in Resources */,
 				A9FC9F171AA43C45008A61E5 /* GRP_images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,6 +584,7 @@
 				A900E3E11A9EC508001E49AC /* NSView+YYAdditions.m in Sources */,
 				A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */,
 				A9FD96C11AA3F8D20063CBD3 /* AIImageParseAPI.m in Sources */,
+				A9230C211AAD48CD003E1CA3 /* YYToastView.m in Sources */,
 				A900E3801A9EADDE001E49AC /* main.m in Sources */,
 				A9004C6A1AA551F3008A123B /* AIHelpWindowController.m in Sources */,
 				A900E3A31A9EB0F6001E49AC /* APPBaseViewController.m in Sources */,

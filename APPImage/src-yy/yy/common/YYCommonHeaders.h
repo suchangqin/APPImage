@@ -13,6 +13,7 @@
 #import "YYDefines.h"
 #import "YYDB.h"
 #import "YYTableBase.h"
+#import "YYToastView.h"
 
 
 #endif

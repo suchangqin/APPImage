@@ -97,7 +97,7 @@
         if (type == AIProjectTypeIOSAPP) {
             typeFix = @"Objective-C";
             _viewDefineImageName.hidden = NO;
-            [_viewDefineImageName setBackgroundColor:RGBACOLOR(0, 0, 0, 0.05)];
+            [_viewDefineImageName setBackgroundColor:RGBACOLOR(0, 0, 0, 0.08)];
         }
         self.window.title = [NSString stringWithFormat:@"%@ (%@)",proName,typeFix];
     }
@@ -244,16 +244,8 @@
     if ([panel runModal] == NSModalResponseOK) {
         NSString *name = [[panel.URLs.firstObject path] lastPathComponent];
         if([self.arrayIgnoreDir containsObject:name]){
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"确定"];
-            [alert setMessageText:@"已经存在"];
-            
-            [alert setInformativeText:@""];
-            
-            [alert setAlertStyle:NSWarningAlertStyle];
-            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
-                
-            }];
+            YYToastView *toast = [YYToastView toastViewWithTitle:@"已经存在！"];
+            [toast showInView:self.tableView];
             return;
         }
         [self.arrayIgnoreDir addObject:name];
@@ -355,12 +347,8 @@
     [pb declareTypes:[NSArray arrayWithObject:NSStringPboardType]
                owner:self];
     [pb setString:defineString forType:NSStringPboardType];
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:@"知道了"];
-    [alert setMessageText:@"生成完毕"];
-    [alert setInformativeText:@"已复制到粘贴板"];
-    [alert setAlertStyle:NSWarningAlertStyle];
-    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
-    }];
+    
+    YYToastView *toast = [YYToastView toastViewWithTitle:@"生成完毕，已复制到粘贴板！"];
+    [toast showInWindow:self.window];
 }
 @end

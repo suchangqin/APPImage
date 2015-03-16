@@ -15,6 +15,7 @@
 #import "NSView+YYAdditions.h"
 #import "NSString+YYAdditions.h"
 #import "NSDictionary+YYAdditions.h"
+#import "NSBundle+YYAdditions.h"
 
 
 #endif
