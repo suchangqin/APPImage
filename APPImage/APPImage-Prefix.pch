@@ -8,8 +8,9 @@
     #import <Cocoa/Cocoa.h>
 
 
+#import "APPDefines.h"
+
 #import "YYAllHeader.h"
 #import "YYLibrariesHeader.h"
-#import "AppDelegate.h"
 
 #endif

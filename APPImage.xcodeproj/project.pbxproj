@@ -27,9 +27,8 @@
 		A900E3FF1A9EEAA6001E49AC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A900E3FE1A9EEAA6001E49AC /* libsqlite3.0.dylib */; };
 		A900E4021A9EEB19001E49AC /* NSString+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4011A9EEB19001E49AC /* NSString+YYAdditions.m */; };
 		A900E4061A9EFEB1001E49AC /* NSDictionary+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4051A9EFEB1001E49AC /* NSDictionary+YYAdditions.m */; };
-		A900E40B1A9F059A001E49AC /* AICellProject.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E40A1A9F059A001E49AC /* AICellProject.m */; };
-		A900E4101A9F0794001E49AC /* AICellProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A900E40F1A9F0794001E49AC /* AICellProjectView.xib */; };
 		A900E4141A9F0F44001E49AC /* NSBundle+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A900E4131A9F0F44001E49AC /* NSBundle+YYAdditions.m */; };
+		A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,11 +85,11 @@
 		A900E4011A9EEB19001E49AC /* NSString+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYAdditions.m"; sourceTree = "<group>"; };
 		A900E4041A9EFEB1001E49AC /* NSDictionary+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+YYAdditions.h"; sourceTree = "<group>"; };
 		A900E4051A9EFEB1001E49AC /* NSDictionary+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+YYAdditions.m"; sourceTree = "<group>"; };
-		A900E4091A9F059A001E49AC /* AICellProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AICellProject.h; sourceTree = "<group>"; };
-		A900E40A1A9F059A001E49AC /* AICellProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AICellProject.m; sourceTree = "<group>"; };
-		A900E40F1A9F0794001E49AC /* AICellProjectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICellProjectView.xib; sourceTree = "<group>"; };
 		A900E4121A9F0F44001E49AC /* NSBundle+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+YYAdditions.h"; sourceTree = "<group>"; };
 		A900E4131A9F0F44001E49AC /* NSBundle+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+YYAdditions.m"; sourceTree = "<group>"; };
+		A9053A561A9F203D000779C9 /* APPDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APPDefines.h; sourceTree = "<group>"; };
+		A999C53A1AA0023700D36015 /* NSObject+YYAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYAdditions.h"; sourceTree = "<group>"; };
+		A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +201,7 @@
 		A900E39D1A9EAF3F001E49AC /* common */ = {
 			isa = PBXGroup;
 			children = (
-				A900E4081A9F0521001E49AC /* CustomCell */,
+				A9053A561A9F203D000779C9 /* APPDefines.h */,
 				A900E3E81A9EE2C1001E49AC /* AIAPI.h */,
 				A900E3E91A9EE2C1001E49AC /* AIAPI.m */,
 				A900E3FA1A9EE92E001E49AC /* AITableProjects.h */,
@@ -270,6 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				A900E3E21A9EC57A001E49AC /* YYAdditionsHeaders.h */,
+				A999C53A1AA0023700D36015 /* NSObject+YYAdditions.h */,
+				A999C53B1AA0023700D36015 /* NSObject+YYAdditions.m */,
 				A900E3AF1A9EC0B3001E49AC /* NSColor+YYAdditions.h */,
 				A900E3B01A9EC0B3001E49AC /* NSColor+YYAdditions.m */,
 				A900E4001A9EEB19001E49AC /* NSString+YYAdditions.h */,
@@ -338,16 +339,6 @@
 				A900E3FE1A9EEAA6001E49AC /* libsqlite3.0.dylib */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A900E4081A9F0521001E49AC /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				A900E4091A9F059A001E49AC /* AICellProject.h */,
-				A900E40A1A9F059A001E49AC /* AICellProject.m */,
-				A900E40F1A9F0794001E49AC /* AICellProjectView.xib */,
-			);
-			name = CustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,7 +421,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A900E4101A9F0794001E49AC /* AICellProjectView.xib in Resources */,
 				A900E3AA1A9EB713001E49AC /* AIProjectListViewController.xib in Resources */,
 				A900E3A41A9EB0F6001E49AC /* APPBaseViewController.xib in Resources */,
 				A900E3821A9EADDE001E49AC /* Images.xcassets in Resources */,
@@ -454,10 +444,10 @@
 			files = (
 				A900E3F91A9EE901001E49AC /* YYTableTest.m in Sources */,
 				A900E3E61A9EDDC9001E49AC /* YYDefines.m in Sources */,
-				A900E40B1A9F059A001E49AC /* AICellProject.m in Sources */,
 				A900E4021A9EEB19001E49AC /* NSString+YYAdditions.m in Sources */,
 				A900E3A91A9EB713001E49AC /* AIProjectListViewController.m in Sources */,
 				A900E3E11A9EC508001E49AC /* NSView+YYAdditions.m in Sources */,
+				A999C53C1AA0023700D36015 /* NSObject+YYAdditions.m in Sources */,
 				A900E3801A9EADDE001E49AC /* main.m in Sources */,
 				A900E3A31A9EB0F6001E49AC /* APPBaseViewController.m in Sources */,
 				A900E4141A9F0F44001E49AC /* NSBundle+YYAdditions.m in Sources */,
@@ -658,6 +648,7 @@
 				A900E3961A9EADDE001E49AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A900E3971A9EADDE001E49AC /* Build configuration list for PBXNativeTarget "APPImageTests" */ = {
 			isa = XCConfigurationList;
@@ -666,6 +657,7 @@
 				A900E3991A9EADDE001E49AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

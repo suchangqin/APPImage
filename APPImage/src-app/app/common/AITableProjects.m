@@ -17,7 +17,7 @@
     [self.dbUtil dbCreateTableWithSql:sqlString];
 }
 
--(void) inserWithName:(NSString *) name path:(NSString *) path type:(AITableProjectsTypeState) type property:(NSString *) property{
+-(void) inserWithName:(NSString *) name path:(NSString *) path type:(AIProjectTypeState) type property:(NSString *) property{
     if([self existWithPath:path]){
         return;
     }
@@ -29,9 +29,16 @@
     [self.dbUtil dbUpdateWithSql:sqlString];
 }
 -(NSArray *)queryAll{
-    NSString *sqlString = @"SELECT * FROM " TABLE_NAME;
+    NSString *sqlString = @"SELECT * FROM " TABLE_NAME " ORDER BY id DESC";
     NSArray *result = [self.dbUtil dbQueryWithSql:sqlString];
     return result;
+}
+-(void) changeForId:(NSString *) id_ withName:(NSString *) name{
+    NSString *sql = [NSString stringWithFormat:@"UPDATE " TABLE_NAME " SET name = '%@' WHERE id = %@",
+                     DB_STRING_FORMAT(name),
+                     DB_STRING_FORMAT(id_)
+                     ];
+    [self.dbUtil dbUpdateWithSql:sql];
 }
 -(BOOL) existWithPath:(NSString *) path{
     NSString *sqlString = [NSString stringWithFormat:@"SELECT count(*) FROM" TABLE_NAME "WHERE path='%@'",DB_STRING_FORMAT(path)];

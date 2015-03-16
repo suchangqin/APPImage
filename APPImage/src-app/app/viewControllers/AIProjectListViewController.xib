@@ -29,18 +29,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" headerView="Rvw-wt-qGU" viewBased="YES" id="dMx-Uq-ydz">
-                                        <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                         <tableColumns>
-                                            <tableColumn identifier="AICellProjectView" width="426" minWidth="10" maxWidth="3.4028234663852886e+38" id="5PX-Bi-Amv">
+                                            <tableColumn identifier="AICellProjectView" width="429" minWidth="10" maxWidth="3.4028234663852886e+38" id="5PX-Bi-Amv">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="项目列表">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
-                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="D1U-bQ-2hz" customClass="AICellProject">
+                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="D1U-bQ-2hz">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -48,7 +47,7 @@
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <customView id="6mL-21-7Af">
-                                                        <rect key="frame" x="1" y="0.0" width="426" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="429" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Vnx-FC-IEL">
@@ -57,16 +56,19 @@
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-app-android" id="lSv-9m-hZf"/>
                                                             </imageView>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="EEG-a8-cpr">
-                                                                <rect key="frame" x="68" y="27" width="340" height="20"/>
+                                                                <rect key="frame" x="68" y="27" width="343" height="20"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="project name" id="ngN-rc-rC2">
-                                                                    <font key="font" size="14" name="HelveticaNeue-Bold"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="project name" id="ngN-rc-rC2">
+                                                                    <font key="font" metaFont="system" size="14"/>
                                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
+                                                                <connections>
+                                                                    <action selector="___doProjectNameChanged:" target="-2" id="RYm-42-d38"/>
+                                                                </connections>
                                                             </textField>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" id="4u8-eX-dC0">
-                                                                <rect key="frame" x="68" y="10" width="340" height="15"/>
+                                                                <rect key="frame" x="68" y="10" width="343" height="15"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="path" id="8RN-2G-Wa5">
                                                                     <font key="font" metaFont="cellTitle"/>
@@ -75,7 +77,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="VfI-Cr-fZ3">
-                                                                <rect key="frame" x="0.0" y="-2" width="426" height="5"/>
+                                                                <rect key="frame" x="0.0" y="-2" width="429" height="5"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -98,7 +100,7 @@
                                 <rect key="frame" x="1" y="32" width="46" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
-                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="t5J-Yz-4tm">
+                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="t5J-Yz-4tm">
                                 <rect key="frame" x="224" y="17" width="15" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>

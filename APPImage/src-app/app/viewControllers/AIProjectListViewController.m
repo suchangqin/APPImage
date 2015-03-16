@@ -43,6 +43,8 @@
     [self.tableView setHeaderView:nil];
     
 
+    [self.tableView setDoubleAction:@selector(___tableViewDoubleClick:)];
+    
     [self ___reloadProjects];
     
 }
@@ -53,13 +55,13 @@
 }
 
 - (IBAction)___doAddIOSProject:(id)sender {
-    [self ___doAddProjectWithType:AITableProjectsTypeIOSAPP];
+    [self ___doAddProjectWithType:AIProjectTypeIOSAPP];
 }
 
 - (IBAction)___doAddAndroidProject:(id)sender {
-    [self ___doAddProjectWithType:AITableProjectsTypeAndroidAPP];
+    [self ___doAddProjectWithType:AIProjectTypeAndroidAPP];
 }
-- (void)___doAddProjectWithType:(AITableProjectsTypeState)type {
+- (void)___doAddProjectWithType:(AIProjectTypeState)type {
     AIAPI *api = [AIAPI sharedInstance];
     
     NSOpenPanel *panel = [NSOpenPanel openPanel];
@@ -95,6 +97,12 @@
     
 }
 #pragma mark - tableview datasource
+-(void) ___tableViewDoubleClick:(id) sender{
+    NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.selectedRow];
+    
+    DYYLog(@"double click with: %@",dict);
+    
+}
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
     return [_arrayProject count];
 }
@@ -105,7 +113,6 @@
     NSString *CellIdent = @"AICellProjectView";
     
     NSString *iden = [ tableColumn identifier ];
-    DYYLog(@"%@",iden);
     if ([iden isEqualToString:CellIdent]) {
         
         NSDictionary *dict = [_arrayProject objectAtIndex:row];
@@ -113,22 +120,39 @@
         NSTableCellView *cell = [ tableView makeViewWithIdentifier:CellIdent owner:self ];
 
         NSImageView *imageView = (NSImageView *) [cell viewWithTag:1];
-        AITableProjectsTypeState type = [[dict stringForKey:@"type"] intValue];
-        NSString *iconName = type == AITableProjectsTypeAndroidAPP ? @"i-app-android" : @"i-app-iOS";
+        AIProjectTypeState type = [[dict stringForKey:kTable_project_type] intValue];
+        NSString *iconName = type == AIProjectTypeAndroidAPP ? @"i-app-android" : @"i-app-iOS";
         imageView.image = [NSImage imageNamed:iconName];
         
         NSTextField *textFieldName = (NSTextField *) [cell viewWithTag:2];
-        textFieldName.stringValue = [dict stringForKey:@"name"];
+        textFieldName.stringValue = [dict stringForKey:kTable_project_name];
+        DYY_setYYUserInfo(textFieldName, @(row));
         NSTextField *textFieldPath = (NSTextField *) [cell viewWithTag:3];
-        textFieldPath.stringValue = [dict stringForKey:@"path"];
+        textFieldPath.stringValue = [dict stringForKey:kTable_project_path];
         
         
         return cell;
     }
     return nil;
 }
+-(IBAction) ___doProjectNameChanged:(NSTextField *) sender{
+    NSString *name = sender.stringValue;
+    int row = [DYY_getYYUserInfo(sender) intValue];
+    DYYLog(@"%@ -> %d ",name,row);
+    
+    NSDictionary *dict = [_arrayProject objectAtIndex:row];
+    NSString *nameOld = [dict stringForKey:kTable_project_name];
+    if (DYY_isEmptyString(name)) {
+        sender.stringValue = nameOld;
+        return;
+    }
+    if([name isEqualToString:nameOld]){
+        return;
+    }
+    [self.tableProjects changeForId:[dict stringForKey:kTable_project_id] withName:name];
+}
+-(void)tableViewSelectionDidChange:(NSNotification *)notification
+{
 
-
-
-
+}
 @end
