@@ -32,7 +32,7 @@
 @property (weak) IBOutlet NSButton *buttonParse;
 
 @property (strong) AIImageParseAPI *imageParseAPI;
-@property (weak) IBOutlet NSView *viewParsingDisable;
+@property (strong) IBOutlet NSView *viewParsingDisable;
 
 
 @end
@@ -84,6 +84,10 @@
 
     _arrayIgnoreDir = [NSMutableArray arrayWithArray:[self ___getInitIgnoreArray]];
     [self.tableView reloadData];
+    
+    CGRect f = ((NSView *)self.window.contentView).frame;
+    self.viewParsingDisable.frame = f;
+    [self.window.contentView addSubview:self.viewParsingDisable];
     
     
 }
@@ -165,6 +169,19 @@
     //    [panel setAllowsOtherFileTypes:YES];
     if ([panel runModal] == NSModalResponseOK) {
         NSString *name = [[panel.URLs.firstObject path] lastPathComponent];
+        if([self.arrayIgnoreDir containsObject:name]){
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"确定"];
+            [alert setMessageText:@"已经存在"];
+            
+            [alert setInformativeText:@""];
+            
+            [alert setAlertStyle:NSWarningAlertStyle];
+            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                
+            }];
+            return;
+        }
         [self.arrayIgnoreDir addObject:name];
         [self ___reloadData];
         [self.tableView scrollRowToVisible:self.tableView.numberOfRows-1];
