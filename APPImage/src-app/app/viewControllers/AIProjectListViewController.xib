@@ -29,7 +29,7 @@
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OY5-0t-DOu">
                             <rect key="frame" x="136" y="293" width="128" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="APPImage" id="tbU-R9-2IU"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-appimage" id="tbU-R9-2IU"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DD9-De-Zn9">
                             <rect key="frame" x="50" y="246" width="300" height="39"/>
@@ -370,9 +370,9 @@
         </menu>
     </objects>
     <resources>
-        <image name="APPImage" width="512" height="512"/>
         <image name="i-app-android" width="44" height="44"/>
         <image name="i-app-mac-ios" width="44" height="44"/>
+        <image name="i-appimage" width="128" height="128"/>
         <image name="i-help" width="44" height="44"/>
     </resources>
 </document>
