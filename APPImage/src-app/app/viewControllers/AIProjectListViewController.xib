@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AIProjectListViewController">
             <connections>
+                <outlet property="tableView" destination="dMx-Uq-ydz" id="jkm-6q-sZc"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="viewListTop" destination="ieZ-AO-JTX" id="dDu-RR-bIC"/>
             </connections>
@@ -19,20 +20,119 @@
                 <customView id="ieZ-AO-JTX">
                     <rect key="frame" x="0.0" y="0.0" width="431" height="414"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <scrollView autohidesScrollers="YES" horizontalLineScroll="50" horizontalPageScroll="10" verticalLineScroll="50" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="2Q0-7B-ww9">
+                            <rect key="frame" x="0.0" y="0.0" width="431" height="414"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <clipView key="contentView" id="3nI-wd-boY">
+                                <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" headerView="Rvw-wt-qGU" viewBased="YES" id="dMx-Uq-ydz">
+                                        <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                        <tableColumns>
+                                            <tableColumn identifier="AICellProjectView" width="426" minWidth="10" maxWidth="3.4028234663852886e+38" id="5PX-Bi-Amv">
+                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="项目列表">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                </tableHeaderCell>
+                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="D1U-bQ-2hz" customClass="AICellProject">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                <prototypeCellViews>
+                                                    <customView id="6mL-21-7Af">
+                                                        <rect key="frame" x="1" y="0.0" width="426" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Vnx-FC-IEL">
+                                                                <rect key="frame" x="12" y="3" width="44" height="44"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-app-android" id="lSv-9m-hZf"/>
+                                                            </imageView>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="EEG-a8-cpr">
+                                                                <rect key="frame" x="68" y="27" width="340" height="20"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="project name" id="ngN-rc-rC2">
+                                                                    <font key="font" size="14" name="HelveticaNeue-Bold"/>
+                                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" id="4u8-eX-dC0">
+                                                                <rect key="frame" x="68" y="10" width="340" height="15"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="path" id="8RN-2G-Wa5">
+                                                                    <font key="font" metaFont="cellTitle"/>
+                                                                    <color key="textColor" red="0.23921568627450981" green="0.23921568627450981" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="VfI-Cr-fZ3">
+                                                                <rect key="frame" x="0.0" y="-2" width="426" height="5"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <font key="titleFont" metaFont="system"/>
+                                                            </box>
+                                                        </subviews>
+                                                    </customView>
+                                                </prototypeCellViews>
+                                            </tableColumn>
+                                        </tableColumns>
+                                        <connections>
+                                            <outlet property="dataSource" destination="-2" id="uv2-9b-PW7"/>
+                                            <outlet property="delegate" destination="-2" id="txm-tP-gki"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </clipView>
+                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="dQ4-1f-U0p">
+                                <rect key="frame" x="1" y="32" width="46" height="15"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="t5J-Yz-4tm">
+                                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                            <tableHeaderView key="headerView" id="Rvw-wt-qGU">
+                                <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </tableHeaderView>
+                        </scrollView>
+                    </subviews>
                 </customView>
                 <customView id="YCL-se-xxO">
                     <rect key="frame" x="0.0" y="414" width="431" height="38"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button verticalHuggingPriority="750" id="BPS-Mb-59u">
-                            <rect key="frame" x="20" y="6" width="116" height="25"/>
+                            <rect key="frame" x="14" y="6" width="128" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="+ New Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bxG-NK-rIs">
+                            <buttonCell key="cell" type="roundTextured" title="+ New iOS Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bxG-NK-rIs">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="___doAddProject:" target="-2" id="2tP-6x-vyc"/>
+                                <action selector="___doAddIOSProject:" target="-2" id="cXM-uk-7X9"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" id="mUX-qx-lYb">
+                            <rect key="frame" x="150" y="6" width="153" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="+ New Android Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wkD-qG-TBP">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="___doAddAndroidProject:" target="-2" id="K3X-xN-izo"/>
                             </connections>
                         </button>
                     </subviews>
@@ -41,4 +141,7 @@
             <point key="canvasLocation" x="315.5" y="462"/>
         </customView>
     </objects>
+    <resources>
+        <image name="i-app-android" width="44" height="44"/>
+    </resources>
 </document>

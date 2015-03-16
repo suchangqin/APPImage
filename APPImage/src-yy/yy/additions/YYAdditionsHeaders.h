@@ -13,5 +13,7 @@
 #import "NSColor+YYAdditions.h"
 #import "NSView+YYAdditions.h"
 #import "NSString+YYAdditions.h"
+#import "NSDictionary+YYAdditions.h"
+
 
 #endif
