@@ -287,6 +287,7 @@
         return;
     }
     [self.tableProjects changeForId:[dict stringForKey:kTable_project_id] withName:name];
+    [self ___reloadProjects];
 }
 
 #pragma mark - nsmenu delegate
