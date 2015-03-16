@@ -7,6 +7,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="AIProjectInfoWindowController">
             <connections>
                 <outlet property="buttonRemoveIgnore" destination="EZe-VM-a8k" id="SaP-lg-c17"/>
+                <outlet property="popupButtonLevel1" destination="W7u-la-S5A" id="mMA-ks-Nqe"/>
+                <outlet property="popupButtonLevel2" destination="Hf1-yq-Dg7" id="mHU-f4-WdA"/>
                 <outlet property="progressParse" destination="lEm-Yw-Fl9" id="XIv-yq-9Tv"/>
                 <outlet property="tableView" destination="in8-1V-b1x" id="xpF-35-qdP"/>
                 <outlet property="textFieldLoadingTip" destination="tpn-8j-1JJ" id="7bB-Nj-gBL"/>
@@ -69,7 +71,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jsd-1E-k1e">
                                 <rect key="frame" x="4" y="175" width="141" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Size Warning：" id="sr1-XL-s0g">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Warning Setting (KB) ：" id="sr1-XL-s0g">
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -96,14 +98,15 @@
                             <popUpButton verticalHuggingPriority="750" id="W7u-la-S5A">
                                 <rect key="frame" x="64" y="133" width="88" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="30 kb" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="P9L-wb-rnl" id="ENg-Hf-sDH">
+                                <popUpButtonCell key="cell" type="push" title="40" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jdg-Xg-0AG" id="ENg-Hf-sDH">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="Lzx-hl-6si">
                                         <items>
-                                            <menuItem title="20 kb" id="NT3-wl-BU3"/>
-                                            <menuItem title="30 kb" state="on" id="P9L-wb-rnl"/>
-                                            <menuItem title="40 kb" id="jdg-Xg-0AG"/>
+                                            <menuItem title="10" id="NT3-wl-BU3"/>
+                                            <menuItem title="20" id="AsA-zt-kLD"/>
+                                            <menuItem title="30" id="P9L-wb-rnl"/>
+                                            <menuItem title="40" state="on" id="jdg-Xg-0AG"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -111,18 +114,18 @@
                             <popUpButton verticalHuggingPriority="750" id="Hf1-yq-Dg7">
                                 <rect key="frame" x="64" y="102" width="88" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="60 kb" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CmG-HS-0Kq" id="o3D-KC-Qu1">
+                                <popUpButtonCell key="cell" type="push" title="60" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CmG-HS-0Kq" id="o3D-KC-Qu1">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="kJY-ip-HgG">
                                         <items>
-                                            <menuItem title="50 kb" id="0LH-I9-a3w"/>
-                                            <menuItem title="60 kb" state="on" id="CmG-HS-0Kq">
+                                            <menuItem title="50" id="0LH-I9-a3w"/>
+                                            <menuItem title="60" state="on" id="CmG-HS-0Kq">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
-                                            <menuItem title="70 kb" id="cjI-By-iaB"/>
-                                            <menuItem title="80 kb" id="h6m-3j-HxA"/>
-                                            <menuItem title="90 kb" id="0tb-qO-GxL"/>
+                                            <menuItem title="70" id="cjI-By-iaB"/>
+                                            <menuItem title="80" id="h6m-3j-HxA"/>
+                                            <menuItem title="90" id="0tb-qO-GxL"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>

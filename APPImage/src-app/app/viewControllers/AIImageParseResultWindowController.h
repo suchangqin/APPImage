@@ -12,5 +12,7 @@
 
 @property (strong) NSDictionary *dictInProject;
 @property (strong) NSDictionary *dictInSource;
+@property () int intInWarningLevel1;
+@property () int intInWarningLevel2;
 
 @end

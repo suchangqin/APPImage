@@ -26,6 +26,8 @@
 @property (weak) IBOutlet NSView *viewLoading;
 @property (weak) IBOutlet NSProgressIndicator *progressParse;
 @property (weak) IBOutlet NSTextField *textFieldLoadingTip;
+@property (weak) IBOutlet NSPopUpButton *popupButtonLevel1;
+@property (weak) IBOutlet NSPopUpButton *popupButtonLevel2;
 
 @end
 
@@ -69,7 +71,6 @@
 
     _arrayIngoreDir = [NSMutableArray arrayWithArray:[self ___getInitIgnoreArray]];
     [self.tableView reloadData];
-    
     
     
 }
@@ -144,6 +145,9 @@
     self.viewLoading.hidden = NO;
     [self.progressParse startAnimation:nil];
     
+    int level1 = [_popupButtonLevel1.selectedItem.title intValue];
+    int level2 = [_popupButtonLevel2.selectedItem.title intValue];
+    
 
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -178,6 +182,8 @@
             [[AIAPI sharedInstance] addWindowController:wc];
             wc.dictInSource = dictPNG;
             wc.dictInProject = _dictInProject;
+            wc.intInWarningLevel1 = level1;
+            wc.intInWarningLevel2 = level2;
             [wc showWindow:self];
         }else{
             NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xml",@".java"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIngoreDir];
@@ -202,11 +208,13 @@
                 }
             }
             
-                AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
-                [[AIAPI sharedInstance] addWindowController:wc];
-                wc.dictInSource = dictPNG;
-                wc.dictInProject = _dictInProject;
-                [wc showWindow:self];
+            AIImageParseResultWindowController *wc = [[AIImageParseResultWindowController alloc] initWithWindowNibName:@"AIImageParseResultWindowController"];
+            [[AIAPI sharedInstance] addWindowController:wc];
+            wc.dictInSource = dictPNG;
+            wc.dictInProject = _dictInProject;
+            wc.intInWarningLevel1 = level1;
+            wc.intInWarningLevel2 = level2;
+            [wc showWindow:self];
             
             
         }

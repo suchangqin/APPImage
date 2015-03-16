@@ -39,8 +39,8 @@
     
     htmlString = [htmlString stringByReplacingOccurrencesOfString:@"//NULL//" withString:@""];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rSource withString:[_dictInSource jsonStringWithPrettyPrint:YES]];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning withString:@"30"];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning2 withString:@"50"];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning withString:DYY_IntString(_intInWarningLevel1)];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:rWarning2 withString:DYY_IntString(_intInWarningLevel2)];
     htmlString = [htmlString stringByReplacingOccurrencesOfString:rPath withString:[_dictInProject stringForKey:kTable_project_path]];
     
     
