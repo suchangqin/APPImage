@@ -23,6 +23,7 @@
 -(NSArray *) queryAll;
 
 -(void) changeForId:(NSString *) id_ withName:(NSString *) name;
+-(void) deleteForId:(NSString *) id_;
 
 -(BOOL) existWithPath:(NSString *) path;
 

@@ -9,7 +9,7 @@
 #import "AIProjectListViewController.h"
 #import "AIAPI.h"
 #import "AITableProjects.h"
-@interface AIProjectListViewController ()<NSTableViewDelegate,NSTableViewDataSource>
+@interface AIProjectListViewController ()<NSTableViewDelegate,NSTableViewDataSource,NSMenuDelegate>
 
 @property (weak) IBOutlet NSView *viewListTop;
 @property (strong) AITableProjects *tableProjects;
@@ -21,12 +21,20 @@
 - (IBAction)___doAddIOSProject:(id)sender;
 - (IBAction)___doAddAndroidProject:(id)sender;
 
+- (IBAction)___doMenuOpen:(id)sender;
+- (IBAction)___doMenuDelete:(id)sender;
+- (IBAction)___doMenuShowInFinder:(id)sender;
+- (IBAction)___doMenuShowInTerminal:(id)sender;
+- (IBAction)___doMenuCopyPath:(id)sender;
+- (IBAction)___doMenuRename:(id)sender;
 
 @end
 
 @implementation AIProjectListViewController
 
-#define ___kPath_recent_dir @"sdfjlsjflsjflks"
+
+#define Cell_View_Tag(_row) (_row - 1000)
+#define Cell_View_Row(_tag) (_tag + 1000)
 
 
 
@@ -61,6 +69,47 @@
 - (IBAction)___doAddAndroidProject:(id)sender {
     [self ___doAddProjectWithType:AIProjectTypeAndroidAPP];
 }
+
+- (IBAction)___doMenuOpen:(id)sender {
+    
+}
+- (IBAction)___doMenuDelete:(NSMenuItem *)sender{
+    NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
+    NSString *id_ = [dict stringForKey:kTable_project_id];
+    [self.tableProjects deleteForId:id_];
+    [self ___reloadProjects];
+}
+
+- (IBAction)___doMenuShowInFinder:(id)sender {
+    NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
+    NSString *path = [dict stringForKey:kTable_project_path];
+
+   [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:path];
+}
+
+- (IBAction)___doMenuShowInTerminal:(id)sender {
+    NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
+    NSString *path = [dict stringForKey:kTable_project_path];
+    [[NSWorkspace sharedWorkspace] openFile:path withApplication:@"/Applications/Utilities/Terminal.app"];
+}
+
+- (IBAction)___doMenuCopyPath:(id)sender {
+    
+    NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.clickedRow];
+    NSString *path = [dict stringForKey:kTable_project_path];
+
+    
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb declareTypes:[NSArray arrayWithObject:NSStringPboardType]
+               owner:self];
+    [pb setString:path forType:NSStringPboardType];
+}
+
+- (IBAction)___doMenuRename:(id)sender {
+    NSTextField *textField = (NSTextField *)     [self.tableView viewWithTag:2];
+    [textField becomeFirstResponder];
+}
+
 - (void)___doAddProjectWithType:(AIProjectTypeState)type {
     AIAPI *api = [AIAPI sharedInstance];
     
@@ -75,7 +124,7 @@
         NSString *path = [panel.URLs.firstObject path];
         [api setStringRecentSelectedDir:path];
         DYYLog(@"select dir : %@",path);
-        
+
         if ([_tableProjects existWithPath:path]) {
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:@"确定"];
@@ -98,6 +147,10 @@
 }
 #pragma mark - tableview datasource
 -(void) ___tableViewDoubleClick:(id) sender{
+    NSUInteger seletedRow = self.tableView.selectedRow;
+    if (seletedRow>[self.arrayProject count]) {
+        return;
+    }
     NSDictionary *dict = [_arrayProject objectAtIndex:self.tableView.selectedRow];
     
     DYYLog(@"double click with: %@",dict);
@@ -117,21 +170,20 @@
         
         NSDictionary *dict = [_arrayProject objectAtIndex:row];
         
-        NSTableCellView *cell = [ tableView makeViewWithIdentifier:CellIdent owner:self ];
+        NSView *cellView = [ tableView makeViewWithIdentifier:CellIdent owner:self ];
 
-        NSImageView *imageView = (NSImageView *) [cell viewWithTag:1];
+        NSImageView *imageView = (NSImageView *) [cellView viewWithTag:1];
         AIProjectTypeState type = [[dict stringForKey:kTable_project_type] intValue];
         NSString *iconName = type == AIProjectTypeAndroidAPP ? @"i-app-android" : @"i-app-iOS";
         imageView.image = [NSImage imageNamed:iconName];
         
-        NSTextField *textFieldName = (NSTextField *) [cell viewWithTag:2];
+        NSTextField *textFieldName = (NSTextField *) [cellView viewWithTag:2];
         textFieldName.stringValue = [dict stringForKey:kTable_project_name];
         DYY_setYYUserInfo(textFieldName, @(row));
-        NSTextField *textFieldPath = (NSTextField *) [cell viewWithTag:3];
+        NSTextField *textFieldPath = (NSTextField *) [cellView viewWithTag:3];
         textFieldPath.stringValue = [dict stringForKey:kTable_project_path];
         
-        
-        return cell;
+        return cellView;
     }
     return nil;
 }
@@ -151,8 +203,18 @@
     }
     [self.tableProjects changeForId:[dict stringForKey:kTable_project_id] withName:name];
 }
--(void)tableViewSelectionDidChange:(NSNotification *)notification
-{
 
+#pragma mark - nsmenu delegate
+-(void)menuWillOpen:(NSMenu *)menu{
+    NSUInteger clickRow = self.tableView.clickedRow;
+    NSUInteger allRows = [self.arrayProject count];
+    for (NSMenuItem *item in menu.itemArray) {
+//        item.action = nil;
+        if (clickRow > allRows) {
+            item.hidden = YES;
+        }else{
+            item.hidden = NO;
+        }
+    }
 }
 @end

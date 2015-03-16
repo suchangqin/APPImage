@@ -67,15 +67,6 @@
                                                                     <action selector="___doProjectNameChanged:" target="-2" id="RYm-42-d38"/>
                                                                 </connections>
                                                             </textField>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" id="4u8-eX-dC0">
-                                                                <rect key="frame" x="68" y="10" width="343" height="15"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="path" id="8RN-2G-Wa5">
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                    <color key="textColor" red="0.23921568627450981" green="0.23921568627450981" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                            </textField>
                                                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="VfI-Cr-fZ3">
                                                                 <rect key="frame" x="0.0" y="-2" width="429" height="5"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -83,6 +74,15 @@
                                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <font key="titleFont" metaFont="system"/>
                                                             </box>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" id="ZtE-Kd-ORP">
+                                                                <rect key="frame" x="68" y="9" width="343" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Label" id="2Qm-lo-A8W">
+                                                                    <font key="font" metaFont="cellTitle"/>
+                                                                    <color key="textColor" red="0.23921568627450981" green="0.23921568627450981" blue="0.23921568627450981" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
                                                         </subviews>
                                                     </customView>
                                                 </prototypeCellViews>
@@ -91,6 +91,7 @@
                                         <connections>
                                             <outlet property="dataSource" destination="-2" id="uv2-9b-PW7"/>
                                             <outlet property="delegate" destination="-2" id="txm-tP-gki"/>
+                                            <outlet property="menu" destination="Fpo-LO-FHR" id="3aZ-zc-01d"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
@@ -142,6 +143,53 @@
             </subviews>
             <point key="canvasLocation" x="315.5" y="462"/>
         </customView>
+        <menu id="Fpo-LO-FHR">
+            <items>
+                <menuItem title="Open" id="efg-tL-uei">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="___doMenuOpen:" target="-2" id="C95-AQ-8KP"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="2Se-GU-PDK"/>
+                <menuItem title="Show in Finder" id="d8u-jI-otq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="___doMenuShowInFinder:" target="-2" id="HNj-bj-JEy"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Show in Terminal" id="aFc-uf-PuX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="___doMenuShowInTerminal:" target="-2" id="Vmj-sf-Vwe"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="76a-jW-3rm"/>
+                <menuItem title="Copy Path" id="byn-15-tPP">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="___doMenuCopyPath:" target="-2" id="z2k-T7-WGn"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="kzy-zd-HkK"/>
+                <menuItem title="Rename" id="hZI-4j-wYp">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="___doMenuRename:" target="-2" id="Wi5-bJ-iR4"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Delete" id="pGi-nz-lTh">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="___doMenuDelete:" target="-2" id="pSc-fs-2KU"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="ZjX-e4-IWj"/>
+            </connections>
+            <point key="canvasLocation" x="657" y="615.5"/>
+        </menu>
     </objects>
     <resources>
         <image name="i-app-android" width="44" height="44"/>

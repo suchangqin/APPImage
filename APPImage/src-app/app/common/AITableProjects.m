@@ -40,6 +40,12 @@
                      ];
     [self.dbUtil dbUpdateWithSql:sql];
 }
+-(void) deleteForId:(NSString *) id_{
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM " TABLE_NAME " WHERE id = %@",
+                     DB_STRING_FORMAT(id_)
+                     ];
+    [self.dbUtil dbUpdateWithSql:sql];
+}
 -(BOOL) existWithPath:(NSString *) path{
     NSString *sqlString = [NSString stringWithFormat:@"SELECT count(*) FROM" TABLE_NAME "WHERE path='%@'",DB_STRING_FORMAT(path)];
     return [self.dbUtil dbQueryCountWithSql:sqlString];
