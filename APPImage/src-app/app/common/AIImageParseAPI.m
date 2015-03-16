@@ -83,28 +83,25 @@
         AIProjectTypeState type = self.type;
         
         // step 1, load png file
-        [self ___log:@"正在加载PNG图片信息" index:0 all:100];
+        [self ___log:@"正在加载PNG图片信息..." index:0 all:100];
         NSDictionary *dictFile = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".png"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIgnoreDir];
         // format
         // step 2, load png file size and width,height
         NSDictionary *dictPNG = [AIFileParse pngFileFormat:dictFile withType:type];
         if (type == AIProjectTypeIOSAPP) {
             // step 3 load source file
-            [self ___log:@"正在加载源代码信息" index:1 all:100];
+            [self ___log:@"开始加载源代码信息..." index:1 all:100];
             NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xib",@".m",@".mm",@".plist"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIgnoreDir];
             NSArray *imageNames = dictPNG.allKeys;
             NSInteger allSouceCount = [dictFileCodes.allKeys count];
             int index = 0;
             for (NSString *fileName in dictFileCodes.allKeys) {
                 for (NSString *codePath in [dictFileCodes objectForKey:fileName]) {
-                    if([fileName isEqualTo:@"AppDelegate.m"]){
-                        
-                    }
                     if (!self.delegate) {
-                        goto CancelBlock;
+                        goto EndBlock;
                     }
                     index ++;
-                    NSString *log = [NSString stringWithFormat:@"分析文件：%@",codePath];
+                    NSString *log = [NSString stringWithFormat:@"正在分析：%@",codePath];
                     [self ___log:log index:(1+(index*1.0/allSouceCount * 90)) all:100];
 
                     @autoreleasepool {
@@ -124,7 +121,7 @@
             }
         }else{
             // step 3 load source file
-            [self ___log:@"正在加载源代码信息" index:1 all:100];
+            [self ___log:@"开始加载源代码信息..." index:1 all:100];
             NSDictionary *dictFileCodes = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".xml",@".java"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:self.arrayIgnoreDir];
             NSArray *imageNames = dictPNG.allKeys;
             NSInteger allSouceCount = [dictFileCodes.allKeys count];
@@ -133,11 +130,11 @@
                 NSArray *codePaths = dictFileCodes[codeFilePath];
                 for (NSString *p in codePaths) {
                     if (!self.delegate) {
-                        goto CancelBlock;
+                        goto EndBlock;
                     }
                     index ++;
                     DYYLog(@"%d",index);
-                    NSString *log = [NSString stringWithFormat:@"分析文件：%@",p];
+                    NSString *log = [NSString stringWithFormat:@"正在分析：%@",p];
                     [self ___log:log index:(1+(index*1.0/allSouceCount * 90)) all:100];
                     NSString *lines = nil;
                     @autoreleasepool{
@@ -164,8 +161,8 @@
         [self ___log:@"分析完毕！" index:100 all:100];
         [self ___endParse:dictPNG];
         
-        CancelBlock:{
-            DYYLogError(@"cancel parse");
+        EndBlock:{
+            DYYLogError(@"end parse");
             return;
         }
     });

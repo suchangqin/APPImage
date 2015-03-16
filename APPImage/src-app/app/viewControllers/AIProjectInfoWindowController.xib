@@ -58,29 +58,29 @@
                         </subviews>
                     </customView>
                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="aa2-6t-aB9">
-                        <rect key="frame" x="0.0" y="256" width="500" height="5"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="264" width="500" height="5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <customView id="YIq-Bb-Wnu">
-                        <rect key="frame" x="255" y="63" width="225" height="190"/>
+                        <rect key="frame" x="255" y="60" width="225" height="190"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jsd-1E-k1e">
-                                <rect key="frame" x="4" y="175" width="141" height="17"/>
+                                <rect key="frame" x="4" y="175" width="175" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Warning Setting (KB) ：" id="sr1-XL-s0g">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="图片大小警告设置(单位：KB) " id="sr1-XL-s0g">
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="P3U-xA-vqU">
-                                <rect key="frame" x="16" y="138" width="44" height="17"/>
+                                <rect key="frame" x="16" y="138" width="48" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="level 1" id="sg0-SW-1Bd">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Level 1" id="sg0-SW-1Bd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -89,7 +89,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QZQ-qq-EHi">
                                 <rect key="frame" x="16" y="107" width="44" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="level 2" id="kB7-GI-zIm">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Level 2" id="kB7-GI-zIm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -98,15 +98,17 @@
                             <popUpButton verticalHuggingPriority="750" id="W7u-la-S5A">
                                 <rect key="frame" x="64" y="133" width="88" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="40" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jdg-Xg-0AG" id="ENg-Hf-sDH">
+                                <popUpButtonCell key="cell" type="push" title="30" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="P9L-wb-rnl" id="ENg-Hf-sDH">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="Lzx-hl-6si">
                                         <items>
                                             <menuItem title="10" id="NT3-wl-BU3"/>
                                             <menuItem title="20" id="AsA-zt-kLD"/>
-                                            <menuItem title="30" id="P9L-wb-rnl"/>
-                                            <menuItem title="40" state="on" id="jdg-Xg-0AG"/>
+                                            <menuItem title="30" state="on" id="P9L-wb-rnl">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="40" id="jdg-Xg-0AG"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -126,6 +128,7 @@
                                             <menuItem title="70" id="cjI-By-iaB"/>
                                             <menuItem title="80" id="h6m-3j-HxA"/>
                                             <menuItem title="90" id="0tb-qO-GxL"/>
+                                            <menuItem title="100" id="OP5-kY-9L4"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -133,7 +136,7 @@
                         </subviews>
                     </customView>
                     <customView id="3Kj-iX-K0I">
-                        <rect key="frame" x="12" y="63" width="227" height="190"/>
+                        <rect key="frame" x="20" y="60" width="227" height="190"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <customView id="41N-cx-Z3X">
@@ -185,7 +188,7 @@
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="AICellProjectView" width="222" minWidth="40" maxWidth="1000" id="08U-LI-Dw1">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="IGNORE DIR">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="忽略的文件夹（一般为第三方框架）">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
