@@ -89,10 +89,10 @@
 }
 
 +(void) yytest{
-    NSString *path = @"/Users/suchangqin/Documents/workspace-qeegoo/iOS/YYProduct";
-    path = @"/Users/suchangqin/Desktop";
-    NSDictionary *dict = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".png"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:nil];
-    DYYLogWarning(@"%@",dict);
+//    NSString *path = @"/Users/suchangqin/Documents/workspace-qeegoo/iOS/YYProduct";
+//    path = @"/Users/suchangqin/Desktop";
+//    NSDictionary *dict = [AIFileParse fileParseWithDirPath:path arrayExtensionName:@[@".png"] stringSpecial:nil stringIgnore:nil arrayIgnoreDir:nil];
+//    DYYLogWarning(@"%@",dict);
 }
 
 +(NSDictionary *) fileParseWithDirPath:(NSString *) dirPath arrayExtensionName:(NSArray *) arrayExtensionName stringSpecial:(NSString *) stringSpecial stringIgnore:(NSString *) stringIgnore arrayIgnoreDir:(NSArray *) arrayIgnoreDir{

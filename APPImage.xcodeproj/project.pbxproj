@@ -479,6 +479,7 @@
 				TargetAttributes = {
 					A900E3761A9EADDE001E49AC = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = L7V6YXNSVA;
 					};
 					A900E3891A9EADDE001E49AC = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -673,6 +674,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "APPImage/APPImage-Prefix.pch";
@@ -686,6 +688,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "APPImage/APPImage-Prefix.pch";
