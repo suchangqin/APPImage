@@ -49,6 +49,7 @@
 -(void) ___showProjectInfoViewControllerWithProjectDict:(NSDictionary *) projectDict{
     NSArray *arrayInfoShow = [AIAPI sharedInstance].arrayWindowController;
     NSDictionary *dict = projectDict;
+    //先判断是不是已经存在了，存在直接激活窗口
     for (NSWindowController *wc in arrayInfoShow) {
         if([wc isKindOfClass:[AIProjectInfoWindowController class]]){
             AIProjectInfoWindowController *infoWC = (AIProjectInfoWindowController*) wc;
@@ -58,22 +59,10 @@
             }
         }
     }
-    
     AIProjectInfoWindowController *wc = [[AIProjectInfoWindowController alloc] initWithWindowNibName:@"AIProjectInfoWindowController"];
     wc.dictInProject = dict;
     [[AIAPI sharedInstance] addWindowController:wc];
-    
-    NSUInteger fixPositon= [arrayInfoShow count]*10;
-    
-    CGRect f = self.view.window.frame;
-    
-    int x = CGRectGetMaxX(f) + fixPositon;
-    int y = CGRectGetMinY(f) + CGRectGetHeight(f)-CGRectGetHeight(wc.window.frame) -fixPositon;
-    
-    [wc.window setFrameOrigin:NSMakePoint(x,y)];
-    
     [wc showWindow:self];
-    
 }
 - (IBAction)___doAddIOSProject:(id)sender {
     [self ___doAddProjectWithType:AIProjectTypeIOSAPP];

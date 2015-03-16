@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSButton *buttonRemoveIgnore;
 
 @property (strong) NSMutableArray *arrayIngoreDir;
+@property (weak) IBOutlet NSView *viewProjectinfo;
 
 @end
 
@@ -30,13 +31,35 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [self.viewIgnoreButtons setBackgroundColor:RGBACOLOR(250, 250, 250, 1)];
+    
+    
+    {
+        NSDictionary *dict = _dictInProject;
+        
+        NSView *cellView = self.viewProjectinfo;
+        
+        NSImageView *imageView = (NSImageView *) [cellView viewWithTag:1];
+        AIProjectTypeState type = [[dict stringForKey:kTable_project_type] intValue];
+        NSString *iconName = type == AIProjectTypeAndroidAPP ? @"i-app-android" : @"i-app-iOS";
+        imageView.image = [NSImage imageNamed:iconName];
+        
+        NSTextField *textFieldName = (NSTextField *) [cellView viewWithTag:2];
+        textFieldName.stringValue = [dict stringForKey:kTable_project_name];
+        NSTextField *textFieldPath = (NSTextField *) [cellView viewWithTag:3];
+        textFieldPath.stringValue = [dict stringForKey:kTable_project_path];
+    }
+    
     _viewIgnoreButtons.layer.borderWidth = 1;
     _viewIgnoreButtons.layer.borderColor = [NSColor lightGrayColor].CGColor;
+    
+    
     _arrayAndroidInitIngore = @[@"build",@"gradle",@"libs",@"libraries"];
     _arrayIOSInitIngore = @[@"libs",@"libraries"];
 
     _arrayIngoreDir = [NSMutableArray arrayWithArray:[self ___getInitIgnoreArray]];
     [self.tableView reloadData];
+    
+    
     
 }
 #pragma mark - ___
@@ -79,10 +102,20 @@
     [self performSelector:@selector(___selectLastRowToChangeName) withObject:nil afterDelay:0.1];
 
 }
+-(void) ___buttonIgnoreStateChange{
+    if (self.tableView.selectedRow > [[self ___getInitIgnoreArray] count]-1 && self.tableView.selectedRow<[_arrayIngoreDir count]) {
+        self.buttonRemoveIgnore.enabled = YES;
+    }else{
+        self.buttonRemoveIgnore.enabled = NO;
+    }
+}
 - (IBAction)___doRemoveIgnore:(id)sender {
     DYYLog(@"-");
-    [self.arrayIngoreDir removeObjectAtIndex:self.tableView.selectedRow];
+    NSInteger row = self.tableView.selectedRow;
+    [self.arrayIngoreDir removeObjectAtIndex:row];
     [self ___reloadData];
+    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row-1] byExtendingSelection:NO];
+    [self ___buttonIgnoreStateChange];
 }
 
 
@@ -119,11 +152,7 @@
     return nil;
 }
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
-    if (self.tableView.selectedRow > [[self ___getInitIgnoreArray] count]-1) {
-        self.buttonRemoveIgnore.enabled = YES;
-    }else{
-        self.buttonRemoveIgnore.enabled = NO;
-    }
+    [self ___buttonIgnoreStateChange];
 }
 #pragma mark - window delegate
 - (BOOL)windowShouldClose:(id)sender{

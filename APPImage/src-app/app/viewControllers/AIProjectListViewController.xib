@@ -22,9 +22,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button verticalHuggingPriority="750" id="BPS-Mb-59u">
-                            <rect key="frame" x="14" y="6" width="128" height="25"/>
+                            <rect key="frame" x="14" y="6" width="96" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="+ New iOS Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bxG-NK-rIs">
+                            <buttonCell key="cell" type="roundTextured" title="+ iOS Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bxG-NK-rIs">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -33,9 +33,9 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" id="mUX-qx-lYb">
-                            <rect key="frame" x="150" y="6" width="153" height="25"/>
+                            <rect key="frame" x="123" y="6" width="122" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="+ New Android Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wkD-qG-TBP">
+                            <buttonCell key="cell" type="roundTextured" title="+ Android Project" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wkD-qG-TBP">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
