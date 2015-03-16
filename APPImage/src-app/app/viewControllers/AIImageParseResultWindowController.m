@@ -92,7 +92,7 @@
     [windowScriptObject setValue:self forKey:@"yyoc"];
 }
 -(void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
-    [_webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+//    [_webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
 }
 
 + (NSString *) webScriptNameForSelector:(SEL)sel {
@@ -105,6 +105,14 @@
     }else {
         return nil;
     }
+}
+- (NSArray*)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
+    for (NSMenuItem *menuItems in defaultMenuItems) {
+        if ([menuItems.title isEqualToString:@"Reload"]) {
+            return nil;
+        }
+    }
+    return defaultMenuItems;
 }
 
 @end
