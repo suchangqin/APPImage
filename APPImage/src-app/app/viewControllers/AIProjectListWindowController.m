@@ -38,20 +38,10 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-//    
-//    NSView *view = self.window.contentView;
-//    [self.window setBackgroundColor:[NSColor whiteColor]];
-//    
-//    self.viewContent.frame = view.frame;
-//    [view addSubview:self.viewContent];
-//    
-//    CGRect frame = view.frame;
-//    frame.size.height += 12;
-//    view.frame = frame;
-//    [view setWantsLayer:YES];
-//    view.layer.borderWidth = 1.0;
-//    view.layer.borderColor = [NSColor redColor].CGColor;
-//    return;
+    //设置titlebar隐藏，contentview全部显示，10.10以上有效
+    [self.window setTitleVisibility:NSWindowTitleHidden];
+    [self.window setTitlebarAppearsTransparent:YES];
+    self.window.styleMask |= NSFullSizeContentViewWindowMask;
     
     [self.viewListTop setBackgroundColor:RGBCOLOR(255, 255, 255)];
     [self.viewLeft setBackgroundColor:[NSColor whiteColor]];
@@ -85,6 +75,8 @@
     if (!self.stringTerminalPath) {
         self.menuItemTerminal.action = nil;
     }
+    
+
 }
 
 -(void) ___reloadProjects{

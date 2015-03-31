@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AIProjectListWindowController">
@@ -67,29 +67,29 @@
             <point key="canvasLocation" x="657" y="615.5"/>
         </menu>
         <window title="APPImage" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="iKT-so-rVR">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="131" y="158" width="700" height="470"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
+            <rect key="contentRect" x="131" y="158" width="770" height="470"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="Qep-Cq-ur8">
-                <rect key="frame" x="0.0" y="0.0" width="700" height="470"/>
+                <rect key="frame" x="0.0" y="0.0" width="770" height="470"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="Hz6-mo-xeY">
-                        <rect key="frame" x="0.0" y="0.0" width="700" height="470"/>
+                        <rect key="frame" x="0.0" y="0.0" width="770" height="470"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="PiY-aQ-Yh1">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="470"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <rect key="frame" x="0.0" y="0.0" width="470" height="470"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OY5-0t-DOu">
-                                        <rect key="frame" x="136" y="293" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="171" y="295" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-appimage" id="tbU-R9-2IU"/>
                                     </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DD9-De-Zn9">
-                                        <rect key="frame" x="50" y="246" width="300" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="85" y="248" width="300" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to APPImage" id="hzf-rc-K8X">
                                             <font key="font" metaFont="system" size="28"/>
                                             <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -97,8 +97,8 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5Kv-EA-lzD">
-                                        <rect key="frame" x="50" y="227" width="300" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="85" y="227" width="300" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="WORLD PEACE" id="ec5-iS-ZJZ">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -106,15 +106,15 @@
                                         </textFieldCell>
                                     </textField>
                                     <customView id="Y8z-7k-rgM">
-                                        <rect key="frame" x="52" y="29" width="348" height="150"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="76" y="30" width="394" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <customView id="1KT-11-Wqo">
-                                                <rect key="frame" x="0.0" y="100" width="348" height="50"/>
+                                                <rect key="frame" x="0.0" y="100" width="394" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="aMx-tu-mPV">
-                                                        <rect key="frame" x="40" y="24" width="297" height="19"/>
+                                                        <rect key="frame" x="40" y="24" width="343" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open an iOS or Mac project" id="fDx-En-cKP">
                                                             <font key="font" metaFont="system" size="14"/>
@@ -123,7 +123,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Cr7-4e-KbF">
-                                                        <rect key="frame" x="40" y="7" width="297" height="17"/>
+                                                        <rect key="frame" x="40" y="7" width="343" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="源代码项目分析，不分析游戏项目" id="Cco-oY-hok">
                                                             <font key="font" metaFont="cellTitle"/>
@@ -132,7 +132,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="eck-k8-pa9">
-                                                        <rect key="frame" x="0.0" y="46" width="348" height="5"/>
+                                                        <rect key="frame" x="0.0" y="46" width="394" height="5"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -144,7 +144,7 @@
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-app-mac-ios" id="mJc-1H-5jN"/>
                                                     </imageView>
                                                     <button verticalHuggingPriority="750" id="ix1-uP-NMR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="NgJ-Cy-Oj3">
                                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
@@ -157,11 +157,11 @@
                                                 </subviews>
                                             </customView>
                                             <customView id="StQ-bo-2oo">
-                                                <rect key="frame" x="0.0" y="50" width="348" height="50"/>
+                                                <rect key="frame" x="0.0" y="50" width="394" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="D2j-QX-diw">
-                                                        <rect key="frame" x="40" y="24" width="297" height="19"/>
+                                                        <rect key="frame" x="40" y="24" width="343" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open an Android project" id="jMc-EF-Ded">
                                                             <font key="font" metaFont="system" size="14"/>
@@ -170,7 +170,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="aT4-t3-Lob">
-                                                        <rect key="frame" x="40" y="7" width="297" height="17"/>
+                                                        <rect key="frame" x="40" y="7" width="343" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="源代码项目分析，不分析游戏项目" id="Vxx-7g-lIk">
                                                             <font key="font" metaFont="cellTitle"/>
@@ -179,8 +179,8 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="gTt-Xo-ujh">
-                                                        <rect key="frame" x="0.0" y="46" width="362" height="5"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="0.0" y="46" width="394" height="5"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <font key="titleFont" metaFont="system"/>
@@ -191,7 +191,7 @@
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-app-android" id="sbl-5K-qma"/>
                                                     </imageView>
                                                     <button verticalHuggingPriority="750" id="1xD-TY-Kak">
-                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="8D9-iO-dcK">
                                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
@@ -204,11 +204,11 @@
                                                 </subviews>
                                             </customView>
                                             <customView id="OhE-nX-nqx">
-                                                <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WiJ-qQ-A8b">
-                                                        <rect key="frame" x="40" y="24" width="297" height="19"/>
+                                                        <rect key="frame" x="40" y="24" width="343" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="What can APPImage do for you?" id="aop-BJ-1AT">
                                                             <font key="font" metaFont="system" size="14"/>
@@ -217,7 +217,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kag-Rr-Vdw">
-                                                        <rect key="frame" x="40" y="7" width="297" height="17"/>
+                                                        <rect key="frame" x="40" y="7" width="343" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="筛查项目PNG图片的索引、大小、尺寸匹配等" id="0Bx-gO-Akh">
                                                             <font key="font" metaFont="cellTitle"/>
@@ -226,15 +226,15 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="oEw-59-CGI">
-                                                        <rect key="frame" x="0.0" y="46" width="362" height="5"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="0.0" y="46" width="394" height="5"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <font key="titleFont" metaFont="system"/>
                                                     </box>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="A34-yr-kNg">
-                                                        <rect key="frame" x="0.0" y="-2" width="362" height="5"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="0.0" y="-2" width="394" height="5"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <font key="titleFont" metaFont="system"/>
@@ -245,7 +245,7 @@
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="i-help" id="kp7-JX-SEL"/>
                                                     </imageView>
                                                     <button verticalHuggingPriority="750" id="C6n-tC-qGN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="I9F-6m-5cC">
                                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
@@ -262,8 +262,8 @@
                                 </subviews>
                             </customView>
                             <customView id="UCF-HA-SCW">
-                                <rect key="frame" x="400" y="0.0" width="300" height="470"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <rect key="frame" x="470" y="0.0" width="300" height="470"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <customView id="ieZ-AO-JTX">
                                         <rect key="frame" x="-1" y="-1" width="302" height="472"/>
