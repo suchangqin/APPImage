@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>android image parse</title>
+		<script type="text/javascript">
+			(function(b){var a=(function(){var c={};c.find={id:function(d){return document.getElementById(d);},class1:function(d){return document.getElementsByClassName(d);},};c.div={create:function(d){return document.createElement(d);},html:function(e,d){e.innerHTML=d;},id:function(e,d){if(d){e.id=d;}else{return e.id;}},name:function(e,d){if(d){e.name=d;}else{return e.name;}},title:function(e,d){if(d){e.title=d;}else{return e.title;}},class1:function(e,d){if(d){e.className=d;}else{return e.className;}},classAppend:function(h,e){if(e){var g=this.class1(h);var d=g.split(" ");var f=d.findIndex(e);if(f==-1){d.push(e);this.class1(h,d.join(" "));}}},classRemove:function(h,e){if(e){var g=this.class1(h);var d=g.split(" ");var f=d.findIndex(e);while(f!=-1){d.remove(f,f);f=d.findIndex(e);}this.class1(h,d.join(" "));}},};c.css={_value:function(e,d){var f=e+"";return f.endWith(d)?f:f+d;},position:function(e,d){if(d){e.style.position=d;}else{return e.style.position;}},top:function(e,d){if(d){e.style.top=this._value(d,"px");}else{return e.style.top;}},bottom:function(e,d){if(d){e.style.bottom=this._value(d,"px");}else{return e.style.bottom;}},left:function(e,d){if(d){e.style.left=this._value(d,"px");}else{return e.style.left;}},right:function(e,d){if(d){e.style.right=this._value(d,"px");}else{return e.style.right;}},overflow:function(e,d){if(d){e.style.overflow=d;}else{return e.style.overflow;}},float1:function(e,d){if(d){e.style.styleFloat=d;e.style.cssFloat=d;}else{return e.style.styleFloat;}},height:function(e,d){if(d){e.style.height=this._value(d,"px");}else{return e.style.height;}},width:function(e,d){if(d){e.style.width=this._value(d,"px");}else{return e.style.width;}},ratio:function(e,d){if(d){e.style.width=this._value(d,"%");}else{return e.style.width;}},fontSize:function(e,d){if(d){e.style.fontSize=this._value(d,"px");}else{return e.style.fontSize;}},textAlign:function(e,d){if(d){e.style.textAlign=d;}else{return e.style.textAlign;}},color:function(e,d){if(d){e.style.color=d;}else{return e.style.color;}},bgColor:function(e,d){if(d){e.style.backgroundColor=d;}else{return e.style.backgroundColor;}},backgroundColor:function(e,d){return this.bgColor(e,d);}};return c;})();b.yy=a;})(window);(function(){String.prototype.startWith=function(b){var a=new RegExp("^"+b);return a.test(this);};String.prototype.endWith=function(b){var a=new RegExp(b+"$");return a.test(this);};Array.prototype.remove=function(c,b){var a=this.slice((b||c)+1||this.length);this.length=c<0?this.length+c:c;return this.push.apply(this,a);};Array.prototype.findIndex=function(a){for(var b=0;b<this.length;b++){if(this[b]==a){return b;}}return -1;};Array.prototype.removeObj=function(b){if(!b){return;}var a=this.findIndex(b);if(a!=-1){this.remove(a,a);}};})();
+		</script>
+		<style type="text/css">
+			html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}.clear{clear:both;height:0}
+		</style>	
+		<style type="text/css">
+		a{ cursor:pointer; 
+			text-decoration: none;
+		}
+		.a_n {color:#0c438f; display: block;}
+
+		#id_image_preview{
+		}
+
+		.a_fun{
+			padding: 10px;
+			float: right;
+			text-align:center;
+			background: #e2f4dd;
+			margin-left: 15px;
+		}
+		.a_tip{
+			padding: 10px;
+			float: left;
+			text-align:center;
+			margin-right: 15px;
+		}
+
+		.tip{padding:10px 10px 0px 10px; color:rgb(81,158,236); }
+		
+			.table_div{
+                
+				padding:10px;
+			}
+			.table_div .table{ 
+                width:100%;
+			 background: rgb(166,166,166);
+				border-collapse:separate;
+				border-spacing: 1px; 
+				color:rgb(20,20,20)
+			}
+			.table_div .table .trHead{ background: rgb(190,192,191);  font-weight:bold; 
+			color:rgb(0,0,0)
+			}
+			.table_div .table .trHead2{ background: rgb(140,219,255);  font-weight:bold; 
+			color:rgb(0,0,0)
+			}
+			.importent {color:#F16}
+			
+            ._w{background:#ffffd5}
+            ._w2{background:#ffff00}
+			._e{background:#f45f5f}
+			._ok{background: rgb(202,235,192)}
+			._span{padding:10px 15px; margin: 0px 10px; line-height: 30px}
+			
+			.table_div .table .tr0{ background: rgb(255,255,255)}
+			.table_div .table .tr1{ background: rgb(245,245,245)}
+			.table_div .table .trTJ{ background: #e2f4dd}
+			.table_div .table .tdLine{ background: rgb(220,220,220); font-weight:bold; color:rgb(0,0,0);}
+			.table_div .table td{ padding: 8px; }
+		</style>
+        
+        <script  type="text/javascript">
+            var yyoc;
+            var OC = {}
+            OC.log = function(msg){
+                if(yyoc){
+                    yyoc.log(log);
+                }
+            }
+        OC.exportHtmlFile = function(){
+            if(yyoc){
+                yyoc.exportHtmlFile();
+            }
+        }
+        OC.alert = function(msg){
+            if(yyoc){
+                yyoc.alert(msg);
+            }else{
+                alert(msg);
+            }
+        }
+        OC.showFile = function(path){
+            if(yyoc){
+                yyoc.showFile(path);
+            }else{
+                window.open(path);
+            }
+        }
+        </script>
+		
+		<script  type="text/javascript">
+						
+			var S_images = {"yy_loading_1.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_1.png", "h": 105, "s": 4344, "w": 106}]}, "yy_loading_2.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_2.png", "h": 105, "s": 4365, "w": 106}]}, "ic_launcher-web.png": {"fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/ic_launcher-web.png", "h": 512, "s": 47072, "w": 512}]}, "yy_b_rect_press.9.png": {"is": ["yy_selector_b_rect.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_b_rect_press.9.png", "h": 73, "s": 1791, "w": 68}]}, "yy_loading_5.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_5.png", "h": 105, "s": 4345, "w": 106}]}, "yy_loading_4.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_4.png", "h": 105, "s": 4377, "w": 106}]}, "yy_loading_7.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_7.png", "h": 105, "s": 4364, "w": 106}]}, "yy_loading_6.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_6.png", "h": 105, "s": 4365, "w": 106}]}, "yy_loading_8.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_8.png", "h": 105, "s": 4363, "w": 106}]}, "yy_chevron_right_white.png": {"is": ["yy_cell_chevron_right.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable/yy_chevron_right_white.png", "h": 10, "s": 171, "w": 10}, {"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_chevron_right_white.png", "h": 20, "s": 353, "w": 20}]}, "yy_nav_bg.9.png": {"is": ["yy_navigation_bar.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_nav_bg.9.png", "h": 68, "s": 204, "w": 102}]}, "yy_b_rect.9.png": {"is": ["yy_selector_b_rect.xml", "TestNavigationActivity.java"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_b_rect.9.png", "h": 73, "s": 915, "w": 68}]}, "yy_nav_b_rect_press.9.png": {"is": ["yy_selector_nav_b_rect.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_nav_b_rect_press.9.png", "h": 46, "s": 209, "w": 46}]}, "ic_launcher.png": {"is": ["test_a_http_image.xml", "yy_part_selector_test.xml", "AndroidManifest.xml", "test_a_system_photo.xml", "test_cell_3.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/ic_launcher.png", "h": 72, "s": 7783, "w": 72}]}, "yy_chevron_right_default.png": {"is": ["yy_cell_chevron_right.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable/yy_chevron_right_default.png", "h": 10, "s": 181, "w": 10}, {"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_chevron_right_default.png", "h": 20, "s": 338, "w": 20}]}, "yy_nav_b_rect.9.png": {"is": ["yy_selector_nav_b_rect.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_nav_b_rect.9.png", "h": 46, "s": 205, "w": 46}]}, "yy_loading_3.png": {"is": ["yy_loading_animation.xml"], "fs": [{"fp": "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject/YY/src/main/res/drawable-hdpi/yy_loading_3.png", "h": 105, "s": 4325, "w": 106}]}};
+			var S_projectPath = "/Users/suchangqin/Documents/workspace-qeegoo/android/YYProject";
+			//警告程度
+			var sizeW	 = 5; //2k
+			var sizeW2	 = 20; //3k
+			
+			
+            //NULL//S_images = ${ai source};
+			//NULL//S_projectPath = "${ai filePath}";
+			//警告程度
+			//NULL//sizeW	 = ${ai warning}; //2k
+			//NULL//sizeW2 = ${ai warning2}; //3k
+
+			
+			var kSize = "s";
+			var kWidth = "w";
+			var kHeight = "h";
+			var kIndexFiles = "is";
+			var kFilePath = "fp";
+			var kFiles = "fs";			
+			
+			var kClassImagePreview = "imagepreviewsssss";
+
+			Number.prototype.moneyFormat = function(decimalNum,bolLeadingZero,bolParens,bolCommas)  
+	        {   
+	            var tmpNum = this;  
+	            var iSign = this < 0 ? -1 : 1;       // Get sign of number  
+	              
+	            // Adjust number so only the specified number of numbers after  
+	            // the decimal point are shown.  
+	            tmpNum *= Math.pow(10,decimalNum);  
+	            tmpNum = Math.round(Math.abs(tmpNum))  ;
+	            tmpNum /= Math.pow(10,decimalNum);  
+	            tmpNum *= iSign;                    // Readjust for sign  
+	              
+	              
+	            // Create a string object to do our formatting on  
+	            var tmpNumStr = new String(tmpNum);  
+	            // See if we need to strip out the leading zero or not.  
+	            if (!bolLeadingZero && this < 1 && this > -1 && this != 0)  
+	                if (this > 0)  
+	                    tmpNumStr = tmpNumStr.substring(1,tmpNumStr.length);  
+	                else  
+	                    tmpNumStr = "-" + tmpNumStr.substring(2,tmpNumStr.length);  
+	                  
+	            // See if we need to put in the commas  
+	            if (bolCommas && (this >= 1000 || this <= -1000)) {  
+	                var iStart = tmpNumStr.indexOf(".");  
+	                if (iStart < 0)  
+	                    iStart = tmpNumStr.length;  
+	                iStart -= 3;  
+	                while (iStart >= 1) {  
+	                    tmpNumStr = tmpNumStr.substring(0,iStart) + "," + tmpNumStr.substring(iStart,tmpNumStr.length);  
+                    iStart -= 3;  
+                }         
+            }  
+	            // See if we need to use parenthesis  
+	            if (bolParens && this < 0)  
+	                tmpNumStr = "(" + tmpNumStr.substring(1,tmpNumStr.length) + ")";  
+	            return tmpNumStr;       // Return our formatted string!  
+	        };
+	        
+	        function _fImageLink(imageName,imagePath){
+	        	
+	        	var path = imagePath;
+	        	var open = " OC.showFile('"+path+"') ";
+	        	var image = '<img onclick="'+open+'" class="'+kClassImagePreview+'" style="cursor:pointer;max-width:150px;max-height:150px;display:none;" src="file://'+path+'" />';
+	        	return "<a target='_blank' class='a_n' href=\"javascript:" +open+ "\"  >"+imageName+"</a>" + image;
+	        }
+	        
+			function myInit(){
+				COut.project();
+				COut.tableDistribute(S_images);
+				COut.preview(0);
+                      var exportDiv = yy.find.id("id_export_html")
+                      if(!yyoc){
+                          exportDiv.style.display = "none";
+                      }
+			}
+			var COut = {};
+			COut.project = function(){
+				var projectPathDiv = yy.find.id("projectPath");
+				yy.div.html(projectPathDiv,S_projectPath);
+			};
+			COut.preview = function(show){
+				var idImagePreview = yy.find.id("id_image_preview");
+	        	if(show){
+	        		idImagePreview.href = "javascript:COut.preview(0);";
+	        		idImagePreview.innerHTML = "关闭图片预览";
+	        	}else{
+	        		idImagePreview.href = "javascript:COut.preview(1);";
+	        		idImagePreview.innerHTML = "开启图片预览";
+	        	}
+	        	var display = show? "block":"none";
+	        	var allBox = document.getElementsByClassName(kClassImagePreview);
+	        	for (var i=0; i < allBox.length; i++) {
+				  allBox[i].style.display = display;
+				}
+			};
+			COut.tableTip = function(msg,classAppend,colSpan){
+				var tableParse = yy.find.id("id_parse_table");
+				var tr = yy.div.create("tr");
+				yy.div.class1(tr,"trTip "+classAppend);
+				tableParse.appendChild(tr);
+				
+				var td = yy.div.create("td");
+				td.colSpan = colSpan;
+				td.innerHTML = msg;
+				yy.css.textAlign(td,"center");
+				tr.appendChild(td);
+				
+			};
+			COut.tableDistribute = function (source){
+				var sFine = {};
+				var sW = {};
+				var sE = {};
+				
+				var keys = Object.keys(source);
+				keys.sort();
+				for (var cellCount=0; cellCount < keys.length; cellCount++) {
+				  	var key = keys[cellCount];
+				  	var value = source[key];
+				  	if(!_checkIndex(key)){
+				  		sE[key] = value;
+				  		continue;
+				  	}
+				  	if(!_checkSize(key)){
+				  		sW[key] = value;
+				  		continue;
+				  	}
+				  		
+				  	sFine[key] = value;
+				}
+				
+                
+                if(Object.keys(sE).length){
+                    COut.tableTip("有错误的区域","_e",6);
+                    COut.table(sE);
+                }
+
+                if(Object.keys(sW).length){
+                    COut.tableTip("仅有警告的区域","_w2",6);
+                    COut.table(sW);
+                }
+                if(Object.keys(sFine).length){
+                    COut.tableTip("无误的区域","_ok",6);
+                    COut.table(sFine);
+                }
+				
+				function _checkIndex (key) {
+				  var dictPng = source[key];
+				  var pngs = dictPng[kIndexFiles];
+				  if(pngs && pngs.length > 0) return 1;
+				  return 0;
+				}
+				function _checkSize(key){
+					var dictPng = source[key];
+					var rowSpan = dictPng[kFiles].length;
+					for (var i=0; i < rowSpan; i++) {
+					  	var file =  dictPng[kFiles][i];		
+					  	var size = (file[kSize] / 1024.0);
+						if (size>sizeW) {
+							return 0;
+						}
+					}
+					return 1;
+				}
+			};
+			COut.table = function (S) {
+				
+				//统计
+				//大小统计
+				var __s1 = 0;
+				
+				var tableParse = yy.find.id("id_parse_table");
+				
+				var keys = Object.keys(S);
+				keys.sort();
+				
+				var cellCount = 0;
+				for (var cellCount=0; cellCount < keys.length; cellCount++) {
+				  var key = keys[cellCount];
+				  		
+				  		
+						var dictPng = S[key]; 
+						var rowSpan = dictPng[kFiles].length;
+				  		
+						var tr = yy.div.create("tr");
+						yy.div.class1(tr,"tr"+cellCount%2);
+						tableParse.appendChild(tr);
+						//添加line
+						var line = yy.div.create("td");
+						yy.div.class1(line,"tdLine");
+						// <td class="tdLine"><a name="l1">1</a></td>
+							// <td>1x图片</td>			
+						line.innerHTML = '<a name="l1">' +  (cellCount+1) + '</a>';
+						line.rowSpan = rowSpan;
+						tr.appendChild(line);
+						//添加图片名称
+						if(true){
+							var png = yy.div.create("td");
+							png.innerHTML = key;
+							png.rowSpan = rowSpan;
+							tr.appendChild(png);
+						}
+						for (var i=0; i < rowSpan; i++) {
+						  	var file =  dictPng[kFiles][i];		
+						  	var newTr = tr;	
+							if(i != 0){
+								newTr = yy.div.create("tr");
+								yy.div.class1(newTr,"tr"+cellCount%2);
+								tableParse.appendChild(newTr);
+							}
+							//文件夹
+							var dirTd = yy.div.create("td");
+							newTr.appendChild(dirTd);
+							var fp = file[kFilePath];
+                            var pathShow = fp.replace(S_projectPath,"");
+							yy.div.html(dirTd,_fImageLink(pathShow,fp));
+						  	//像素
+							var pixelTd = yy.div.create("td");
+							newTr.appendChild(pixelTd);
+							yy.div.html(pixelTd,file[kWidth] +" * " + file[kHeight]);
+							
+						  	//大小
+							var sizeTd = yy.div.create("td");
+							newTr.appendChild(sizeTd);
+							var size = (file[kSize] / 1024.0);
+							__s1 += size;
+							yy.div.html(sizeTd,size.moneyFormat(2,true,true,true) + " k");
+							yy.css.textAlign(sizeTd,"right");
+							if (size>sizeW2) {
+								CShow.w2(sizeTd);
+							} else if(size>sizeW){
+								CShow.w(sizeTd);
+							};
+							
+						  	//索引
+						  	if(i == 0){
+						  		var indexTd = yy.div.create("td");
+						  		indexTd.rowSpan = rowSpan;
+						  		newTr.appendChild(indexTd);
+						  		var newLine = " &#10;";
+								var title = "" + newLine;
+								var allcount = 0;
+								var png1_files = dictPng[kIndexFiles];
+								var warning = 1;
+								if (png1_files) {
+									var newPngs = [];
+                                    png1_files = png1_files.sort();
+									for (var j=0; j < png1_files.length; j++) {
+                                        var prefix = "";
+                                        if(j<9){
+                                            prefix = "  ";
+                                        }
+									  newPngs.push(prefix + (j+1) + " : " + png1_files[j]);
+									}
+									
+									var count = png1_files.length;
+									title +=  key + " 索引文件"+ newLine;
+									title += "-------------------------------------------" + newLine;
+									title += newPngs.join(newLine) + newLine;
+									
+									allcount += count;
+									if(count != 0){
+										warning = 0;
+									}	
+								}	
+								
+								if (warning) {
+									CShow.w(indexTd);
+									title += "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" + newLine;
+									title += "警告：" + key + " 没有索引" + newLine;
+									title += "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" + newLine;
+								};
+								title += newLine;
+								
+								var alertStr = " onclick='OC.alert(this.title)' ";
+								if(allcount == 0){
+									CShow.e(indexTd);
+									title = "";
+									alertStr = " ";
+								}
+								
+								var html = "<a " +alertStr+ "  class='a_n' title='"+title+"'>" +allcount+ "</a>";
+								yy.div.html(indexTd,html);
+								
+						  	}
+						};
+				};
+
+
+				//添加统计行
+				if (true) {
+					var tr = yy.div.create("tr");
+					yy.div.class1(tr,"trTJ");
+					tableParse.appendChild(tr);
+					var tip = yy.div.create("td");
+					yy.div.html(tip,"统计");
+					tr.appendChild(tip);
+					
+					var ept1 = yy.div.create("td");
+					var ept2 = yy.div.create("td");
+					var ept3 = yy.div.create("td");
+					tr.appendChild(ept1);
+					tr.appendChild(ept2);
+					tr.appendChild(ept3);
+					
+					var s1 = yy.div.create("td");
+					yy.div.html(s1,""+__s1.moneyFormat(2,true,true,true) + " k");
+					tr.appendChild(s1);
+					
+					yy.css.textAlign(s1,"right");
+					
+					var ept4 = yy.div.create("td");
+					tr.appendChild(ept4);
+					
+					
+					
+				};				
+			};
+			var CShow = {};
+			CShow.e = function (div) {
+			  yy.div.class1(div,"_e");
+			};
+			CShow.w = function (div) {
+			  yy.div.class1(div,"_w");
+			};
+			CShow.w2 = function (div) {
+			  yy.div.class1(div,"_w2");
+			};
+			
+		</script>
+	</head>
+
+	<body onload="myInit()">
+		
+		<div>
+			<header style="padding: 10px">
+				<h1 style="color:#333"><span style="color:#000">文件目录:</span> 
+					<span id="projectPath">null</span>
+				</h1>
+			</header>
+
+			<div id="create">
+                <div style="padding: 0px">
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                
+                                <span class="a_tip" >颜色说明：</span> <span class="_w a_tip">轻微警告</span> <span class="_w2 a_tip">严重警告</span> <span class="_e a_tip">错误</span>
+                                <div class="clear"> </div>
+                            </td>
+                            <td  style="padding-right:10px">
+                                <a id="id_export_html" class="a_fun" href="javascript:OC.exportHtmlFile();"  >导出分析结果</a>
+                                <a id="id_image_preview" class="a_fun" href="javascript:;"  >图片预览</a>
+                                <div class="clear"> </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+				
+				<div id="id_parse">
+					<div class="table_div">
+						<table id="id_parse_table" class="table">
+							<tr class="trHead">
+								<td>Line</td>
+								<td>图片名</td>
+								<td>图片</td>
+								<td>w * h</td>
+								<td>大小</td>
+								<td>索引文件数</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+				
+			<footer>
+				<p style="padding: 10px">
+					&copy; Copyright  by <span style="color:rgb(81,158,236);">suchangqin@gmail.com</span>
+
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>
+

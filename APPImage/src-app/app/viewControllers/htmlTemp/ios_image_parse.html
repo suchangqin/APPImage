@@ -1,0 +1,818 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>ios image parse</title>
+        <script type="text/javascript">
+            (function(b){var a=(function(){var c={};c.find={id:function(d){return document.getElementById(d);},class1:function(d){return document.getElementsByClassName(d);},};c.div={create:function(d){return document.createElement(d);},html:function(e,d){e.innerHTML=d;},id:function(e,d){if(d){e.id=d;}else{return e.id;}},name:function(e,d){if(d){e.name=d;}else{return e.name;}},title:function(e,d){if(d){e.title=d;}else{return e.title;}},class1:function(e,d){if(d){e.className=d;}else{return e.className;}},classAppend:function(h,e){if(e){var g=this.class1(h);var d=g.split(" ");var f=d.findIndex(e);if(f==-1){d.push(e);this.class1(h,d.join(" "));}}},classRemove:function(h,e){if(e){var g=this.class1(h);var d=g.split(" ");var f=d.findIndex(e);while(f!=-1){d.remove(f,f);f=d.findIndex(e);}this.class1(h,d.join(" "));}},};c.css={_value:function(e,d){var f=e+"";return f.endWith(d)?f:f+d;},position:function(e,d){if(d){e.style.position=d;}else{return e.style.position;}},top:function(e,d){if(d){e.style.top=this._value(d,"px");}else{return e.style.top;}},bottom:function(e,d){if(d){e.style.bottom=this._value(d,"px");}else{return e.style.bottom;}},left:function(e,d){if(d){e.style.left=this._value(d,"px");}else{return e.style.left;}},right:function(e,d){if(d){e.style.right=this._value(d,"px");}else{return e.style.right;}},overflow:function(e,d){if(d){e.style.overflow=d;}else{return e.style.overflow;}},float1:function(e,d){if(d){e.style.styleFloat=d;e.style.cssFloat=d;}else{return e.style.styleFloat;}},height:function(e,d){if(d){e.style.height=this._value(d,"px");}else{return e.style.height;}},width:function(e,d){if(d){e.style.width=this._value(d,"px");}else{return e.style.width;}},ratio:function(e,d){if(d){e.style.width=this._value(d,"%");}else{return e.style.width;}},fontSize:function(e,d){if(d){e.style.fontSize=this._value(d,"px");}else{return e.style.fontSize;}},textAlign:function(e,d){if(d){e.style.textAlign=d;}else{return e.style.textAlign;}},color:function(e,d){if(d){e.style.color=d;}else{return e.style.color;}},bgColor:function(e,d){if(d){e.style.backgroundColor=d;}else{return e.style.backgroundColor;}},backgroundColor:function(e,d){return this.bgColor(e,d);}};return c;})();b.yy=a;})(window);(function(){String.prototype.startWith=function(b){var a=new RegExp("^"+b);return a.test(this);};String.prototype.endWith=function(b){var a=new RegExp(b+"$");return a.test(this);};Array.prototype.remove=function(c,b){var a=this.slice((b||c)+1||this.length);this.length=c<0?this.length+c:c;return this.push.apply(this,a);};Array.prototype.findIndex=function(a){for(var b=0;b<this.length;b++){if(this[b]==a){return b;}}return -1;};Array.prototype.contains=function(a){if(this.findIndex(a)==-1){return false;}return true;};Array.prototype.removeObj=function(b){if(!b){return;}var a=this.findIndex(b);if(a!=-1){this.remove(a,a);}};})();
+            </script>
+        <style type="text/css">
+            html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}.clear{clear:both;height:0}
+            </style>
+        <style type="text/css">
+            a{ cursor:pointer;
+                text-decoration: none;
+            }
+        .a_n {color:#0c438f; display: block;}
+        
+        #id_image_preview{
+            background: #e2f4dd;
+            text-align:center;
+            display: block;
+            padding: 10px;
+            z-index:10000;
+        }
+        
+        .a_fun{
+            padding: 10px;
+            float: right;
+            text-align:center;
+            background: #e2f4dd;
+            margin-left: 15px;
+        }
+        .a_tip{
+            padding: 10px;
+            float: left;
+            text-align:center;
+            margin-right: 15px;
+        }
+        
+        .tip{padding:10px 10px 0px 10px; color:rgb(81,158,236); }
+        .table_div{
+            padding: 10px;
+        }
+        .table_div .table{
+            width:100%;
+            background: rgb(166,166,166);
+            border-collapse:separate;
+            border-spacing: 1px;
+            color:rgb(20,20,20)
+        }
+        .table_div .table .trHead{ background: rgb(190,192,191);  font-weight:bold;
+            color:rgb(0,0,0)
+        }
+        .table_div .table .trHead2{ background: rgb(140,219,255);  font-weight:bold;
+            color:rgb(0,0,0)
+        }
+        .importent {color:#F16}
+        
+        ._w{background:#ffffd5}
+        ._w2{background:#ffff00}
+        ._e{background:#f45f5f}
+        ._i{}
+        ._eTip{background:#e6aeae}
+        ._ok{background: rgb(202,235,192)}
+        ._span{padding:10px 15px; margin: 0px 10px;}
+        
+        .table_div .table .tr0{ background: rgb(251,251,251)}
+        .table_div .table .tr1{ background: rgb(241,241,241)}
+        .table_div .table .trTJ{ background: #e2f4dd}
+        .table_div .table .tdLine{ background: rgb(220,220,220); font-weight:bold; color:rgb(0,0,0);}
+        .table_div .table td{ padding: 8px; }
+            </style>
+        <script  type="text/javascript">
+            var yyoc;
+            var OC = {}
+            OC.log = function(msg){
+                if(yyoc){
+                    yyoc.log(log);
+                }
+            }
+        OC.exportHtmlFile = function(){
+            if(yyoc){
+                yyoc.exportHtmlFile();
+            }
+        }
+        OC.alert = function(msg){
+            if(yyoc){
+                yyoc.alert(msg);
+            }else{
+                alert(msg);
+            }
+        }
+        OC.showFile = function(path){
+            if(yyoc){
+                yyoc.showFile(path);
+            }else{
+                window.open(path);
+            }
+        }
+        </script>
+        
+        <script  type="text/javascript">
+            
+            var S_images = {'app_tab_item_badge_bg@2x.png': {'fp': '/YYProduct/images/app_tab_item_badge_bg@2x.png', 'h': 66, 's': 3117, 'w': 66, 'is1x': ['APPTabBarItem.xib']}, 'Default@2x.png': {'fp': '/YYProduct/Default@2x.png', 'h': 960, 's': 16107, 'w': 640}, 'app_b_nav_rect.png': {'fp': '/YYProduct/images/app_b_nav_rect.png', 'h': 29, 's': 989, 'is': ['APPXibButtonNavRect.xib'], 'w': 29}, 'test.png': {'fp': '/YYProduct/test.png', 'h': 260, 's': 1404, 'w': 223}, 'app_tab_item_icon_0.png': {'fp': '/YYProduct/images/app_tab_item_icon_0.png', 'h': 50, 's': 2927, 'is': ['APPTemplateNoPageMoreViewController.m'], 'w': 64}, 'test1@2x.png': {'fp': '/YYProduct/test1@2x.png', 'h': 518, 's': 2263, 'w': 445, 'is1x': ['APPTestPartSelectortViewController.m']}, 'app_tab_item_sel_bg.png': {'fp': '/YYProduct/images/app_tab_item_sel_bg.png', 'h': 50, 's': 4502, 'is': ['APPTabBarView.xib'], 'w': 64}, 'app_tab_item_icon_1_sel@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_1_sel@2x.png', 'h': 100, 's': 4458, 'w': 128, 'is1x': ['APPTemplatePageMoreViewController.m']}, 'Default.png': {'fp': '/YYProduct/Default.png', 'h': 480, 's': 6540, 'w': 320}, 'app_tab_item_badge_bg.png': {'fp': '/YYProduct/images/app_tab_item_badge_bg.png', 'h': 33, 's': 1425, 'is': ['APPTabBarItem.xib'], 'w': 33}, 'app_cell_arrow_right.png': {'fp': '/YYProduct/images/app_cell_arrow_right.png', 'h': 14, 's': 1082, 'is': ['APPUIGlobal.m'], 'w': 10}, 'app_cell_arrow_right@3x.png': {'fp': '/YYProduct/images/app_cell_arrow_right@3x.png', 'is1x': ['APPUIGlobal.m'], 'h': 28, 'is': ['APPTestCustomIndexBarViewController.m'], 's': 1198, 'w': 20}, 'app_tab_item_icon_1_sel.png': {'fp': '/YYProduct/images/app_tab_item_icon_1_sel.png', 'h': 50, 's': 2433, 'is': ['APPTemplatePageMoreViewController.m'], 'w': 64}, 'app_b_back@2x.png': {'fp': '/YYProduct/images/app_b_back@2x.png', 'h': 60, 's': 1606, 'w': 82, 'is1x': ['APPXibButtonBack.xib']}, 'app_tab_item_sel_bg@2x.png': {'fp': '/YYProduct/images/app_tab_item_sel_bg@2x.png', 'h': 100, 's': 10065, 'w': 128, 'is1x': ['APPTabBarView.xib']}, 'app_nav_bg@3x.png': {'fp': '/YYProduct/images/app_nav_bg@3x.png', 'h': 60, 's': 987, 'w': 60, 'is1x': ['APPBaseViewController.m']}, 'app-icon-114.png': {'fp': '/YYProduct/app-icon-114.png', 'h': 114, 's': 1078, 'is': ['YYProduct-Info.plist'], 'w': 114}, 'app_cell_arrow_right@2x.png': {'fp': '/YYProduct/images/app_cell_arrow_right@2x.png', 'h': 28, 's': 1198, 'w': 20, 'is1x': ['APPUIGlobal.m']}, 'app_nav_bg.png': {'fp': '/YYProduct/images/app_nav_bg.png', 'h': 30, 's': 954, 'is': ['APPBaseViewController.m'], 'w': 30}, 'test@2x.png': {'fp': '/YYProduct/test@2x.png', 'h': 518, 's': 2263, 'is': ['APPTestPartSelectortViewController.m'], 'w': 445}, 'app_tab_item_icon_0_sel.png': {'fp': '/YYProduct/images/app_tab_item_icon_0_sel.png', 'h': 50, 's': 3081, 'is': ['APPTemplateNoPageMoreViewController.m'], 'w': 64}, 'test1@3x.png': {'fp': '/YYProduct/test1@3x.png', 'h': 778, 's': 3429, 'w': 668, 'is1x': ['APPTestPartSelectortViewController.m']}, 'app_tab_item_icon_1@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_1@2x.png', 'h': 100, 's': 3236, 'w': 128, 'is1x': ['APPTemplatePageMoreViewController.m']}, 'app_tab_bar_bg@2x.png': {'fp': '/YYProduct/images/app_tab_bar_bg@2x.png', 'h': 100, 's': 1739, 'w': 640, 'is1x': ['APPTabBarView.xib', 'APPTestCaptureImageViewController.xib']}, 'app_tab_item_icon_0_sel@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_0_sel@2x.png', 'h': 100, 's': 6861, 'w': 128, 'is1x': ['APPTemplateNoPageMoreViewController.m']}, 'app_tab_item_icon_0@2x.png': {'fp': '/YYProduct/images/app_tab_item_icon_0@2x.png', 'h': 100, 's': 4640, 'w': 128, 'is1x': ['APPTemplateNoPageMoreViewController.m']}, 'app-icon-57.png': {'fp': '/YYProduct/app-icon-57.png', 'h': 57, 's': 979, 'is': ['YYProduct-Info.plist'], 'w': 57}, 'app_b_nav_rect@2x.png': {'fp': '/YYProduct/images/app_b_nav_rect@2x.png', 'h': 58, 's': 1069, 'w': 58, 'is1x': ['APPXibButtonNavRect.xib']}, 'test@3x.png': {'fp': '/YYProduct/test@3x.png', 'h': 778, 's': 3429, 'w': 668}, 'Default-568h@2x.png': {'fp': '/YYProduct/Default-568h@2x.png', 'h': 1136, 's': 18594, 'w': 640}};
+            
+            var S_projectPath = "/Users/suchangqin/Documents/workspace-qeegoo/iOS/YYProduct";
+            //警告程度
+            var sizeW	 = 3.5; //2k
+            var sizeW2	 = 5; //3k
+            
+            
+            //NULL//S_images = ${ai source};
+            //NULL//S_projectPath = "${ai filePath}";
+            //警告程度
+            //NULL//sizeW	 = ${ai warning}; //2k
+            //NULL//sizeW2 = ${ai warning2}; //3k
+            
+            
+            var kSize = "s";
+            var kWidth = "w";
+            var kHeight = "h";
+            var kIndexFiles = "is";
+            var kIndexFiles1x = "is1x";
+            var kFilePath = "fp";
+            
+            
+            var kClassImagePreview = "imagepreviewsssss";
+            
+            Number.prototype.moneyFormat = function(decimalNum,bolLeadingZero,bolParens,bolCommas)
+            {
+                var tmpNum = this;
+                var iSign = this < 0 ? -1 : 1;       // Get sign of number
+                
+                // Adjust number so only the specified number of numbers after
+                // the decimal point are shown.
+                tmpNum *= Math.pow(10,decimalNum);
+                tmpNum = Math.round(Math.abs(tmpNum))  ;
+                tmpNum /= Math.pow(10,decimalNum);
+                tmpNum *= iSign;                    // Readjust for sign
+                
+                
+                // Create a string object to do our formatting on
+                var tmpNumStr = new String(tmpNum);
+                // See if we need to strip out the leading zero or not.
+                if (!bolLeadingZero && this < 1 && this > -1 && this != 0)
+                if (this > 0)
+                tmpNumStr = tmpNumStr.substring(1,tmpNumStr.length);
+                else
+                tmpNumStr = "-" + tmpNumStr.substring(2,tmpNumStr.length);
+                
+                // See if we need to put in the commas
+                if (bolCommas && (this >= 1000 || this <= -1000)) {
+                    var iStart = tmpNumStr.indexOf(".");
+                    if (iStart < 0)
+                    iStart = tmpNumStr.length;
+                    iStart -= 3;
+                    while (iStart >= 1) {
+                        tmpNumStr = tmpNumStr.substring(0,iStart) + "," + tmpNumStr.substring(iStart,tmpNumStr.length);
+                        iStart -= 3;
+                    }
+                }
+                // See if we need to use parenthesis
+                if (bolParens && this < 0)
+                tmpNumStr = "(" + tmpNumStr.substring(1,tmpNumStr.length) + ")";
+                return tmpNumStr;       // Return our formatted string!
+            };
+        
+        
+        function _fImageLink(imageName,imagePath){
+            
+            var path = imagePath;
+            var open = " OC.showFile('"+path+"') ";
+            var image = '<img onclick="'+open+'" class="'+kClassImagePreview+'" style="cursor:pointer;max-width:150px;max-height:150px;display:none;" src="file://'+path+'" />';
+            return "<a target='_blank' class='a_n' href=\"javascript:" +open+ "\" >"+imageName+"</a>" + image;
+        }
+        
+        function myInit(){
+            COut.project();
+            COut.tableDistribute(S_images);
+            COut.preview(0);
+            var exportDiv = yy.find.id("id_export_html")
+            if(!yyoc){
+                exportDiv.style.display = "none";
+            }
+        }
+        var COut = {};
+        COut.project = function(){
+            var projectPathDiv = yy.find.id("projectPath");
+            yy.div.html(projectPathDiv,S_projectPath);
+        };
+        COut.preview = function(show){
+            var idImagePreview = yy.find.id("id_image_preview");
+            if(show){
+                idImagePreview.href = "javascript:COut.preview(0);";
+                idImagePreview.innerHTML = "关闭图片预览";
+            }else{
+                idImagePreview.href = "javascript:COut.preview(1);";
+                idImagePreview.innerHTML = "开启图片预览";
+            }
+            var display = show? "block":"none";
+            var allBox = document.getElementsByClassName(kClassImagePreview);
+            for (var i=0; i < allBox.length; i++) {
+                allBox[i].style.display = display;
+            }
+        };
+        COut.tableDistribute = function (source){
+            
+            var S = source;
+            
+            var images = CPrivate.parseImageSource(S);
+            
+            var imageFine = [];
+            var imageE = [];
+            var imageW = [];
+            
+            for(var i=0;i<images.length;i++){
+                var image = images[i];
+                //得到对应的各种key
+                var key1 = image["1x"];
+                var key2 = image["2x"];
+                var key3 = image["3x"];
+                
+                var image1 = key1?S[key1]:{};
+                var image2 = key2?S[key2]:{};
+                var image3 = key3?S[key3]:{};
+                
+                // step 1: find error
+                //check images
+                //2x必须有
+                if(!key2){
+                    imageE.push(image);
+                    continue;
+                }
+                //check pixel
+                //默认没错
+                var pixelError = false;
+                if(key1 && key2){
+                    pixelError = CPrivate.pixelCompareIsError(image1,image2,2);
+                }
+                //如果没有错误继续验证
+                if(!pixelError){
+                    if(key1 && key3){
+                        pixelError = CPrivate.pixelCompareIsError(image1,image3,3);
+                    }
+                }
+                //如果没有错误继续验证
+                if(!pixelError){
+                    if(key2 && key3){
+                        pixelError = CPrivate.pixelCompareIsError(image2,image3,1.5);
+                    }
+                }
+                if(pixelError){
+                    imageE.push(image);
+                    continue;
+                }
+                
+                // check file index
+                var re1 = CPrivate.fileIndexResult(image1[kIndexFiles],key1);
+                var c1 = re1["c"];
+                
+                var re2 = CPrivate.fileIndexResult(image2[kIndexFiles],key2);
+                var c2 = re2["c"];
+                
+                var re3 = CPrivate.fileIndexResult(image3[kIndexFiles],key3);
+                var c3 = re3["c"];
+                
+                //如果没有1x的图片，就需要去取2x或者3x的1x的索引
+                if(!key1){
+                    var newKey = key2?key2.replace("@2x",""):null;
+                    var newImage = image2;
+                    if(!key2) {
+                        newKey = key3.replace("@3x","");;
+                        newImage = image3;
+                    }
+                    re1 = CPrivate.fileIndexResult(newImage[kIndexFiles1x],newKey);
+                    c1 = re1["c"];
+                }
+                if(c1+c2+c3 == 0){
+                    imageE.push(image);
+                    continue;
+                }
+                
+                // step 2: find warning
+                
+                if(	c1>0 && c2 == 0 && c3 == 0){
+                    //不要警告
+                }else{
+                    imageW.push(image);
+                    continue;
+                }
+                
+                //check imagename
+                //1x有要警告
+                //					if (key1) {
+                //						imageW.push(image);
+                //						continue;
+                //					};
+                
+                // check size
+                var sizeWarn = false;
+                if(key1){
+                    sizeWarn = _sizeWarning(image1);
+                }
+                if(!sizeWarn){
+                    if(key2){
+                        sizeWarn = _sizeWarning(image2);
+                    }
+                }
+                if(!sizeWarn){
+                    if(key3){
+                        sizeWarn = _sizeWarning(image3);
+                    }
+                }
+                if(sizeWarn){
+                    imageW.push(image);
+                    continue;
+                }
+                
+                imageFine.push(image);
+            }
+            if(imageE.length){
+                COut.tableTip("有错误的区域","_e",11);
+                COut.table(imageE);
+            }
+            if(imageW.length){
+                COut.tableTip("仅有警告的区域","_w2",11);
+                COut.table(imageW);
+            }
+            if (imageFine.length) {
+                COut.tableTip("无误的区域","_ok",11);
+                COut.table(imageFine);
+            };
+            
+            function _sizeWarning(imgObj){
+                var size = (imgObj[kSize] / 1024.0);
+                if (size>sizeW2) {
+                    return true;
+                } else if(size>sizeW){
+                    return true;
+                };
+                return false;
+            }
+        };
+        COut.tableTip = function(msg,classAppend,colSpan){
+            var tableParse = yy.find.id("id_parse_table");
+            var tr = yy.div.create("tr");
+            yy.div.class1(tr,"trTip "+classAppend);
+            tableParse.appendChild(tr);
+            
+            var td = yy.div.create("td");
+            td.colSpan = colSpan;
+            td.innerHTML = msg;
+            yy.css.textAlign(td,"center");
+            tr.appendChild(td);
+            
+        };
+        
+        var CClass = {};
+        CClass.image = function(k1,k2,k3){
+            var re = {};
+            if(k1){
+                re["1x"] = k1;
+            }
+            if(k2){
+                re["2x"] = k2;
+            }
+            if(k3){
+                re["3x"] = k3;
+            }
+            return re;
+        };
+        var CPrivate = {};
+        CPrivate.pixelCompareIsError = function(img1,img2,multiple){
+            var w1 = img1[kWidth];
+            var w2 = img2[kWidth];
+            
+            var h1 = img1[kHeight];
+            var h2 = img2[kHeight];
+            
+            var fix = multiple;
+            
+            if(w1*multiple>w2+fix || w1 *multiple < w2-fix || h1*multiple>h2+fix || h1*multiple<h2-fix){
+                return true;
+            }
+            return false;
+        };
+        CPrivate.fileIndexResult = function(png_files,pngName){
+            if(!png_files){
+                return {"c":0,"t":""};
+            }
+            var newLine = " &#10;";
+            var re = {};
+            var newPngs = [];
+            png_files = png_files.sort();
+            for (var i=0; i < png_files.length; i++) {
+                var prefix = "";
+                if(i<9){
+                    prefix = "  ";
+                }
+                newPngs.push(prefix+ (i+1) + " : " + png_files[i]);
+            }
+            var count = png_files.length;
+            var title = newLine;
+            title +=  pngName + " 索引文件"+ newLine;
+            title += "-------------------------------------------" + newLine;
+            title += newPngs.join(newLine) + newLine;
+            
+            re["c"] = count;
+            re["t"] = title;
+            return re;
+        };
+        CPrivate.parseImageSource = function(source){
+            var keys = Object.keys(source);
+            keys.sort();
+            
+            //分配图片后缀
+            var k1x = [];
+            var k2x = [];
+            var k3x = [];
+            
+            for(var i=0;i<keys.length;i++){
+                var key  = keys[i];
+                if(key.endWith("@2x.png")){
+                    k2x.push(key);
+                }else if(key.endWith("@3x.png")){
+                    k3x.push(key);
+                }else{
+                    k1x.push(key);
+                }
+            }
+            
+            var images = [];
+            
+            //以2x为主，匹配1x,3x的图片
+            for(var i=0;i<k2x.length;i++){
+                var k2 = k2x[i];
+                var k1 = k2.replace("@2x.png",".png");
+                var k3 = k2.replace("@2x.png","@3x.png");
+                
+                k1 = _rmAndResetKey(k1x,k1);
+                k3 = _rmAndResetKey(k3x,k3);
+                
+                var image = CClass.image(k1,k2,k3);
+                images.push(image);
+            }
+            
+            //以1x为主，匹配3x的图片
+            for(var i=0;i<k1x.length;i++){
+                var k1 = k1x[i];
+                var k3 = k1.replace(".png","@3x.png");
+                
+                k3 = _rmAndResetKey(k3x,k3);
+                
+                var image = CClass.image(k1,null,k3);
+                images.push(image);
+            }
+            
+            //剩余3x的图片
+            for(var i=0;i<k3x.length;i++){
+                var k3 = k3x[i];
+                var image = CClass.image(null,null,k3);
+                images.push(image);
+            }
+            
+            return images;
+            
+            function _rmAndResetKey(arrayKey,key) {
+                if(arrayKey.contains(key)){
+                    //包含移除
+                    arrayKey.removeObj(key);
+                    return key;
+                }else{
+                    //不包含，制空
+                    return null;
+                }
+            }
+            
+        };
+        
+        COut.table = function (images) {
+            
+            //统计
+            //数量统计
+            var __n1 = 0;
+            var __n2 = 0;
+            var __n3 = 0;
+            //大小统计
+            var __s1 = 0;
+            var __s2 = 0;
+            var __s3 = 0;
+            
+            
+            var tableParse = yy.find.id("id_parse_table");
+            var S = S_images;
+            for(var i=0;i<images.length;i++){
+                
+                var image = images[i];
+                //得到对应的各种key
+                var key1 = image["1x"];
+                var key2 = image["2x"];
+                var key3 = image["3x"];
+                
+                // 统计
+                if(key1) __n1++;
+                if(key2) __n2++;
+                if(key3) __n3++;
+                
+                var image1 = key1?S[key1]:{};
+                var image2 = key2?S[key2]:{};
+                var image3 = key3?S[key3]:{};
+                
+                // add row
+                var tr = yy.div.create("tr");
+                yy.div.class1(tr,"tr"+i%2);
+                tableParse.appendChild(tr);
+                
+                //add line
+                var line = yy.div.create("td");
+                yy.div.class1(line,"tdLine");
+                line.innerHTML = '<a name="l1">' +  (i+1) + '</a>';
+                tr.appendChild(line);
+                
+                //add images
+                //2x必须有
+                var png2 = yy.div.create("td");
+                if(key2){
+                    png2.innerHTML = _fImageLink(key2,image2[kFilePath]);;
+                }else{
+                    CShow.e(png2);
+                }
+                //1x基本没有
+                var png1 = yy.div.create("td");
+                if(key1){
+                    png1.innerHTML = _fImageLink(key1,image1[kFilePath]);
+                    //大部分不应该有1x的图，所以轻微警告
+                    //CShow.w(png1);
+                }
+                
+                //3x有没有都行
+                var png3 = yy.div.create("td");
+                if(key3){
+                    png3.innerHTML = _fImageLink(key3,image3[kFilePath]);;
+                }
+                
+                tr.appendChild(png1);
+                tr.appendChild(png2);
+                tr.appendChild(png3);
+                
+                // add pixel
+                var pixel1 = yy.div.create("td");
+                if(key1){
+                    pixel1.innerHTML = image1[kWidth] +" * " + image1[kHeight] ;
+                }
+                var pixel2 = yy.div.create("td");
+                if(key2){
+                    pixel2.innerHTML = image2[kWidth] +" * " + image2[kHeight] ;
+                }
+                var pixel3 = yy.div.create("td");
+                if(key3){
+                    pixel3.innerHTML = image3[kWidth] +" * " + image3[kHeight] ;
+                }
+                
+                
+                
+                //默认没错
+                var pixelError = false;
+                
+                if(key1 && key2){
+                    pixelError = CPrivate.pixelCompareIsError(image1,image2,2);
+                }
+                
+                //如果没有错误继续验证
+                if(!pixelError){
+                    if(key1 && key3){
+                        pixelError = CPrivate.pixelCompareIsError(image1,image3,3);
+                    }
+                }
+                //如果没有错误继续验证
+                if(!pixelError){
+                    if(key2 && key3){
+                        pixelError = CPrivate.pixelCompareIsError(image2,image3,1.5);
+                    }
+                }
+                if(pixelError){
+                    //如果有错的话
+                    if(key1) CShow.e(pixel1);
+                    if(key2) CShow.e(pixel2);
+                    if(key3) CShow.e(pixel3);
+                }
+                
+                tr.appendChild(pixel1);
+                tr.appendChild(pixel2);
+                tr.appendChild(pixel3);
+                
+                // add size
+                var size1 = yy.div.create("td");
+                yy.css.textAlign(size1,"right");
+                if(key1){
+                    __s1 += _sizeValueAndWarning(size1,image1);
+                }
+                var size2 = yy.div.create("td");
+                yy.css.textAlign(size2,"right");
+                if(key2){
+                    __s2 += _sizeValueAndWarning(size2,image2);
+                }
+                var size3 = yy.div.create("td");
+                yy.css.textAlign(size3,"right");
+                if(key3){
+                    __s3 += _sizeValueAndWarning(size3,image3);
+                }
+                
+                tr.appendChild(size1);
+                tr.appendChild(size2);
+                tr.appendChild(size3);
+                
+                // add file index
+                if(true){
+                    var newLine = " &#10;";
+                    
+                    var title = "" + newLine;
+                    
+                    var warning = true; //默认需要警告
+                    
+                    var re1 = CPrivate.fileIndexResult(image1[kIndexFiles],key1);
+                    var c1 = re1["c"];
+                    var t1 = re1["t"];
+                    
+                    var re2 = CPrivate.fileIndexResult(image2[kIndexFiles],key2);
+                    var c2 = re2["c"];
+                    var t2 = re2["t"];
+                    
+                    var re3 = CPrivate.fileIndexResult(image3[kIndexFiles],key3);
+                    var c3 = re3["c"];
+                    var t3 = re3["t"];
+                    
+                    //如果没有1x的图片，就需要去取2x或者3x的1x的索引
+                    if(!key1){
+                        var newKey = key2?key2.replace("@2x",""):null;
+                        var newImage = image2;
+                        if(!key2) {
+                            newKey = key3.replace("@3x","");;
+                            newImage = image3;
+                        }
+                        
+                        re1 = CPrivate.fileIndexResult(newImage[kIndexFiles1x],newKey);
+                        c1 = re1["c"];
+                        t1 = re1["t"];
+                    }
+                    //2x,3x文件不该有索引
+                    var warnTitle = newLine;
+                    if(c2+c3 > 0){
+                        warnTitle = newLine+ "*******************************" + newLine + "**   警告：以下文件不该有索引" + newLine + "*******************************" + newLine;
+                    }
+                    title = t1 + warnTitle +  t2+ t3;
+                    if(	c1>0 && c2 == 0 && c3 == 0){
+                        //不要警告
+                        warning = false;
+                    }
+                    
+                    allcount = c1 + "+" + c2 + "+" + c3 + " = "+(c1+c2+c3);
+                    
+                    var index = yy.div.create("td");
+                    
+                    if(warning){
+                        CShow.w2(index);
+                    }
+                    
+                    var alertStr = " onclick='OC.alert(this.title)' ";
+                    if(c1+c2+c3 == 0){
+                        CShow.e(index);
+                        title = "";
+                        alertStr = " ";
+                    }
+                    
+                    
+                    index.innerHTML = "<a " +alertStr+ "  class='a_n' title='"+title+"'>" +allcount+ "</a>";
+                    
+                    tr.appendChild(index);
+                }
+                
+                
+            }
+            
+            
+            //添加统计行
+            if (true) {
+                var tr = yy.div.create("tr");
+                yy.div.class1(tr,"trTJ");
+                tableParse.appendChild(tr);
+                var tip = yy.div.create("td");
+                yy.div.html(tip,"统计");
+                tr.appendChild(tip);
+                
+                var n1 = yy.div.create("td");
+                yy.div.html(n1,__n1+"个");
+                var n2 = yy.div.create("td");
+                yy.div.html(n2,__n2+"个");
+                var n3 = yy.div.create("td");
+                yy.div.html(n3,__n3+"个");
+                tr.appendChild(n1);
+                tr.appendChild(n2);
+                tr.appendChild(n3);
+                
+                var ept1 = yy.div.create("td");
+                var ept2 = yy.div.create("td");
+                var ept3 = yy.div.create("td");
+                tr.appendChild(ept1);
+                tr.appendChild(ept2);
+                tr.appendChild(ept3);
+                
+                var s1 = yy.div.create("td");
+                yy.div.html(s1,""+__s1.moneyFormat(2,true,true,true) + " k");
+                var s2 = yy.div.create("td");
+                yy.div.html(s2,""+__s2.moneyFormat(2,true,true,true) + " k");
+                var s3 = yy.div.create("td");
+                yy.div.html(s3,""+__s3.moneyFormat(2,true,true,true) + " k");
+                tr.appendChild(s1);
+                tr.appendChild(s2);
+                tr.appendChild(s3);
+                
+                yy.css.textAlign(s1,"right");
+                yy.css.textAlign(s2,"right");
+                yy.css.textAlign(s3,"right");
+                
+                var ept4 = yy.div.create("td");
+                tr.appendChild(ept4);
+                
+                
+                
+            };
+            
+            function _sizeValueAndWarning(imgDiv,imgObj){
+                var size = (imgObj[kSize] / 1024.0);
+                imgDiv.innerHTML = size.moneyFormat(2,true,true,true) + " k";
+                if (size>sizeW2) {
+                    CShow.w2(imgDiv);
+                } else if(size>sizeW){
+                    CShow.w(imgDiv);
+                };
+                return size;
+            }
+            
+        };
+        var CShow = {};
+        CShow.e = function (div) {
+            yy.div.class1(div,"_e");
+        };
+        CShow.i = function (div) {
+            yy.div.class1(div,"_i");
+        };
+        CShow.w = function (div) {
+            yy.div.class1(div,"_w");
+        };
+        CShow.w2 = function (div) {
+            yy.div.class1(div,"_w2");
+        };
+        
+            </script>
+    </head>
+    
+    <body onload="myInit()">
+        <header style="padding: 10px">
+            <h1 style="color:#333"><span style="color:#000">文件目录:</span> 
+                <span id="projectPath">null</span>
+            </h1>
+        </header>
+        
+        <div id="create">
+            
+            <div style="padding: 0px">
+                <table style="width:100%">
+                    <tr>
+                        <td><span class="a_tip" >颜色说明：</span> <span class="_w a_tip">轻微警告</span> <span class="_w2 a_tip">严重警告</span> <span class="_e a_tip">错误</span>
+                            <div class="clear"> </div>
+                        </td>
+                        <td style="padding-right:10px">
+                            <a id="id_export_html" class="a_fun" href="javascript:OC.exportHtmlFile();"  >导出分析结果</a>
+                            <a id="id_image_preview" class="a_fun" href="javascript:;"  >图片预览</a>
+                            <div class="clear"> </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="id_parse">
+                <div class="table_div">
+                    <table id="id_parse_table" class="table">
+                        <tr class="trHead">
+                            <td>Line</td>
+                            <td>@1x png</td>
+                            <td>@2x png</td>
+                            <td>@3x png</td>
+                            
+                            <td>@1x w*h</td>
+                            <td>@2x w*h</td>
+                            <td>@3x w*h</td>
+                            
+                            <td>@1x大小</td>
+                            <td>@2x大小</td>
+                            <td>@3x大小</td>
+                            
+                            <td>@1x@2x@3x索引</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p style="padding: 10px">
+            &copy; Copyright  by <span style="color:rgb(81,158,236);">suchangqin@gmail.com</span>
+            </p>
+        </footer>
+    </body>
+</html>
+
